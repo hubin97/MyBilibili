@@ -15,6 +15,19 @@
 		1FDD12231D8A4C81008F3E44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12211D8A4C81008F3E44 /* LaunchScreen.storyboard */; };
 		1FDD122E1D8A4C81008F3E44 /* MyBilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD122D1D8A4C81008F3E44 /* MyBilibiliTests.m */; };
 		1FDD12391D8A4C81008F3E44 /* MyBilibiliUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12381D8A4C81008F3E44 /* MyBilibiliUITests.m */; };
+		1FDD12511D8A4C9D008F3E44 /* IMG_1648.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12461D8A4C9D008F3E44 /* IMG_1648.PNG */; };
+		1FDD12521D8A4C9D008F3E44 /* IMG_1649.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12471D8A4C9D008F3E44 /* IMG_1649.PNG */; };
+		1FDD12531D8A4C9D008F3E44 /* IMG_1650.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12481D8A4C9D008F3E44 /* IMG_1650.PNG */; };
+		1FDD12541D8A4C9D008F3E44 /* IMG_1651.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12491D8A4C9D008F3E44 /* IMG_1651.PNG */; };
+		1FDD12551D8A4C9D008F3E44 /* IMG_1652.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124A1D8A4C9D008F3E44 /* IMG_1652.PNG */; };
+		1FDD12561D8A4C9D008F3E44 /* IMG_1653.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124B1D8A4C9D008F3E44 /* IMG_1653.PNG */; };
+		1FDD12571D8A4C9D008F3E44 /* IMG_1654.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124C1D8A4C9D008F3E44 /* IMG_1654.PNG */; };
+		1FDD12581D8A4C9D008F3E44 /* IMG_1655.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124D1D8A4C9D008F3E44 /* IMG_1655.PNG */; };
+		1FDD12591D8A4C9D008F3E44 /* IMG_1656.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124E1D8A4C9D008F3E44 /* IMG_1656.PNG */; };
+		1FDD125A1D8A4C9D008F3E44 /* IMG_1657.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124F1D8A4C9D008F3E44 /* IMG_1657.PNG */; };
+		1FDD125B1D8A4C9D008F3E44 /* IMG_1658.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12501D8A4C9D008F3E44 /* IMG_1658.PNG */; };
+		1FDD125D1D8A6E8F008F3E44 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD125C1D8A6E8F008F3E44 /* File */; };
+		29F769A640A2FDC7D9D04CF5 /* libPods-MyBilibili.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4030C57D5CB50EED76130514 /* libPods-MyBilibili.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +64,21 @@
 		1FDD12341D8A4C81008F3E44 /* MyBilibiliUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBilibiliUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDD12381D8A4C81008F3E44 /* MyBilibiliUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBilibiliUITests.m; sourceTree = "<group>"; };
 		1FDD123A1D8A4C81008F3E44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FDD12461D8A4C9D008F3E44 /* IMG_1648.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1648.PNG; sourceTree = "<group>"; };
+		1FDD12471D8A4C9D008F3E44 /* IMG_1649.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1649.PNG; sourceTree = "<group>"; };
+		1FDD12481D8A4C9D008F3E44 /* IMG_1650.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1650.PNG; sourceTree = "<group>"; };
+		1FDD12491D8A4C9D008F3E44 /* IMG_1651.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1651.PNG; sourceTree = "<group>"; };
+		1FDD124A1D8A4C9D008F3E44 /* IMG_1652.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1652.PNG; sourceTree = "<group>"; };
+		1FDD124B1D8A4C9D008F3E44 /* IMG_1653.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1653.PNG; sourceTree = "<group>"; };
+		1FDD124C1D8A4C9D008F3E44 /* IMG_1654.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1654.PNG; sourceTree = "<group>"; };
+		1FDD124D1D8A4C9D008F3E44 /* IMG_1655.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1655.PNG; sourceTree = "<group>"; };
+		1FDD124E1D8A4C9D008F3E44 /* IMG_1656.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1656.PNG; sourceTree = "<group>"; };
+		1FDD124F1D8A4C9D008F3E44 /* IMG_1657.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1657.PNG; sourceTree = "<group>"; };
+		1FDD12501D8A4C9D008F3E44 /* IMG_1658.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1658.PNG; sourceTree = "<group>"; };
+		1FDD125C1D8A6E8F008F3E44 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		4030C57D5CB50EED76130514 /* libPods-MyBilibili.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyBilibili.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5755CAA0C952DEFE6F65CE8E /* Pods-MyBilibili.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBilibili.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBilibili/Pods-MyBilibili.release.xcconfig"; sourceTree = "<group>"; };
+		809B9314D6E95A6DD80885D0 /* Pods-MyBilibili.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBilibili.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyBilibili/Pods-MyBilibili.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29F769A640A2FDC7D9D04CF5 /* libPods-MyBilibili.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +114,8 @@
 				1FDD122C1D8A4C81008F3E44 /* MyBilibiliTests */,
 				1FDD12371D8A4C81008F3E44 /* MyBilibiliUITests */,
 				1FDD12111D8A4C80008F3E44 /* Products */,
+				F7E37C8E3D8ABF24963CAD5B /* Pods */,
+				FB5E87F254B38D6D249FD29A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,8 +138,20 @@
 				1FDD121A1D8A4C81008F3E44 /* ViewController.m */,
 				1FDD121C1D8A4C81008F3E44 /* Main.storyboard */,
 				1FDD121F1D8A4C81008F3E44 /* Assets.xcassets */,
+				1FDD125C1D8A6E8F008F3E44 /* File */,
 				1FDD12211D8A4C81008F3E44 /* LaunchScreen.storyboard */,
 				1FDD12241D8A4C81008F3E44 /* Info.plist */,
+				1FDD12461D8A4C9D008F3E44 /* IMG_1648.PNG */,
+				1FDD12471D8A4C9D008F3E44 /* IMG_1649.PNG */,
+				1FDD12481D8A4C9D008F3E44 /* IMG_1650.PNG */,
+				1FDD12491D8A4C9D008F3E44 /* IMG_1651.PNG */,
+				1FDD124A1D8A4C9D008F3E44 /* IMG_1652.PNG */,
+				1FDD124B1D8A4C9D008F3E44 /* IMG_1653.PNG */,
+				1FDD124C1D8A4C9D008F3E44 /* IMG_1654.PNG */,
+				1FDD124D1D8A4C9D008F3E44 /* IMG_1655.PNG */,
+				1FDD124E1D8A4C9D008F3E44 /* IMG_1656.PNG */,
+				1FDD124F1D8A4C9D008F3E44 /* IMG_1657.PNG */,
+				1FDD12501D8A4C9D008F3E44 /* IMG_1658.PNG */,
 				1FDD12131D8A4C81008F3E44 /* Supporting Files */,
 			);
 			path = MyBilibili;
@@ -140,6 +183,23 @@
 			path = MyBilibiliUITests;
 			sourceTree = "<group>";
 		};
+		F7E37C8E3D8ABF24963CAD5B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				809B9314D6E95A6DD80885D0 /* Pods-MyBilibili.debug.xcconfig */,
+				5755CAA0C952DEFE6F65CE8E /* Pods-MyBilibili.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB5E87F254B38D6D249FD29A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4030C57D5CB50EED76130514 /* libPods-MyBilibili.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FDD123D1D8A4C81008F3E44 /* Build configuration list for PBXNativeTarget "MyBilibili" */;
 			buildPhases = (
+				1045C501CCB547944141EA98 /* 📦 Check Pods Manifest.lock */,
 				1FDD120C1D8A4C80008F3E44 /* Sources */,
 				1FDD120D1D8A4C80008F3E44 /* Frameworks */,
 				1FDD120E1D8A4C80008F3E44 /* Resources */,
+				3BD31274E91C06551FAC77A9 /* 📦 Embed Pods Frameworks */,
+				8CED9A94C5D0E07443304815 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,8 +307,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FDD12231D8A4C81008F3E44 /* LaunchScreen.storyboard in Resources */,
+				1FDD12591D8A4C9D008F3E44 /* IMG_1656.PNG in Resources */,
+				1FDD12561D8A4C9D008F3E44 /* IMG_1653.PNG in Resources */,
+				1FDD125A1D8A4C9D008F3E44 /* IMG_1657.PNG in Resources */,
+				1FDD12551D8A4C9D008F3E44 /* IMG_1652.PNG in Resources */,
+				1FDD12571D8A4C9D008F3E44 /* IMG_1654.PNG in Resources */,
+				1FDD12531D8A4C9D008F3E44 /* IMG_1650.PNG in Resources */,
+				1FDD12581D8A4C9D008F3E44 /* IMG_1655.PNG in Resources */,
 				1FDD12201D8A4C81008F3E44 /* Assets.xcassets in Resources */,
+				1FDD12511D8A4C9D008F3E44 /* IMG_1648.PNG in Resources */,
+				1FDD12541D8A4C9D008F3E44 /* IMG_1651.PNG in Resources */,
+				1FDD125B1D8A4C9D008F3E44 /* IMG_1658.PNG in Resources */,
+				1FDD12521D8A4C9D008F3E44 /* IMG_1649.PNG in Resources */,
 				1FDD121E1D8A4C81008F3E44 /* Main.storyboard in Resources */,
+				1FDD125D1D8A6E8F008F3E44 /* File in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +339,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1045C501CCB547944141EA98 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3BD31274E91C06551FAC77A9 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyBilibili/Pods-MyBilibili-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CED9A94C5D0E07443304815 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyBilibili/Pods-MyBilibili-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1FDD120C1D8A4C80008F3E44 /* Sources */ = {
@@ -411,6 +534,7 @@
 		};
 		1FDD123E1D8A4C81008F3E44 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 809B9314D6E95A6DD80885D0 /* Pods-MyBilibili.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyBilibili/Info.plist;
@@ -422,6 +546,7 @@
 		};
 		1FDD123F1D8A4C81008F3E44 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5755CAA0C952DEFE6F65CE8E /* Pods-MyBilibili.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyBilibili/Info.plist;
@@ -496,6 +621,7 @@
 				1FDD123F1D8A4C81008F3E44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FDD12401D8A4C81008F3E44 /* Build configuration list for PBXNativeTarget "MyBilibiliTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +630,7 @@
 				1FDD12421D8A4C81008F3E44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FDD12431D8A4C81008F3E44 /* Build configuration list for PBXNativeTarget "MyBilibiliUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +639,7 @@
 				1FDD12451D8A4C81008F3E44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
