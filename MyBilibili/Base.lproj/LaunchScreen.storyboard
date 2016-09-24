@@ -14,14 +14,37 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bilibili_splash_iphone_bg" translatesAutoresizingMaskIntoConstraints="NO" id="zNF-NN-wx6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zNF-NN-wx6" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="979-bF-eeC"/>
+                            <constraint firstAttribute="bottom" secondItem="zNF-NN-wx6" secondAttribute="bottom" id="ARh-f1-gv3"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="zNF-NN-wx6" secondAttribute="bottom" id="C6i-ZB-1iY"/>
+                            <constraint firstItem="zNF-NN-wx6" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Icp-7x-6eh"/>
+                            <constraint firstAttribute="trailing" secondItem="zNF-NN-wx6" secondAttribute="trailing" id="YFQ-O4-1s3"/>
+                            <constraint firstItem="zNF-NN-wx6" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="yTl-fG-EiB"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="yTl-fG-EiB"/>
+                                <exclude reference="C6i-ZB-1iY"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="147" y="348"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bilibili_splash_iphone_bg" width="320" height="568"/>
+    </resources>
 </document>

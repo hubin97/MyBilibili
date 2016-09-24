@@ -7,6 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F20322F1D9609C900BB666C /* 0_启动页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F20320A1D9609C900BB666C /* 0_启动页.jpg */; };
+		1F2032301D9609C900BB666C /* 1_首页-推荐.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F20320B1D9609C900BB666C /* 1_首页-推荐.png */; };
+		1F2032311D9609C900BB666C /* 1_首页-番剧.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F20320C1D9609C900BB666C /* 1_首页-番剧.png */; };
+		1F2032321D9609C900BB666C /* 1_首页-直播.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F20320D1D9609C900BB666C /* 1_首页-直播.png */; };
+		1F2032331D9609C900BB666C /* 1_首页_推荐1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F20320E1D9609C900BB666C /* 1_首页_推荐1.jpg */; };
+		1F2032341D9609C900BB666C /* 2_分区.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F20320F1D9609C900BB666C /* 2_分区.png */; };
+		1F2032351D9609C900BB666C /* 4_发现.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032101D9609C900BB666C /* 4_发现.PNG */; };
+		1F2032361D9609C900BB666C /* 4_排行榜.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032111D9609C900BB666C /* 4_排行榜.jpg */; };
+		1F2032371D9609C900BB666C /* 4_搜索.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032121D9609C900BB666C /* 4_搜索.png */; };
+		1F2032381D9609C900BB666C /* 5_下载.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032131D9609C900BB666C /* 5_下载.jpg */; };
+		1F2032391D9609C900BB666C /* 5_下载信息1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032141D9609C900BB666C /* 5_下载信息1.PNG */; };
+		1F20323A1D9609C900BB666C /* 5_下载信息2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032151D9609C900BB666C /* 5_下载信息2.PNG */; };
+		1F20323B1D9609C900BB666C /* 5_历史记录.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032161D9609C900BB666C /* 5_历史记录.png */; };
+		1F20323C1D9609C900BB666C /* 5_我的.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032171D9609C900BB666C /* 5_我的.png */; };
+		1F20323D1D9609C900BB666C /* 6_视频信息-评论.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032181D9609C900BB666C /* 6_视频信息-评论.png */; };
+		1F20323E1D9609C900BB666C /* 6_视频信息.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032191D9609C900BB666C /* 6_视频信息.png */; };
+		1F20323F1D9609C900BB666C /* 6_视频信息1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F20321A1D9609C900BB666C /* 6_视频信息1.jpg */; };
+		1F2032401D9609C900BB666C /* 6_视频信息2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F20321B1D9609C900BB666C /* 6_视频信息2.jpg */; };
+		1F2032411D9609C900BB666C /* 6_视频信息3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F20321C1D9609C900BB666C /* 6_视频信息3.jpg */; };
+		1F2032421D9609C900BB666C /* 6_视频信息_下载.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F20321D1D9609C900BB666C /* 6_视频信息_下载.jpg */; };
+		1F2032431D9609C900BB666C /* 7_普通视频播放-弹幕.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F20321E1D9609C900BB666C /* 7_普通视频播放-弹幕.jpg */; };
+		1F2032441D9609C900BB666C /* 7_普通视频播放.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F20321F1D9609C900BB666C /* 7_普通视频播放.png */; };
+		1F2032451D9609C900BB666C /* 7_直播视频播放.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032201D9609C900BB666C /* 7_直播视频播放.jpg */; };
+		1F2032461D9609C900BB666C /* 7_直播视频播放2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032211D9609C900BB666C /* 7_直播视频播放2.jpg */; };
+		1F2032471D9609C900BB666C /* 8_网页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032221D9609C900BB666C /* 8_网页.jpg */; };
+		1F2032481D9609C900BB666C /* 8_网页_番剧.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032231D9609C900BB666C /* 8_网页_番剧.jpg */; };
+		1F2032491D9609C900BB666C /* IMG_1648.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032241D9609C900BB666C /* IMG_1648.PNG */; };
+		1F20324A1D9609C900BB666C /* IMG_1649.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032251D9609C900BB666C /* IMG_1649.PNG */; };
+		1F20324B1D9609C900BB666C /* IMG_1650.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032261D9609C900BB666C /* IMG_1650.PNG */; };
+		1F20324C1D9609C900BB666C /* IMG_1651.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032271D9609C900BB666C /* IMG_1651.PNG */; };
+		1F20324D1D9609C900BB666C /* IMG_1652.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032281D9609C900BB666C /* IMG_1652.PNG */; };
+		1F20324E1D9609C900BB666C /* IMG_1653.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F2032291D9609C900BB666C /* IMG_1653.PNG */; };
+		1F20324F1D9609C900BB666C /* IMG_1654.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322A1D9609C900BB666C /* IMG_1654.PNG */; };
+		1F2032501D9609C900BB666C /* IMG_1655.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322B1D9609C900BB666C /* IMG_1655.PNG */; };
+		1F2032511D9609C900BB666C /* IMG_1656.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322C1D9609C900BB666C /* IMG_1656.PNG */; };
+		1F2032521D9609C900BB666C /* IMG_1657.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322D1D9609C900BB666C /* IMG_1657.PNG */; };
+		1F2032531D9609C900BB666C /* IMG_1658.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322E1D9609C900BB666C /* IMG_1658.PNG */; };
 		1FDD12151D8A4C81008F3E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12141D8A4C81008F3E44 /* main.m */; };
 		1FDD12181D8A4C81008F3E44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12171D8A4C81008F3E44 /* AppDelegate.m */; };
 		1FDD121B1D8A4C81008F3E44 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD121A1D8A4C81008F3E44 /* ViewController.m */; };
@@ -15,18 +52,8 @@
 		1FDD12231D8A4C81008F3E44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12211D8A4C81008F3E44 /* LaunchScreen.storyboard */; };
 		1FDD122E1D8A4C81008F3E44 /* MyBilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD122D1D8A4C81008F3E44 /* MyBilibiliTests.m */; };
 		1FDD12391D8A4C81008F3E44 /* MyBilibiliUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12381D8A4C81008F3E44 /* MyBilibiliUITests.m */; };
-		1FDD12511D8A4C9D008F3E44 /* IMG_1648.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12461D8A4C9D008F3E44 /* IMG_1648.PNG */; };
-		1FDD12521D8A4C9D008F3E44 /* IMG_1649.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12471D8A4C9D008F3E44 /* IMG_1649.PNG */; };
-		1FDD12531D8A4C9D008F3E44 /* IMG_1650.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12481D8A4C9D008F3E44 /* IMG_1650.PNG */; };
-		1FDD12541D8A4C9D008F3E44 /* IMG_1651.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12491D8A4C9D008F3E44 /* IMG_1651.PNG */; };
-		1FDD12551D8A4C9D008F3E44 /* IMG_1652.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124A1D8A4C9D008F3E44 /* IMG_1652.PNG */; };
-		1FDD12561D8A4C9D008F3E44 /* IMG_1653.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124B1D8A4C9D008F3E44 /* IMG_1653.PNG */; };
-		1FDD12571D8A4C9D008F3E44 /* IMG_1654.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124C1D8A4C9D008F3E44 /* IMG_1654.PNG */; };
-		1FDD12581D8A4C9D008F3E44 /* IMG_1655.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124D1D8A4C9D008F3E44 /* IMG_1655.PNG */; };
-		1FDD12591D8A4C9D008F3E44 /* IMG_1656.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124E1D8A4C9D008F3E44 /* IMG_1656.PNG */; };
-		1FDD125A1D8A4C9D008F3E44 /* IMG_1657.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD124F1D8A4C9D008F3E44 /* IMG_1657.PNG */; };
-		1FDD125B1D8A4C9D008F3E44 /* IMG_1658.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD12501D8A4C9D008F3E44 /* IMG_1658.PNG */; };
 		1FDD125D1D8A6E8F008F3E44 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD125C1D8A6E8F008F3E44 /* File */; };
+		1FDD125F1D8BA6F5008F3E44 /* 接口整理.md in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD125E1D8BA6F5008F3E44 /* 接口整理.md */; };
 		29F769A640A2FDC7D9D04CF5 /* libPods-MyBilibili.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4030C57D5CB50EED76130514 /* libPods-MyBilibili.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +75,43 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F20320A1D9609C900BB666C /* 0_启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "0_启动页.jpg"; sourceTree = "<group>"; };
+		1F20320B1D9609C900BB666C /* 1_首页-推荐.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1_首页-推荐.png"; sourceTree = "<group>"; };
+		1F20320C1D9609C900BB666C /* 1_首页-番剧.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1_首页-番剧.png"; sourceTree = "<group>"; };
+		1F20320D1D9609C900BB666C /* 1_首页-直播.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1_首页-直播.png"; sourceTree = "<group>"; };
+		1F20320E1D9609C900BB666C /* 1_首页_推荐1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1_首页_推荐1.jpg"; sourceTree = "<group>"; };
+		1F20320F1D9609C900BB666C /* 2_分区.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2_分区.png"; sourceTree = "<group>"; };
+		1F2032101D9609C900BB666C /* 4_发现.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4_发现.PNG"; sourceTree = "<group>"; };
+		1F2032111D9609C900BB666C /* 4_排行榜.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4_排行榜.jpg"; sourceTree = "<group>"; };
+		1F2032121D9609C900BB666C /* 4_搜索.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4_搜索.png"; sourceTree = "<group>"; };
+		1F2032131D9609C900BB666C /* 5_下载.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "5_下载.jpg"; sourceTree = "<group>"; };
+		1F2032141D9609C900BB666C /* 5_下载信息1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5_下载信息1.PNG"; sourceTree = "<group>"; };
+		1F2032151D9609C900BB666C /* 5_下载信息2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5_下载信息2.PNG"; sourceTree = "<group>"; };
+		1F2032161D9609C900BB666C /* 5_历史记录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5_历史记录.png"; sourceTree = "<group>"; };
+		1F2032171D9609C900BB666C /* 5_我的.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5_我的.png"; sourceTree = "<group>"; };
+		1F2032181D9609C900BB666C /* 6_视频信息-评论.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6_视频信息-评论.png"; sourceTree = "<group>"; };
+		1F2032191D9609C900BB666C /* 6_视频信息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6_视频信息.png"; sourceTree = "<group>"; };
+		1F20321A1D9609C900BB666C /* 6_视频信息1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6_视频信息1.jpg"; sourceTree = "<group>"; };
+		1F20321B1D9609C900BB666C /* 6_视频信息2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6_视频信息2.jpg"; sourceTree = "<group>"; };
+		1F20321C1D9609C900BB666C /* 6_视频信息3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6_视频信息3.jpg"; sourceTree = "<group>"; };
+		1F20321D1D9609C900BB666C /* 6_视频信息_下载.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6_视频信息_下载.jpg"; sourceTree = "<group>"; };
+		1F20321E1D9609C900BB666C /* 7_普通视频播放-弹幕.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "7_普通视频播放-弹幕.jpg"; sourceTree = "<group>"; };
+		1F20321F1D9609C900BB666C /* 7_普通视频播放.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7_普通视频播放.png"; sourceTree = "<group>"; };
+		1F2032201D9609C900BB666C /* 7_直播视频播放.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "7_直播视频播放.jpg"; sourceTree = "<group>"; };
+		1F2032211D9609C900BB666C /* 7_直播视频播放2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "7_直播视频播放2.jpg"; sourceTree = "<group>"; };
+		1F2032221D9609C900BB666C /* 8_网页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "8_网页.jpg"; sourceTree = "<group>"; };
+		1F2032231D9609C900BB666C /* 8_网页_番剧.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "8_网页_番剧.jpg"; sourceTree = "<group>"; };
+		1F2032241D9609C900BB666C /* IMG_1648.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1648.PNG; sourceTree = "<group>"; };
+		1F2032251D9609C900BB666C /* IMG_1649.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1649.PNG; sourceTree = "<group>"; };
+		1F2032261D9609C900BB666C /* IMG_1650.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1650.PNG; sourceTree = "<group>"; };
+		1F2032271D9609C900BB666C /* IMG_1651.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1651.PNG; sourceTree = "<group>"; };
+		1F2032281D9609C900BB666C /* IMG_1652.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1652.PNG; sourceTree = "<group>"; };
+		1F2032291D9609C900BB666C /* IMG_1653.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1653.PNG; sourceTree = "<group>"; };
+		1F20322A1D9609C900BB666C /* IMG_1654.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1654.PNG; sourceTree = "<group>"; };
+		1F20322B1D9609C900BB666C /* IMG_1655.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1655.PNG; sourceTree = "<group>"; };
+		1F20322C1D9609C900BB666C /* IMG_1656.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1656.PNG; sourceTree = "<group>"; };
+		1F20322D1D9609C900BB666C /* IMG_1657.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1657.PNG; sourceTree = "<group>"; };
+		1F20322E1D9609C900BB666C /* IMG_1658.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1658.PNG; sourceTree = "<group>"; };
 		1FDD12101D8A4C80008F3E44 /* MyBilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDD12141D8A4C81008F3E44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1FDD12161D8A4C81008F3E44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,18 +128,8 @@
 		1FDD12341D8A4C81008F3E44 /* MyBilibiliUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBilibiliUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDD12381D8A4C81008F3E44 /* MyBilibiliUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBilibiliUITests.m; sourceTree = "<group>"; };
 		1FDD123A1D8A4C81008F3E44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FDD12461D8A4C9D008F3E44 /* IMG_1648.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1648.PNG; sourceTree = "<group>"; };
-		1FDD12471D8A4C9D008F3E44 /* IMG_1649.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1649.PNG; sourceTree = "<group>"; };
-		1FDD12481D8A4C9D008F3E44 /* IMG_1650.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1650.PNG; sourceTree = "<group>"; };
-		1FDD12491D8A4C9D008F3E44 /* IMG_1651.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1651.PNG; sourceTree = "<group>"; };
-		1FDD124A1D8A4C9D008F3E44 /* IMG_1652.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1652.PNG; sourceTree = "<group>"; };
-		1FDD124B1D8A4C9D008F3E44 /* IMG_1653.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1653.PNG; sourceTree = "<group>"; };
-		1FDD124C1D8A4C9D008F3E44 /* IMG_1654.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1654.PNG; sourceTree = "<group>"; };
-		1FDD124D1D8A4C9D008F3E44 /* IMG_1655.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1655.PNG; sourceTree = "<group>"; };
-		1FDD124E1D8A4C9D008F3E44 /* IMG_1656.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1656.PNG; sourceTree = "<group>"; };
-		1FDD124F1D8A4C9D008F3E44 /* IMG_1657.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1657.PNG; sourceTree = "<group>"; };
-		1FDD12501D8A4C9D008F3E44 /* IMG_1658.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1658.PNG; sourceTree = "<group>"; };
 		1FDD125C1D8A6E8F008F3E44 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		1FDD125E1D8BA6F5008F3E44 /* 接口整理.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "接口整理.md"; sourceTree = "<group>"; };
 		4030C57D5CB50EED76130514 /* libPods-MyBilibili.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyBilibili.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5755CAA0C952DEFE6F65CE8E /* Pods-MyBilibili.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBilibili.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBilibili/Pods-MyBilibili.release.xcconfig"; sourceTree = "<group>"; };
 		809B9314D6E95A6DD80885D0 /* Pods-MyBilibili.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBilibili.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyBilibili/Pods-MyBilibili.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +161,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F2032091D9609C900BB666C /* images */ = {
+			isa = PBXGroup;
+			children = (
+				1F20320A1D9609C900BB666C /* 0_启动页.jpg */,
+				1F20320B1D9609C900BB666C /* 1_首页-推荐.png */,
+				1F20320C1D9609C900BB666C /* 1_首页-番剧.png */,
+				1F20320D1D9609C900BB666C /* 1_首页-直播.png */,
+				1F20320E1D9609C900BB666C /* 1_首页_推荐1.jpg */,
+				1F20320F1D9609C900BB666C /* 2_分区.png */,
+				1F2032101D9609C900BB666C /* 4_发现.PNG */,
+				1F2032111D9609C900BB666C /* 4_排行榜.jpg */,
+				1F2032121D9609C900BB666C /* 4_搜索.png */,
+				1F2032131D9609C900BB666C /* 5_下载.jpg */,
+				1F2032141D9609C900BB666C /* 5_下载信息1.PNG */,
+				1F2032151D9609C900BB666C /* 5_下载信息2.PNG */,
+				1F2032161D9609C900BB666C /* 5_历史记录.png */,
+				1F2032171D9609C900BB666C /* 5_我的.png */,
+				1F2032181D9609C900BB666C /* 6_视频信息-评论.png */,
+				1F2032191D9609C900BB666C /* 6_视频信息.png */,
+				1F20321A1D9609C900BB666C /* 6_视频信息1.jpg */,
+				1F20321B1D9609C900BB666C /* 6_视频信息2.jpg */,
+				1F20321C1D9609C900BB666C /* 6_视频信息3.jpg */,
+				1F20321D1D9609C900BB666C /* 6_视频信息_下载.jpg */,
+				1F20321E1D9609C900BB666C /* 7_普通视频播放-弹幕.jpg */,
+				1F20321F1D9609C900BB666C /* 7_普通视频播放.png */,
+				1F2032201D9609C900BB666C /* 7_直播视频播放.jpg */,
+				1F2032211D9609C900BB666C /* 7_直播视频播放2.jpg */,
+				1F2032221D9609C900BB666C /* 8_网页.jpg */,
+				1F2032231D9609C900BB666C /* 8_网页_番剧.jpg */,
+				1F2032241D9609C900BB666C /* IMG_1648.PNG */,
+				1F2032251D9609C900BB666C /* IMG_1649.PNG */,
+				1F2032261D9609C900BB666C /* IMG_1650.PNG */,
+				1F2032271D9609C900BB666C /* IMG_1651.PNG */,
+				1F2032281D9609C900BB666C /* IMG_1652.PNG */,
+				1F2032291D9609C900BB666C /* IMG_1653.PNG */,
+				1F20322A1D9609C900BB666C /* IMG_1654.PNG */,
+				1F20322B1D9609C900BB666C /* IMG_1655.PNG */,
+				1F20322C1D9609C900BB666C /* IMG_1656.PNG */,
+				1F20322D1D9609C900BB666C /* IMG_1657.PNG */,
+				1F20322E1D9609C900BB666C /* IMG_1658.PNG */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		1FDD12071D8A4C80008F3E44 = {
 			isa = PBXGroup;
 			children = (
@@ -138,20 +236,11 @@
 				1FDD121A1D8A4C81008F3E44 /* ViewController.m */,
 				1FDD121C1D8A4C81008F3E44 /* Main.storyboard */,
 				1FDD121F1D8A4C81008F3E44 /* Assets.xcassets */,
+				1F2032091D9609C900BB666C /* images */,
 				1FDD125C1D8A6E8F008F3E44 /* File */,
+				1FDD125E1D8BA6F5008F3E44 /* 接口整理.md */,
 				1FDD12211D8A4C81008F3E44 /* LaunchScreen.storyboard */,
 				1FDD12241D8A4C81008F3E44 /* Info.plist */,
-				1FDD12461D8A4C9D008F3E44 /* IMG_1648.PNG */,
-				1FDD12471D8A4C9D008F3E44 /* IMG_1649.PNG */,
-				1FDD12481D8A4C9D008F3E44 /* IMG_1650.PNG */,
-				1FDD12491D8A4C9D008F3E44 /* IMG_1651.PNG */,
-				1FDD124A1D8A4C9D008F3E44 /* IMG_1652.PNG */,
-				1FDD124B1D8A4C9D008F3E44 /* IMG_1653.PNG */,
-				1FDD124C1D8A4C9D008F3E44 /* IMG_1654.PNG */,
-				1FDD124D1D8A4C9D008F3E44 /* IMG_1655.PNG */,
-				1FDD124E1D8A4C9D008F3E44 /* IMG_1656.PNG */,
-				1FDD124F1D8A4C9D008F3E44 /* IMG_1657.PNG */,
-				1FDD12501D8A4C9D008F3E44 /* IMG_1658.PNG */,
 				1FDD12131D8A4C81008F3E44 /* Supporting Files */,
 			);
 			path = MyBilibili;
@@ -306,21 +395,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F20323C1D9609C900BB666C /* 5_我的.png in Resources */,
+				1F2032331D9609C900BB666C /* 1_首页_推荐1.jpg in Resources */,
+				1F2032471D9609C900BB666C /* 8_网页.jpg in Resources */,
+				1F2032481D9609C900BB666C /* 8_网页_番剧.jpg in Resources */,
+				1F2032491D9609C900BB666C /* IMG_1648.PNG in Resources */,
+				1F2032381D9609C900BB666C /* 5_下载.jpg in Resources */,
+				1F2032461D9609C900BB666C /* 7_直播视频播放2.jpg in Resources */,
+				1F2032361D9609C900BB666C /* 4_排行榜.jpg in Resources */,
+				1F20324F1D9609C900BB666C /* IMG_1654.PNG in Resources */,
+				1F2032531D9609C900BB666C /* IMG_1658.PNG in Resources */,
+				1F2032391D9609C900BB666C /* 5_下载信息1.PNG in Resources */,
+				1F2032441D9609C900BB666C /* 7_普通视频播放.png in Resources */,
+				1F20324E1D9609C900BB666C /* IMG_1653.PNG in Resources */,
+				1F20323F1D9609C900BB666C /* 6_视频信息1.jpg in Resources */,
+				1F20323E1D9609C900BB666C /* 6_视频信息.png in Resources */,
+				1F2032421D9609C900BB666C /* 6_视频信息_下载.jpg in Resources */,
+				1F2032311D9609C900BB666C /* 1_首页-番剧.png in Resources */,
+				1F2032351D9609C900BB666C /* 4_发现.PNG in Resources */,
+				1F20324A1D9609C900BB666C /* IMG_1649.PNG in Resources */,
+				1F2032341D9609C900BB666C /* 2_分区.png in Resources */,
+				1F2032401D9609C900BB666C /* 6_视频信息2.jpg in Resources */,
+				1F2032301D9609C900BB666C /* 1_首页-推荐.png in Resources */,
+				1F20324B1D9609C900BB666C /* IMG_1650.PNG in Resources */,
+				1F20323D1D9609C900BB666C /* 6_视频信息-评论.png in Resources */,
 				1FDD12231D8A4C81008F3E44 /* LaunchScreen.storyboard in Resources */,
-				1FDD12591D8A4C9D008F3E44 /* IMG_1656.PNG in Resources */,
-				1FDD12561D8A4C9D008F3E44 /* IMG_1653.PNG in Resources */,
-				1FDD125A1D8A4C9D008F3E44 /* IMG_1657.PNG in Resources */,
-				1FDD12551D8A4C9D008F3E44 /* IMG_1652.PNG in Resources */,
-				1FDD12571D8A4C9D008F3E44 /* IMG_1654.PNG in Resources */,
-				1FDD12531D8A4C9D008F3E44 /* IMG_1650.PNG in Resources */,
-				1FDD12581D8A4C9D008F3E44 /* IMG_1655.PNG in Resources */,
+				1F2032371D9609C900BB666C /* 4_搜索.png in Resources */,
 				1FDD12201D8A4C81008F3E44 /* Assets.xcassets in Resources */,
-				1FDD12511D8A4C9D008F3E44 /* IMG_1648.PNG in Resources */,
-				1FDD12541D8A4C9D008F3E44 /* IMG_1651.PNG in Resources */,
-				1FDD125B1D8A4C9D008F3E44 /* IMG_1658.PNG in Resources */,
-				1FDD12521D8A4C9D008F3E44 /* IMG_1649.PNG in Resources */,
+				1F2032411D9609C900BB666C /* 6_视频信息3.jpg in Resources */,
+				1F2032451D9609C900BB666C /* 7_直播视频播放.jpg in Resources */,
+				1F2032511D9609C900BB666C /* IMG_1656.PNG in Resources */,
+				1F20324C1D9609C900BB666C /* IMG_1651.PNG in Resources */,
 				1FDD121E1D8A4C81008F3E44 /* Main.storyboard in Resources */,
+				1F20324D1D9609C900BB666C /* IMG_1652.PNG in Resources */,
+				1F20323A1D9609C900BB666C /* 5_下载信息2.PNG in Resources */,
+				1F2032431D9609C900BB666C /* 7_普通视频播放-弹幕.jpg in Resources */,
 				1FDD125D1D8A6E8F008F3E44 /* File in Resources */,
+				1F2032501D9609C900BB666C /* IMG_1655.PNG in Resources */,
+				1F20323B1D9609C900BB666C /* 5_历史记录.png in Resources */,
+				1F20322F1D9609C900BB666C /* 0_启动页.jpg in Resources */,
+				1F2032521D9609C900BB666C /* IMG_1657.PNG in Resources */,
+				1F2032321D9609C900BB666C /* 1_首页-直播.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FDD125F1D8BA6F5008F3E44 /* 接口整理.md in Sources */,
 				1FDD121B1D8A4C81008F3E44 /* ViewController.m in Sources */,
 				1FDD12181D8A4C81008F3E44 /* AppDelegate.m in Sources */,
 				1FDD12151D8A4C81008F3E44 /* main.m in Sources */,
@@ -537,6 +653,7 @@
 			baseConfigurationReference = 809B9314D6E95A6DD80885D0 /* Pods-MyBilibili.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MyBilibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mine.MyBilibili;
@@ -549,6 +666,7 @@
 			baseConfigurationReference = 5755CAA0C952DEFE6F65CE8E /* Pods-MyBilibili.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MyBilibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mine.MyBilibili;
