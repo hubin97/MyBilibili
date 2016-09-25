@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F04D46E1D9614BF007A8534 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D46D1D9614BF007A8534 /* BaseTableViewController.m */; };
 		1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4701D961786007A8534 /* BaseTabBarController.m */; };
-		1F04D4741D9617CC007A8534 /* BaseTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4731D9617CC007A8534 /* BaseTabBar.m */; };
 		1F04D4771D96182C007A8534 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4761D96182C007A8534 /* BaseNavigationController.m */; };
 		1F04D4A21D961A72007A8534 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D48F1D961A72007A8534 /* FollowViewController.m */; };
 		1F04D4A31D961A72007A8534 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4951D961A72007A8534 /* HomeViewController.m */; };
@@ -62,6 +60,7 @@
 		1FDD12391D8A4C81008F3E44 /* MyBilibiliUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12381D8A4C81008F3E44 /* MyBilibiliUITests.m */; };
 		1FDD125D1D8A6E8F008F3E44 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD125C1D8A6E8F008F3E44 /* File */; };
 		1FDD125F1D8BA6F5008F3E44 /* 接口整理.md in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD125E1D8BA6F5008F3E44 /* 接口整理.md */; };
+		1FFA86E01D977C71006F83C3 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA86DF1D977C71006F83C3 /* StartViewController.m */; };
 		29F769A640A2FDC7D9D04CF5 /* libPods-MyBilibili.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4030C57D5CB50EED76130514 /* libPods-MyBilibili.a */; };
 /* End PBXBuildFile section */
 
@@ -83,12 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F04D46C1D9614BF007A8534 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
-		1F04D46D1D9614BF007A8534 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		1F04D46F1D961786007A8534 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
 		1F04D4701D961786007A8534 /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
-		1F04D4721D9617CC007A8534 /* BaseTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBar.h; sourceTree = "<group>"; };
-		1F04D4731D9617CC007A8534 /* BaseTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBar.m; sourceTree = "<group>"; };
 		1F04D4751D96182C007A8534 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		1F04D4761D96182C007A8534 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		1F04D48E1D961A72007A8534 /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
@@ -154,6 +149,8 @@
 		1FDD123A1D8A4C81008F3E44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FDD125C1D8A6E8F008F3E44 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		1FDD125E1D8BA6F5008F3E44 /* 接口整理.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "接口整理.md"; sourceTree = "<group>"; };
+		1FFA86DE1D977C71006F83C3 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		1FFA86DF1D977C71006F83C3 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		4030C57D5CB50EED76130514 /* libPods-MyBilibili.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyBilibili.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5755CAA0C952DEFE6F65CE8E /* Pods-MyBilibili.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBilibili.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBilibili/Pods-MyBilibili.release.xcconfig"; sourceTree = "<group>"; };
 		809B9314D6E95A6DD80885D0 /* Pods-MyBilibili.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBilibili.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyBilibili/Pods-MyBilibili.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,14 +185,12 @@
 		1F04D46B1D9614BF007A8534 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				1FFA86DE1D977C71006F83C3 /* StartViewController.h */,
+				1FFA86DF1D977C71006F83C3 /* StartViewController.m */,
 				1F04D4751D96182C007A8534 /* BaseNavigationController.h */,
 				1F04D4761D96182C007A8534 /* BaseNavigationController.m */,
-				1F04D4721D9617CC007A8534 /* BaseTabBar.h */,
-				1F04D4731D9617CC007A8534 /* BaseTabBar.m */,
 				1F04D46F1D961786007A8534 /* BaseTabBarController.h */,
 				1F04D4701D961786007A8534 /* BaseTabBarController.m */,
-				1F04D46C1D9614BF007A8534 /* BaseTableViewController.h */,
-				1F04D46D1D9614BF007A8534 /* BaseTableViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -724,18 +719,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F04D4741D9617CC007A8534 /* BaseTabBar.m in Sources */,
 				1F04D4771D96182C007A8534 /* BaseNavigationController.m in Sources */,
 				1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */,
 				1F04D4AA1D961AAE007A8534 /* MineViewController.m in Sources */,
 				1F04D4A71D961AA0007A8534 /* FindViewController.m in Sources */,
+				1FFA86E01D977C71006F83C3 /* StartViewController.m in Sources */,
 				1F04D4A21D961A72007A8534 /* FollowViewController.m in Sources */,
 				1F04D4A41D961A72007A8534 /* ZoneViewController.m in Sources */,
 				1FDD125F1D8BA6F5008F3E44 /* 接口整理.md in Sources */,
 				1F04D4A31D961A72007A8534 /* HomeViewController.m in Sources */,
 				1FDD12181D8A4C81008F3E44 /* AppDelegate.m in Sources */,
 				1FDD12151D8A4C81008F3E44 /* main.m in Sources */,
-				1F04D46E1D9614BF007A8534 /* BaseTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

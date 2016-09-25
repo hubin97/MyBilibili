@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MyBilibili.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +32,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>28A1E154BE57ABEDE1737E7B7C8548A6</key>
+		<key>170D3F0453442423EA0F71FC56799032</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B267223CCC4DA730BF9ECB203306BD5</key>
+		<key>53480ED0BE09FF49E34B1702D485CAAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -43,6 +48,11 @@
 			<true/>
 		</dict>
 		<key>928353533005A4198EBDA5B700D37B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D76F4A1A2F47EE211F44715E926A8469</key>
 		<dict>
 			<key>primary</key>
 			<true/>
