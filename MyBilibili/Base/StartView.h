@@ -1,5 +1,5 @@
 //
-//  StartViewController.h
+//  StartView.h
 //  MyBilibili
 //
 //  Created by Hubin_Huang on 16/9/25.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StartViewController : UIViewController
+@interface StartView : UIView
 
-
-- (void)lanuchStart;
++ (void)lanuchStart;
 
 @end

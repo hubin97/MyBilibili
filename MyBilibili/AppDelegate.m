@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "BaseTabBarController.h"
+#import "StartView.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,8 @@
     
     BaseTabBarController *baseTabBc = [[BaseTabBarController alloc]init];
     self.window.rootViewController = baseTabBc;
+        
+    [StartView lanuchStart];
     
     return YES;
 }
