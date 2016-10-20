@@ -51,6 +51,7 @@
 		1F2032511D9609C900BB666C /* IMG_1656.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322C1D9609C900BB666C /* IMG_1656.PNG */; };
 		1F2032521D9609C900BB666C /* IMG_1657.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322D1D9609C900BB666C /* IMG_1657.PNG */; };
 		1F2032531D9609C900BB666C /* IMG_1658.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322E1D9609C900BB666C /* IMG_1658.PNG */; };
+		1F5B37C61DB90A29004588B1 /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA86E21D978E89006F83C3 /* StartView.m */; };
 		1FDD12151D8A4C81008F3E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12141D8A4C81008F3E44 /* main.m */; };
 		1FDD12181D8A4C81008F3E44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12171D8A4C81008F3E44 /* AppDelegate.m */; };
 		1FDD121E1D8A4C81008F3E44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD121C1D8A4C81008F3E44 /* Main.storyboard */; };
@@ -60,7 +61,6 @@
 		1FDD12391D8A4C81008F3E44 /* MyBilibiliUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12381D8A4C81008F3E44 /* MyBilibiliUITests.m */; };
 		1FDD125D1D8A6E8F008F3E44 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD125C1D8A6E8F008F3E44 /* File */; };
 		1FDD125F1D8BA6F5008F3E44 /* 接口整理.md in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD125E1D8BA6F5008F3E44 /* 接口整理.md */; };
-		1FFA86E31D978E89006F83C3 /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA86E21D978E89006F83C3 /* StartView.m */; };
 		29F769A640A2FDC7D9D04CF5 /* libPods-MyBilibili.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4030C57D5CB50EED76130514 /* libPods-MyBilibili.a */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +133,7 @@
 		1F20322C1D9609C900BB666C /* IMG_1656.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1656.PNG; sourceTree = "<group>"; };
 		1F20322D1D9609C900BB666C /* IMG_1657.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1657.PNG; sourceTree = "<group>"; };
 		1F20322E1D9609C900BB666C /* IMG_1658.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1658.PNG; sourceTree = "<group>"; };
+		1F5B37C31DB9022A004588B1 /* MyBilibiliPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBilibiliPrefixHeader.pch; sourceTree = "<group>"; };
 		1FDD12101D8A4C80008F3E44 /* MyBilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDD12141D8A4C81008F3E44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1FDD12161D8A4C81008F3E44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -441,6 +442,7 @@
 		1FDD12121D8A4C81008F3E44 /* MyBilibili */ = {
 			isa = PBXGroup;
 			children = (
+				1F5B37C31DB9022A004588B1 /* MyBilibiliPrefixHeader.pch */,
 				1FDD12161D8A4C81008F3E44 /* AppDelegate.h */,
 				1FDD12171D8A4C81008F3E44 /* AppDelegate.m */,
 				1FDD121C1D8A4C81008F3E44 /* Main.storyboard */,
@@ -725,9 +727,9 @@
 				1F04D4A71D961AA0007A8534 /* FindViewController.m in Sources */,
 				1F04D4A21D961A72007A8534 /* FollowViewController.m in Sources */,
 				1F04D4A41D961A72007A8534 /* ZoneViewController.m in Sources */,
-				1FFA86E31D978E89006F83C3 /* StartView.m in Sources */,
 				1FDD125F1D8BA6F5008F3E44 /* 接口整理.md in Sources */,
 				1F04D4A31D961A72007A8534 /* HomeViewController.m in Sources */,
+				1F5B37C61DB90A29004588B1 /* StartView.m in Sources */,
 				1FDD12181D8A4C81008F3E44 /* AppDelegate.m in Sources */,
 				1FDD12151D8A4C81008F3E44 /* main.m in Sources */,
 			);
@@ -872,7 +874,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/MyBilibiliPrefixHeader.pch";
 				INFOPLIST_FILE = MyBilibili/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mine.MyBilibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -885,7 +889,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/MyBilibiliPrefixHeader.pch";
 				INFOPLIST_FILE = MyBilibili/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mine.MyBilibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
