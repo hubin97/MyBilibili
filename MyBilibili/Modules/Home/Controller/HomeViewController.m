@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor brownColor];
+    
+    DrawViewBorderRadius(self.view, 0, 2, [UIColor redColor]);
 }
 
 - (void)didReceiveMemoryWarning {

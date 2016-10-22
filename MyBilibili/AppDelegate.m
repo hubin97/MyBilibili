@@ -20,11 +20,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [self.window makeKeyAndVisible];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     BaseTabBarController *baseTabBc = [[BaseTabBarController alloc]init];
     self.window.rootViewController = baseTabBc;
-        
+    
+    [self.window makeKeyAndVisible];
+
     [StartView lanuchStart];
     
     return YES;

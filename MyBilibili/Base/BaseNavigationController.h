@@ -10,4 +10,6 @@
 
 @interface BaseNavigationController : UINavigationController
 
+- (id)initWithRootViewController:(UIViewController *)rootViewController andFlagVcIndex:(NSInteger)flag;
+
 @end

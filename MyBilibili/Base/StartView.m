@@ -53,6 +53,9 @@
 
 - (void)loadDefaultSubviews
 {
+    
+    self.backgroundColor = [UIColor whiteColor];
+    
     //默认启动图方式
     __block StartView *weakStart = self;
     UIImage *bg  = [UIImage imageNamed:@"bilibili_splash_iphone_bg"];

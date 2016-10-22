@@ -7,6 +7,14 @@
 //
 
 #import "BaseNavigationController.h"
+#import "UINavigationBar+CustomStyle.h"
+
+#import "HomeViewController.h"
+#import "ZoneViewController.h"
+#import "FollowViewController.h"
+#import "FindViewController.h"
+#import "MineViewController.h"
+
 
 @interface BaseNavigationController ()
 
@@ -14,25 +22,49 @@
 
 @implementation BaseNavigationController
 
-- (id)initWithRootViewController:(UIViewController *)rootViewController
+- (id)initWithRootViewController:(UIViewController *)rootViewController andFlagVcIndex:(NSInteger)flag
 {
     if (self = [super initWithRootViewController:rootViewController])
     {
-        //self.navigationBar.translucent = NO;
-        //设置navigationBar背景色
-        UIColor *naviBarColor = [UIColor colorWithRed:250/255.0 green:130/255.0 blue:165/255.0 alpha:1.0];
-        CGFloat systemVersion = [[UIDevice currentDevice] systemVersion].floatValue;
+        self.navigationBar.hidden = YES;
         
-        if (systemVersion >= 7.0)
+//无效
+//        rootViewController.view.frame = CGRectMake(0, 44, kScreenW, kScreenH -44 - 49);
+        
+        
+        NSLog(@"flag%ld",(long)flag);
+        
+        UIView *aView = nil;
+
+        switch (flag)
         {
-            self.navigationBar.barTintColor = naviBarColor;
-        }
-        else
-        {
-            self.navigationBar.tintColor    = naviBarColor;
+            case 0: case 2: //home follow
+            {
+               aView = [UINavigationBar initNavigationBarWithTitleArrs:nil AndStyple:SCROLL_STYPLE];
+            }
+                break;
+            case 1: //zone
+            {
+               aView = [UINavigationBar initNavigationBarWithTitleArrs:nil AndStyple:STATIC_STYPLE];
+            }
+                break;
+            case 3: //find
+            {
+                aView = [UINavigationBar initNavigationBarWithTitleArrs:nil AndStyple:SEARCH_STYPLE];
+            }
+                break;
+            case 4: //mine
+            {
+                aView = [UINavigationBar initNavigationBarWithTitleArrs:nil AndStyple:SETTING_STYPLE];
+            }
+                break;
+                
+            default:
+                break;
         }
         
-        return self;
+        [rootViewController.view addSubview:aView];
+        
     }
     return self;
 }
@@ -40,6 +72,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +89,8 @@
 {
     return UIStatusBarStyleLightContent;
 }
+
+
 
 /*
 #pragma mark - Navigation

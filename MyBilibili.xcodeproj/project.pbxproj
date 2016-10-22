@@ -51,6 +51,7 @@
 		1F2032511D9609C900BB666C /* IMG_1656.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322C1D9609C900BB666C /* IMG_1656.PNG */; };
 		1F2032521D9609C900BB666C /* IMG_1657.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322D1D9609C900BB666C /* IMG_1657.PNG */; };
 		1F2032531D9609C900BB666C /* IMG_1658.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322E1D9609C900BB666C /* IMG_1658.PNG */; };
+		1F37DF271DBB13CA0056DEAC /* UINavigationBar+CustomStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F37DF261DBB13CA0056DEAC /* UINavigationBar+CustomStyle.m */; };
 		1F5B37C61DB90A29004588B1 /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA86E21D978E89006F83C3 /* StartView.m */; };
 		1FDD12151D8A4C81008F3E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12141D8A4C81008F3E44 /* main.m */; };
 		1FDD12181D8A4C81008F3E44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12171D8A4C81008F3E44 /* AppDelegate.m */; };
@@ -133,6 +134,8 @@
 		1F20322C1D9609C900BB666C /* IMG_1656.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1656.PNG; sourceTree = "<group>"; };
 		1F20322D1D9609C900BB666C /* IMG_1657.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1657.PNG; sourceTree = "<group>"; };
 		1F20322E1D9609C900BB666C /* IMG_1658.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1658.PNG; sourceTree = "<group>"; };
+		1F37DF251DBB13CA0056DEAC /* UINavigationBar+CustomStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CustomStyle.h"; sourceTree = "<group>"; };
+		1F37DF261DBB13CA0056DEAC /* UINavigationBar+CustomStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CustomStyle.m"; sourceTree = "<group>"; };
 		1F5B37C31DB9022A004588B1 /* MyBilibiliPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBilibiliPrefixHeader.pch; sourceTree = "<group>"; };
 		1FDD12101D8A4C80008F3E44 /* MyBilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDD12141D8A4C81008F3E44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				1F04D4761D96182C007A8534 /* BaseNavigationController.m */,
 				1F04D46F1D961786007A8534 /* BaseTabBarController.h */,
 				1F04D4701D961786007A8534 /* BaseTabBarController.m */,
+				1F37DF251DBB13CA0056DEAC /* UINavigationBar+CustomStyle.h */,
+				1F37DF261DBB13CA0056DEAC /* UINavigationBar+CustomStyle.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -572,6 +577,8 @@
 				TargetAttributes = {
 					1FDD120F1D8A4C80008F3E44 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = YTPNCWF278;
+						ProvisioningStyle = Automatic;
 					};
 					1FDD12281D8A4C81008F3E44 = {
 						CreatedOnToolsVersion = 7.3;
@@ -723,6 +730,7 @@
 			files = (
 				1F04D4771D96182C007A8534 /* BaseNavigationController.m in Sources */,
 				1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */,
+				1F37DF271DBB13CA0056DEAC /* UINavigationBar+CustomStyle.m in Sources */,
 				1F04D4AA1D961AAE007A8534 /* MineViewController.m in Sources */,
 				1F04D4A71D961AA0007A8534 /* FindViewController.m in Sources */,
 				1F04D4A21D961A72007A8534 /* FollowViewController.m in Sources */,
@@ -874,12 +882,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/MyBilibiliPrefixHeader.pch";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = YTPNCWF278;
+				GCC_PREFIX_HEADER = MyBilibili/MyBilibiliPrefixHeader.pch;
 				INFOPLIST_FILE = MyBilibili/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mine.MyBilibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -889,7 +901,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/MyBilibiliPrefixHeader.pch";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = YTPNCWF278;
+				GCC_PREFIX_HEADER = MyBilibili/MyBilibiliPrefixHeader.pch;
 				INFOPLIST_FILE = MyBilibili/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
