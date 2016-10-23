@@ -21,13 +21,9 @@
         {
             [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.width.mas_equalTo(kScreenW);
-                make.height.mas_equalTo(@44);
+                make.height.mas_equalTo(@52);
             }];
             
-//            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 44)];
-//            [naviBar addSubview:titleLabel];
-//            titleLabel.text = @"SCROLL_STYPLE";
-//            titleLabel.textAlignment = NSTextAlignmentCenter;
             //测试
             titles = @[@"直播",@"推荐",@"番剧"];
             
@@ -43,15 +39,14 @@
                     make.top.mas_equalTo(@(20 *k5SWScale));
                     make.left.equalTo(naviBar).offset(kScreenW * 2/9  * (i + 1));
                     make.width.mas_equalTo(@(kScreenW *1/9));
-                    make.height.mas_equalTo(@(20 * k5SWScale));
                 }];
                 
                 [titleFlag mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.equalTo(naviBar).offset(kScreenW * 2/9);
                     make.top.equalTo(titleBtn.mas_bottom).offset(2);
-                    make.bottom.equalTo(naviBar.mas_bottom).offset(-2);
+                    make.bottom.equalTo(naviBar.mas_bottom).offset(-1);
                     make.width.equalTo(titleBtn.mas_width);
-                    make.height.mas_equalTo(@1);
+                    make.height.mas_equalTo(@2);
                 }];
                 
                 [titleBtn setTitle:titles[i] forState:UIControlStateNormal];
@@ -68,7 +63,7 @@
         {
             [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.width.mas_equalTo(kScreenW);
-                make.height.mas_equalTo(@44);
+                make.height.mas_equalTo(@52);
             }];
             
             UILabel *titleLabel = [[UILabel alloc] init];
@@ -79,8 +74,9 @@
             titleLabel.textColor = [UIColor whiteColor]; //可变更
             titleLabel.textAlignment = NSTextAlignmentCenter;
             [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(@(20 *k5SWScale));
                 make.bottom.equalTo(naviBar).offset(-5 * k5SWScale);
-                make.height.mas_equalTo(@(20 * k5SWScale));
+                //make.height.mas_equalTo(@(20 * k5SWScale));
                 make.width.mas_equalTo(titleLabel.mas_height).multipliedBy(2);
                 make.centerX.equalTo(naviBar);
             }];
@@ -90,7 +86,7 @@
         {
             [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.width.mas_equalTo(kScreenW);
-                make.height.mas_equalTo(170);
+                make.height.mas_equalTo(@237);
             }];
             
             UIButton *qrCodeBtn = [[UIButton alloc]init];
@@ -150,7 +146,7 @@
         {
             [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.width.mas_equalTo(kScreenW);
-                make.height.mas_equalTo(130);
+                make.height.mas_equalTo(@150);
             }];
             
             UIImageView *settingImgView = [[UIImageView alloc] init];
@@ -173,9 +169,9 @@
                 //make.centerX.mas_equalTo(naviBar).offset((signInBtn.mas_width)-10 *k5SWScale);
                 make.trailing.mas_equalTo(naviBar.mas_centerX).offset(-10 *k5SWScale);
                 
-                make.height.mas_equalTo(@(40 *k5SWScale));
+                make.height.mas_equalTo(@(35 *k5SWScale));
                 make.centerY.equalTo(naviBar).offset(10 *k5SWScale);
-                make.width.mas_equalTo(signInBtn.mas_height).multipliedBy(2);
+                make.width.mas_equalTo(signInBtn.mas_height).multipliedBy(3);
             }];
             
             [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
