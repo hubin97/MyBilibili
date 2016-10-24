@@ -146,15 +146,15 @@
         {
             [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.width.mas_equalTo(kScreenW);
-                make.height.mas_equalTo(@150);
+                make.height.mas_equalTo(@(150 *k5SWScale));
             }];
             
             UIImageView *settingImgView = [[UIImageView alloc] init];
             [naviBar addSubview:settingImgView];
             settingImgView.image = [UIImage imageNamed:@"mine_settings"];
             [settingImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(naviBar.mas_top).offset(25 * k5SWScale);
-                make.right.equalTo(naviBar.mas_right).offset(-5 * k5SWScale);
+                make.top.equalTo(naviBar.mas_top).offset(30 * k5SWScale);
+                make.right.equalTo(naviBar.mas_right).offset(-15 * k5SWScale);
                 make.width.height.mas_equalTo(@(20 * k5SWScale));
             }];
             
@@ -194,6 +194,9 @@
             [loginBtn setBackgroundColor:[UIColor whiteColor]];
             [loginBtn setTitleColor:cherryPowder forState:UIControlStateNormal];
             
+            signInBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+            loginBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+
         }
             break;
             
