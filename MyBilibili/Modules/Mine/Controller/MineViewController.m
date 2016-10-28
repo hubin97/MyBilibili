@@ -11,6 +11,8 @@
 #import "MineCollectionViewCell.h"
 #import "MineModel.h"
 
+#define  col 4  //4列
+
 @interface MineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
     UICollectionView *_mineCollection;
@@ -75,7 +77,7 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
-    layout.itemSize = CGSizeMake(kScreenW/4, kScreenW/4 *1.2);
+    layout.itemSize = CGSizeMake(kScreenW/col, kScreenW/col *1.2);
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
     layout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0);
@@ -130,7 +132,49 @@
     [cell layoutWithModel:model];
     NSLog(@"indexPath(%@)--Model(%@)",indexPath,model.title);
     
-    DrawViewBorderRadius(cell, 0, 0.5, [UIColor lightGrayColor]);
+
+//方法一
+#if 1
+    float cellwidth  = cell.frame.size.width;
+    float cellheight = cell.frame.size.height;
+
+    //top -> left -> bottom -> right
+    CALayer *modifyBorder = [CALayer layer];
+    modifyBorder.backgroundColor = [UIColor lightGrayColor].CGColor;
+    
+    CALayer *modifyBorder2 = [CALayer layer];
+    modifyBorder2.backgroundColor = [UIColor lightGrayColor].CGColor;
+    
+    CALayer *modifyBorder3 = [CALayer layer];
+    modifyBorder3.backgroundColor = [UIColor lightGrayColor].CGColor;
+    
+    CALayer *modifyBorder4 = [CALayer layer];
+    modifyBorder4.backgroundColor = [UIColor lightGrayColor].CGColor;
+    
+    [cell.layer addSublayer:modifyBorder];
+    [cell.layer addSublayer:modifyBorder2];
+    [cell.layer addSublayer:modifyBorder3];
+    [cell.layer addSublayer:modifyBorder4];
+
+    
+    unsigned long currentSectionrow = [[_dataSourceArrs objectAtIndex:indexPath.section] count] /col;
+    
+    if ([[_dataSourceArrs objectAtIndex:indexPath.section] count] % col > 0)
+    {
+        currentSectionrow += 1;
+    }
+    
+    if (indexPath.row /col < currentSectionrow - 1)
+    {
+        modifyBorder.frame  = CGRectMake(0.0f, 0.0f, cellwidth, 1.0f);
+    }
+    
+    modifyBorder2.frame = CGRectMake(0.0f, 0.0f, 1.0f, cellheight);
+    modifyBorder3.frame = CGRectMake(0.0f, cellheight-1.0f, cellwidth, 1.0f);
+    modifyBorder4.frame = CGRectMake(cellwidth -0.1f, 0.0f, 1.0f, cellheight);
+    
+#endif
+    
     return cell;
 }
 
