@@ -11,13 +11,15 @@
 #import "MineCollectionViewCell.h"
 #import "MineModel.h"
 
-#define  col 4  //4列
+#define col 4  //4列
+#define sectionHeaderH 30
+
+#define controlColor [UIColor colorWithDisplayP3Red:246/255.0 green:246/255.0 blue:246/255.0 alpha:1]
 
 @interface MineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
     UICollectionView *_mineCollection;
     NSArray *_dataSourceArrs;
-
 }
 @end
 
@@ -28,6 +30,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
   
+    
     [self initDataSource];
     
     [self layoutFlow];
@@ -80,12 +83,12 @@
     layout.itemSize = CGSizeMake(kScreenW/col, kScreenW/col *1.2);
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
-    layout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0);
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     _mineCollection = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [self.view addSubview:_mineCollection];
     
-    _mineCollection.backgroundColor = [UIColor whiteColor];
+    _mineCollection.backgroundColor = cherryPowder;//[UIColor whiteColor];
     _mineCollection.showsHorizontalScrollIndicator = NO;
     _mineCollection.showsVerticalScrollIndicator = NO;
     
@@ -94,13 +97,23 @@
     
     //DrawViewBorderRadius(_mineCollection, 2, 2, [UIColor blueColor]);
     
+    [layout setHeaderReferenceSize:CGSizeMake(kScreenW, sectionHeaderH)]; //设置headview 的大小
+    //由段决定
+    //[layout setFooterReferenceSize:CGSizeMake(kScreenW, sectionHeaderH/3)]; //设置footview 的大小
+    
     [_mineCollection registerClass:[MineCollectionViewCell class] forCellWithReuseIdentifier:@"mineMainCell"];
     
     [_mineCollection mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(ws.view).insets(UIEdgeInsetsMake(150 *k5SWScale, 0, 49, 0));
+        make.edges.equalTo(ws.view).insets(UIEdgeInsetsMake(150 *k5SWScale - 20, 0, 49, 0));
     }];
     
-   
+    _mineCollection.contentSize = CGSizeMake(kScreenW, kScreenH);
+    
+    [_mineCollection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderIdentifier"];
+
+    
+    [_mineCollection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterIdentifier"];
+
 }
 
 
@@ -118,7 +131,8 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [_dataSourceArrs[section] count];
+//    return [_dataSourceArrs[section] count];
+    return [_dataSourceArrs count] *col;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -127,12 +141,18 @@
     static NSString *cellIdent = @"mineMainCell";
     MineCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdent forIndexPath:indexPath];
    
-    MineModel *model = [[_dataSourceArrs objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    
-    [cell layoutWithModel:model];
-    NSLog(@"indexPath(%@)--Model(%@)",indexPath,model.title);
-    
-
+    if (indexPath.row < [[_dataSourceArrs objectAtIndex:indexPath.section] count])
+    {
+        MineModel *model = [[_dataSourceArrs objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        
+        [cell layoutWithModel:model];
+        //NSLog(@"indexPath(%@)--Model(%@)",indexPath,model.title);
+    }
+    else
+    {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+   
 //方法一
 #if 1
     float cellwidth  = cell.frame.size.width;
@@ -140,16 +160,16 @@
 
     //top -> left -> bottom -> right
     CALayer *modifyBorder = [CALayer layer];
-    modifyBorder.backgroundColor = [UIColor lightGrayColor].CGColor;
+    modifyBorder.backgroundColor = controlColor.CGColor;
     
     CALayer *modifyBorder2 = [CALayer layer];
-    modifyBorder2.backgroundColor = [UIColor lightGrayColor].CGColor;
+    modifyBorder2.backgroundColor = controlColor.CGColor;
     
     CALayer *modifyBorder3 = [CALayer layer];
-    modifyBorder3.backgroundColor = [UIColor lightGrayColor].CGColor;
+    modifyBorder3.backgroundColor = controlColor.CGColor;
     
     CALayer *modifyBorder4 = [CALayer layer];
-    modifyBorder4.backgroundColor = [UIColor lightGrayColor].CGColor;
+    modifyBorder4.backgroundColor = controlColor.CGColor;
     
     [cell.layer addSublayer:modifyBorder];
     [cell.layer addSublayer:modifyBorder2];
@@ -178,10 +198,72 @@
     return cell;
 }
 
+//添加段头
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *HeaderIdentifier = @"HeaderIdentifier";
+    static NSString *FooterIdentifier = @"FooterIdentifier";
+    
+    UICollectionReusableView *reusableView = nil;
+    
+    NSLog(@"kind = %@", kind);
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader])
+    {
+        reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier forIndexPath:indexPath];
+        
+        reusableView.backgroundColor = [UIColor whiteColor];
+        
+        if (reusableView)
+        {
+            UILabel *sectionLabel = [[UILabel alloc] init];
+            sectionLabel.backgroundColor = [UIColor whiteColor];
+            
+            [reusableView addSubview:sectionLabel];
+            
+            [sectionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(reusableView).insets(UIEdgeInsetsMake(0, 20, 0, 0));
+            }];
+            
+            if (indexPath.section == 0)
+            {
+                sectionLabel.text = @"个人中心";
+            }
+            else
+            {
+                sectionLabel.text = @"我的消息";
+            }
+            
+            sectionLabel.textColor = [UIColor blackColor];
+            sectionLabel.font = [UIFont systemFontOfSize:13];
+        }
+    }
+    else if ([kind isEqualToString:UICollectionElementKindSectionFooter])
+    {
+        reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:FooterIdentifier forIndexPath:indexPath];
+        reusableView.backgroundColor = controlColor;
+    }
+    
+    return reusableView;
+}
+
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    MineModel *model = [[_dataSourceArrs objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    NSLog(@"indexPath(%@)--Model(%@)",indexPath,model.title);
+    if (indexPath.row < [[_dataSourceArrs objectAtIndex:indexPath.section] count])
+    {
+        MineModel *model = [[_dataSourceArrs objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        NSLog(@"indexPath(%@)--Model(%@)",indexPath,model.title);
+    }
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if (section == [_dataSourceArrs count] - 1)
+    {
+        return CGSizeMake(kScreenW, sectionHeaderH * 2);
+    }
+    return CGSizeMake(kScreenW, sectionHeaderH/3);
 }
 
 

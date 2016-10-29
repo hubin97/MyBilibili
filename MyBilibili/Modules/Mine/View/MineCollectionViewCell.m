@@ -9,7 +9,10 @@
 #import "MineCollectionViewCell.h"
 
 @implementation MineCollectionViewCell
-
+{
+    UIImageView *imageView;
+    UILabel *titleLabel;
+}
 - (void)layoutWithModel:(MineModel *)model
 {
     CGFloat cellWidth  = kScreenW/4;
@@ -20,10 +23,10 @@
     
     WS(ws);
     
-    UIImageView *imageView = [[UIImageView alloc]init];
+    imageView = [[UIImageView alloc]init];
     [self addSubview:imageView];
     
-    UILabel *titleLabel = [[UILabel alloc]init];
+    titleLabel = [[UILabel alloc]init];
     [self addSubview:titleLabel];
     
     
@@ -53,4 +56,11 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
 }
 
+
+//解决滑动复用问题
+- (void)prepareForReuse
+{
+    imageView.image = nil;
+    titleLabel.text = nil;
+}
 @end
