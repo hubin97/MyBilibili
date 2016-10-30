@@ -11,6 +11,9 @@
 #import "MineCollectionViewCell.h"
 #import "MineModel.h"
 
+#import "ThemeTableViewController.h"
+
+
 #define col 4  //4列
 #define sectionHeaderH 30
 
@@ -32,6 +35,8 @@
   
     
     [self initDataSource];
+    
+    [self layoutNavi];
     
     [self layoutFlow];
 }
@@ -73,6 +78,93 @@
     return mindeModel;
 }
 
+- (void)layoutNavi
+{
+    UIView *naviBar = [[UIView alloc] init];
+    [self.view addSubview:naviBar];
+    
+    naviBar.backgroundColor = cherryPowder;
+
+    [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(kScreenW);
+        make.height.mas_equalTo(@(150 *k5SWScale));
+    }];
+    
+    UIImageView *settingImgView = [[UIImageView alloc] init];
+    [naviBar addSubview:settingImgView];
+    settingImgView.image = [UIImage imageNamed:@"mine_settings"];
+    [settingImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(naviBar.mas_top).offset(30 * k5SWScale);
+        make.right.equalTo(naviBar.mas_right).offset(-15 * k5SWScale);
+        make.width.height.mas_equalTo(@(20 * k5SWScale));
+    }];
+    
+    
+    UIButton *signInBtn = [[UIButton alloc]init];
+    UIButton *loginBtn  = [[UIButton alloc]init];
+    [naviBar addSubview:signInBtn];
+    [naviBar addSubview:loginBtn];
+    
+    [signInBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        //make.left.mas_equalTo(@(50 *k5SWScale));
+        //make.centerX.mas_equalTo(naviBar).offset((signInBtn.mas_width)-10 *k5SWScale);
+        make.trailing.mas_equalTo(naviBar.mas_centerX).offset(-10 *k5SWScale);
+        
+        make.height.mas_equalTo(@(35 *k5SWScale));
+        make.centerY.equalTo(naviBar).offset(20 *k5SWScale);
+        make.width.mas_equalTo(signInBtn.mas_height).multipliedBy(3);
+    }];
+    
+    [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        //make.centerX.mas_equalTo(naviBar).offset(10 *k5SWScale);
+        
+        make.leading.mas_equalTo(naviBar.mas_centerX).offset(10 *k5SWScale);
+        make.width.mas_equalTo(signInBtn);
+        make.height.mas_equalTo(signInBtn);
+        make.centerY.equalTo(signInBtn);
+        //make.left.mas_equalTo(signInBtn.mas_right).offset(10 *k5SWScale);
+    }];
+    DrawViewBorderRadius(signInBtn, 5, 1, [UIColor clearColor]);
+    DrawViewBorderRadius(loginBtn, 5, 1, [UIColor clearColor]);
+    
+    [signInBtn setTitle:@"注册" forState:UIControlStateNormal];
+    [signInBtn setBackgroundColor:[UIColor colorWithDisplayP3Red:257/255.0 green:117/255.0 blue:156/255.0 alpha:1.0]];
+    [signInBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [loginBtn setBackgroundColor:[UIColor whiteColor]];
+    [loginBtn setTitleColor:cherryPowder forState:UIControlStateNormal];
+    
+    signInBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    loginBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
+    
+//    WS(ws);
+//    
+//    //画圆角 凹
+//    UIView *lineView = [[UIView alloc] init];
+//    [self.view addSubview:lineView];
+//    
+//    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(naviBar.mas_bottom);
+//        make.leading.trailing.mas_equalTo(naviBar);
+//        make.height.mas_equalTo(@(20 * k5SWScale));
+//    }];
+//    
+//    lineView.backgroundColor = cherryPowder;
+//
+//    UILabel *lineLabel = [[UILabel alloc]init];
+//    [lineView addSubview:lineLabel];
+//    [lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(lineView).insets(UIEdgeInsetsZero);
+//    }];
+//    
+//    lineLabel.backgroundColor = [UIColor clearColor];
+////    DrawViewBorderRadius(lineLabel, 10, 1, [UIColor blackColor]);
+//    DrawViewBorderRadius(lineLabel, 10, 1, [UIColor whiteColor]);
+
+}
+
 
 - (void)layoutFlow
 {
@@ -95,7 +187,7 @@
     [_mineCollection setDataSource:self];
     [_mineCollection setDelegate:self];
     
-    //DrawViewBorderRadius(_mineCollection, 2, 2, [UIColor blueColor]);
+    //DrawViewBorderRadius(_mineCollection, 2, 2, cherryPowder);
     
     [layout setHeaderReferenceSize:CGSizeMake(kScreenW, sectionHeaderH)]; //设置headview 的大小
     //由段决定
@@ -104,7 +196,7 @@
     [_mineCollection registerClass:[MineCollectionViewCell class] forCellWithReuseIdentifier:@"mineMainCell"];
     
     [_mineCollection mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(ws.view).insets(UIEdgeInsetsMake(150 *k5SWScale - 20, 0, 49, 0));
+        make.edges.equalTo(ws.view).insets(UIEdgeInsetsMake(150 *k5SWScale, 0, 49, 0));
     }];
     
     _mineCollection.contentSize = CGSizeMake(kScreenW, kScreenH);
@@ -254,6 +346,53 @@
     {
         MineModel *model = [[_dataSourceArrs objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         NSLog(@"indexPath(%@)--Model(%@)",indexPath,model.title);
+        
+        switch ([indexPath section])
+        {
+            case 0: //个人中心
+            {
+                switch ([indexPath row])
+                {
+                    case 0:
+                    {}
+                        break;
+                    case 1:
+                    {}
+                        break;
+                    case 2:
+                    {}
+                        break;
+                    case 3:
+                    {}
+                        break;
+                    case 4:
+                    {}
+                        break;
+                    case 5:
+                    {}
+                        break;
+                    case 6:
+                    {
+                        ThemeTableViewController *themeTableVc = [[ThemeTableViewController alloc] init];
+                        [self.navigationController pushViewController:themeTableVc animated:YES];
+                        //[self presentViewController:themeTableVc animated:NO completion:nil];
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }
+                break;
+             
+            case 1: //我的消息
+            {
+            }
+                break;
+            default:
+                break;
+        }
+        
+        
     }
 }
 

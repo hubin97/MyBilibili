@@ -35,7 +35,7 @@
 //全局配色
 #define simpleWhite  [UIColor whiteColor]
 
-#define cherryPowder [UIColor colorWithRed:247/255.0 green:88/255.0 blue:136/255.0 alpha:1.0]
+#define cherryPowder [UIColor colorWithRed:250/255.0 green:105/255.0 blue:148/255.0 alpha:1.0]
 
 
 

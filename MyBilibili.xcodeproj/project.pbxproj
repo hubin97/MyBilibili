@@ -14,6 +14,7 @@
 		1F04D4A41D961A72007A8534 /* ZoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D49F1D961A72007A8534 /* ZoneViewController.m */; };
 		1F04D4A71D961AA0007A8534 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4A61D961AA0007A8534 /* FindViewController.m */; };
 		1F04D4AA1D961AAE007A8534 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4A91D961AAE007A8534 /* MineViewController.m */; };
+		1F1D2A4D1DC5A80C007983EA /* ThemeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D2A4C1DC5A80C007983EA /* ThemeTableViewController.m */; };
 		1F1EF6A01DBE3851008EBA9F /* MineCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EF69F1DBE3851008EBA9F /* MineCollectionViewCell.m */; };
 		1F1EF6A31DBE3879008EBA9F /* MineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EF6A21DBE3879008EBA9F /* MineModel.m */; };
 		1F20322F1D9609C900BB666C /* 0_启动页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F20320A1D9609C900BB666C /* 0_启动页.jpg */; };
@@ -99,6 +100,8 @@
 		1F04D4A61D961AA0007A8534 /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
 		1F04D4A81D961AAE007A8534 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		1F04D4A91D961AAE007A8534 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		1F1D2A4B1DC5A80C007983EA /* ThemeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeTableViewController.h; sourceTree = "<group>"; };
+		1F1D2A4C1DC5A80C007983EA /* ThemeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeTableViewController.m; sourceTree = "<group>"; };
 		1F1EF69E1DBE3851008EBA9F /* MineCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCollectionViewCell.h; sourceTree = "<group>"; };
 		1F1EF69F1DBE3851008EBA9F /* MineCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCollectionViewCell.m; sourceTree = "<group>"; };
 		1F1EF6A11DBE3879008EBA9F /* MineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineModel.h; sourceTree = "<group>"; };
@@ -333,6 +336,8 @@
 			children = (
 				1F04D4A81D961AAE007A8534 /* MineViewController.h */,
 				1F04D4A91D961AAE007A8534 /* MineViewController.m */,
+				1F1D2A4B1DC5A80C007983EA /* ThemeTableViewController.h */,
+				1F1D2A4C1DC5A80C007983EA /* ThemeTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -749,6 +754,7 @@
 				1FDD125F1D8BA6F5008F3E44 /* 接口整理.md in Sources */,
 				1F1EF6A01DBE3851008EBA9F /* MineCollectionViewCell.m in Sources */,
 				1F04D4A31D961A72007A8534 /* HomeViewController.m in Sources */,
+				1F1D2A4D1DC5A80C007983EA /* ThemeTableViewController.m in Sources */,
 				1F5B37C61DB90A29004588B1 /* StartView.m in Sources */,
 				1FDD12181D8A4C81008F3E44 /* AppDelegate.m in Sources */,
 				1FDD12151D8A4C81008F3E44 /* main.m in Sources */,

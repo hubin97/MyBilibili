@@ -15,6 +15,12 @@
     UINavigationBar *naviBar = [[UINavigationBar alloc] init];
     naviBar.barTintColor = cherryPowder;
  
+    
+    naviBar.translucent = NO;
+
+//    naviBar.layer.borderWidth = 2;
+//    naviBar.layer.borderColor = cherryPowder.CGColor;
+    
     switch (style)
     {
         case SCROLL_STYPLE:
@@ -143,61 +149,62 @@
         }
             break;
         case SETTING_STYPLE:
-        {
-            [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(kScreenW);
-                make.height.mas_equalTo(@(150 *k5SWScale));
-            }];
-            
-            UIImageView *settingImgView = [[UIImageView alloc] init];
-            [naviBar addSubview:settingImgView];
-            settingImgView.image = [UIImage imageNamed:@"mine_settings"];
-            [settingImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(naviBar.mas_top).offset(30 * k5SWScale);
-                make.right.equalTo(naviBar.mas_right).offset(-15 * k5SWScale);
-                make.width.height.mas_equalTo(@(20 * k5SWScale));
-            }];
-            
-            
-            UIButton *signInBtn = [[UIButton alloc]init];
-            UIButton *loginBtn  = [[UIButton alloc]init];
-            [naviBar addSubview:signInBtn];
-            [naviBar addSubview:loginBtn];
-            
-            [signInBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                //make.left.mas_equalTo(@(50 *k5SWScale));
-                //make.centerX.mas_equalTo(naviBar).offset((signInBtn.mas_width)-10 *k5SWScale);
-                make.trailing.mas_equalTo(naviBar.mas_centerX).offset(-10 *k5SWScale);
-                
-                make.height.mas_equalTo(@(35 *k5SWScale));
-                make.centerY.equalTo(naviBar).offset(10 *k5SWScale);
-                make.width.mas_equalTo(signInBtn.mas_height).multipliedBy(3);
-            }];
-            
-            [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                //make.centerX.mas_equalTo(naviBar).offset(10 *k5SWScale);
-                
-                make.leading.mas_equalTo(naviBar.mas_centerX).offset(10 *k5SWScale);
-                make.width.mas_equalTo(signInBtn);
-                make.height.mas_equalTo(signInBtn);
-                make.centerY.equalTo(signInBtn);
-                //make.left.mas_equalTo(signInBtn.mas_right).offset(10 *k5SWScale);
-            }];
-            DrawViewBorderRadius(signInBtn, 5, 1, [UIColor clearColor]);
-            DrawViewBorderRadius(loginBtn, 5, 1, [UIColor clearColor]);
-
-            [signInBtn setTitle:@"注册" forState:UIControlStateNormal];
-            [signInBtn setBackgroundColor:cherryPowder];
-            [signInBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            
-            [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-            [loginBtn setBackgroundColor:[UIColor whiteColor]];
-            [loginBtn setTitleColor:cherryPowder forState:UIControlStateNormal];
-            
-            signInBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-            loginBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-
-        }
+        {}
+//        {
+//            [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.width.mas_equalTo(kScreenW);
+//                make.height.mas_equalTo(@(150 *k5SWScale));
+//            }];
+//            
+//            UIImageView *settingImgView = [[UIImageView alloc] init];
+//            [naviBar addSubview:settingImgView];
+//            settingImgView.image = [UIImage imageNamed:@"mine_settings"];
+//            [settingImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.top.equalTo(naviBar.mas_top).offset(30 * k5SWScale);
+//                make.right.equalTo(naviBar.mas_right).offset(-15 * k5SWScale);
+//                make.width.height.mas_equalTo(@(20 * k5SWScale));
+//            }];
+//            
+//            
+//            UIButton *signInBtn = [[UIButton alloc]init];
+//            UIButton *loginBtn  = [[UIButton alloc]init];
+//            [naviBar addSubview:signInBtn];
+//            [naviBar addSubview:loginBtn];
+//            
+//            [signInBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//                //make.left.mas_equalTo(@(50 *k5SWScale));
+//                //make.centerX.mas_equalTo(naviBar).offset((signInBtn.mas_width)-10 *k5SWScale);
+//                make.trailing.mas_equalTo(naviBar.mas_centerX).offset(-10 *k5SWScale);
+//                
+//                make.height.mas_equalTo(@(35 *k5SWScale));
+//                make.centerY.equalTo(naviBar).offset(10 *k5SWScale);
+//                make.width.mas_equalTo(signInBtn.mas_height).multipliedBy(3);
+//            }];
+//            
+//            [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//                //make.centerX.mas_equalTo(naviBar).offset(10 *k5SWScale);
+//                
+//                make.leading.mas_equalTo(naviBar.mas_centerX).offset(10 *k5SWScale);
+//                make.width.mas_equalTo(signInBtn);
+//                make.height.mas_equalTo(signInBtn);
+//                make.centerY.equalTo(signInBtn);
+//                //make.left.mas_equalTo(signInBtn.mas_right).offset(10 *k5SWScale);
+//            }];
+//            DrawViewBorderRadius(signInBtn, 5, 1, [UIColor clearColor]);
+//            DrawViewBorderRadius(loginBtn, 5, 1, [UIColor clearColor]);
+//
+//            [signInBtn setTitle:@"注册" forState:UIControlStateNormal];
+//            [signInBtn setBackgroundColor:[UIColor colorWithDisplayP3Red:257/255.0 green:117/255.0 blue:156/255.0 alpha:1.0]];
+//            [signInBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            
+//            [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+//            [loginBtn setBackgroundColor:[UIColor whiteColor]];
+//            [loginBtn setTitleColor:cherryPowder forState:UIControlStateNormal];
+//            
+//            signInBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//            loginBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//
+//        }
             break;
             
         default:
