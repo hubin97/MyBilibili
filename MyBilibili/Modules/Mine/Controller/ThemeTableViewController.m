@@ -29,6 +29,9 @@
     
     _dataSourceArr = @[@"樱粉红",@"纯白"];
     
+    self.navigationController.navigationBar.hidden = NO;
+
+    
 //    WS(ws);
     
 //    UITableView *themeTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];

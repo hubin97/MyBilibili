@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+//tag 300~399
 @interface FollowViewController : UIViewController
 
 @end

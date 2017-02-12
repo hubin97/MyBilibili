@@ -14,27 +14,79 @@
 
 @implementation HomeViewController
 
+#pragma mark - Live life
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
     //DrawViewBorderRadius(self.view, 0, 2, [UIColor redColor]);
+    [self initNavi];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Setup
+- (void)initNavi
+{
+    UIView *naviBar = [[UIView alloc] init];
+    [self.view addSubview:naviBar];
+    
+    naviBar.backgroundColor = cherryPowder;
+
+    [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(kScreenW);
+        make.height.mas_equalTo(@52);
+    }];
+    
+    //测试
+    NSArray *titles = @[@"直播",@"推荐",@"番剧"];
+    
+    for (int i = 0; i < [titles count]; i ++)
+    {
+        UIButton *titleBtn = [[UIButton alloc] init];
+        [naviBar addSubview:titleBtn];
+        UILabel *titleFlag = [[UILabel alloc]init];
+        [naviBar addSubview:titleFlag];
+        
+        [titleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(@(20 *k5SWScale));
+            make.left.equalTo(naviBar).offset(kScreenW * 2/9  * (i + 1));
+            make.width.mas_equalTo(@(kScreenW *1/9));
+        }];
+        
+        [titleFlag mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(naviBar).offset(kScreenW * 2/9 * (i + 1));
+            make.top.equalTo(titleBtn.mas_bottom).offset(2);
+            make.bottom.equalTo(naviBar.mas_bottom).offset(-1);
+            make.width.equalTo(titleBtn.mas_width);
+            make.height.mas_equalTo(@2);
+        }];
+        
+        [titleBtn setTitle:titles[i] forState:UIControlStateNormal];
+        titleBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+        [titleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+       
+        //默认选择第一个
+        [titleFlag setBackgroundColor:((i == 1)?[UIColor whiteColor] : [UIColor clearColor])];
+        
+        titleBtn.tag  = 100 + i;
+        titleFlag.tag = 110 + i;
+        [titleBtn addTarget:self action:@selector(changeTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Action
+- (void)changeTitleBtn:(UIButton *)sender
+{
+    NSLog(@"Home-title%@",sender.titleLabel.text);
+    
+    for (int i = 110 ; i < 113; i ++)
+    {
+        UILabel *titleFlag = [self.view viewWithTag:i];
+        //NSLog(@"titleFlag:%@",titleFlag);
+        [titleFlag setBackgroundColor:((i == (sender.tag + 10))?[UIColor whiteColor] : [UIColor clearColor])];
+    }
 }
-*/
 
 @end

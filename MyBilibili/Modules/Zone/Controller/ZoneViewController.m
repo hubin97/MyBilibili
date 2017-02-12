@@ -18,22 +18,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-
+    [self initNavi];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Setup
+- (void)initNavi
+{
+    UIView *naviBar = [[UIView alloc] init];
+    [self.view addSubview:naviBar];
+    
+    naviBar.backgroundColor = cherryPowder;
+    
+    [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(kScreenW);
+        make.height.mas_equalTo(@52);
+    }];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    //WithFrame:CGRectMake(0, 0, kScreenW, 44)];
+    [naviBar addSubview:titleLabel];
+    titleLabel.text = @"分区";
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    titleLabel.textColor = [UIColor whiteColor]; //可变更
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(@(20 *k5SWScale));
+        make.bottom.equalTo(naviBar).offset(-5 * k5SWScale);
+        //make.height.mas_equalTo(@(20 * k5SWScale));
+        make.width.mas_equalTo(titleLabel.mas_height).multipliedBy(2);
+        make.centerX.equalTo(naviBar);
+    }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

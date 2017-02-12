@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+//tag 500~599
 @interface MineViewController : UIViewController
 
 @end

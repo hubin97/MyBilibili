@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+//tag 100~199
 @interface HomeViewController : UIViewController
 
 

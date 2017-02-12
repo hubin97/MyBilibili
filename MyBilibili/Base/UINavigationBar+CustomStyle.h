@@ -17,6 +17,8 @@ typedef enum
 
 
 @interface UINavigationBar (CustomStyle)
+//tag  100~200
+
 
 + (UINavigationBar *)initNavigationBarWithTitleArrs:(NSArray *)titles AndStyple:(MyNaviBarStyle)style;
 
