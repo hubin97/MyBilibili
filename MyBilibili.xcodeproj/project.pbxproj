@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04EE3C431E5700AB00D16330 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EE3C421E5700AB00D16330 /* TitleView.m */; };
 		1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4701D961786007A8534 /* BaseTabBarController.m */; };
 		1F04D4771D96182C007A8534 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4761D96182C007A8534 /* BaseNavigationController.m */; };
 		1F04D4A21D961A72007A8534 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D48F1D961A72007A8534 /* FollowViewController.m */; };
@@ -86,6 +87,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04EE3C411E5700AB00D16330 /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
+		04EE3C421E5700AB00D16330 /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		1F04D46F1D961786007A8534 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
 		1F04D4701D961786007A8534 /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
 		1F04D4751D96182C007A8534 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 			children = (
 				1FFA86E11D978E89006F83C3 /* StartView.h */,
 				1FFA86E21D978E89006F83C3 /* StartView.m */,
+				04EE3C411E5700AB00D16330 /* TitleView.h */,
+				04EE3C421E5700AB00D16330 /* TitleView.m */,
 				1F04D4751D96182C007A8534 /* BaseNavigationController.h */,
 				1F04D4761D96182C007A8534 /* BaseNavigationController.m */,
 				1F04D46F1D961786007A8534 /* BaseTabBarController.h */,
@@ -746,6 +751,7 @@
 				1F04D4771D96182C007A8534 /* BaseNavigationController.m in Sources */,
 				1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */,
 				1FFF5ACD1E50121F00FD3ADE /* UINavigationBar+CustomStyle.m in Sources */,
+				04EE3C431E5700AB00D16330 /* TitleView.m in Sources */,
 				1F1EF6A31DBE3879008EBA9F /* MineModel.m in Sources */,
 				1F04D4AA1D961AAE007A8534 /* MineViewController.m in Sources */,
 				1F04D4A71D961AA0007A8534 /* FindViewController.m in Sources */,

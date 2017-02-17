@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "TitleView.h"
 
 @interface HomeViewController ()
 
@@ -34,9 +35,21 @@
 
     [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(kScreenW);
-        make.height.mas_equalTo(@52);
+        make.height.mas_equalTo(@(52 *k5SWScale));
     }];
     
+    TitleView *titleView = [[TitleView alloc]initWithFrame:CGRectMake(kScreenW * 2/9, 20 *k5SWScale, kScreenW * 5/9, 32 * k5SWScale) andTitles:@[@"直播",@"推荐",@"番剧"]];
+    [naviBar addSubview:titleView];
+    titleView.backgroundColor = [UIColor clearColor];
+    
+    titleView.titleBtnBlock = ^(NSInteger index, NSString *title){
+    
+        NSLog(@"Vc-- index:%ld, title:%@", (long)index,title);
+
+    };
+    
+
+#if 0
     //测试
     NSArray *titles = @[@"直播",@"推荐",@"番剧"];
     
@@ -73,20 +86,22 @@
         titleFlag.tag = 110 + i;
         [titleBtn addTarget:self action:@selector(changeTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
+#endif
+    
 }
 
 
 #pragma mark - Action
-- (void)changeTitleBtn:(UIButton *)sender
-{
-    NSLog(@"Home-title%@",sender.titleLabel.text);
-    
-    for (int i = 110 ; i < 113; i ++)
-    {
-        UILabel *titleFlag = [self.view viewWithTag:i];
-        //NSLog(@"titleFlag:%@",titleFlag);
-        [titleFlag setBackgroundColor:((i == (sender.tag + 10))?[UIColor whiteColor] : [UIColor clearColor])];
-    }
-}
+//- (void)changeTitleBtn:(UIButton *)sender
+//{
+//    NSLog(@"Home-title%@",sender.titleLabel.text);
+//    
+//    for (int i = 110 ; i < 113; i ++)
+//    {
+//        UILabel *titleFlag = [self.view viewWithTag:i];
+//        //NSLog(@"titleFlag:%@",titleFlag);
+//        [titleFlag setBackgroundColor:((i == (sender.tag + 10))?[UIColor whiteColor] : [UIColor clearColor])];
+//    }
+//}
 
 @end
