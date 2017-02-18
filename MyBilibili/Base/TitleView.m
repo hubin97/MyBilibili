@@ -8,6 +8,8 @@
 
 #import "TitleView.h"
 
+#define kpadding (10 *k5SWScale)
+
 @interface TitleView()
 {
     UILabel *_indexLabel; //下标label
@@ -24,8 +26,8 @@
     {
         //layout
         NSInteger btnCount = [titles count];
-        CGFloat padding = 5;
-        CGFloat btnWidth = (frame.size.width - (btnCount + 1) * padding)/ btnCount;
+        //padding = 10;
+        CGFloat btnWidth = (frame.size.width - (btnCount + 1) * kpadding)/ btnCount;
         NSLog(@"btnWidth:%f",btnWidth); // >57.50
         
         _titleArr = titles;
@@ -35,31 +37,37 @@
         for (NSInteger index = 0; index < [titles count]; index ++)
         {
             UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            titleBtn.frame = CGRectMake(padding* (index + 1) + btnWidth * index, 0, btnWidth, 25 *k5SWScale);
+            titleBtn.frame = CGRectMake(kpadding* (index + 1) + btnWidth * index, kpadding *3/5, btnWidth, frame.size.height/2 *k5SWScale);
 //            titleBtn.layer.borderWidth = 1.0;
 //            titleBtn.layer.borderColor = [[UIColor brownColor] CGColor];
             titleBtn.tag = index;
-            titleBtn.titleLabel.font = [UIFont systemFontOfSize:17.0];
+            titleBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
 
             [titleBtn setTitle:[titles objectAtIndex:index] forState:UIControlStateNormal];
             [titleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             
-            [titleBtn addTarget:self action:@selector(tapTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
-            
+            if([titles count] > 1)
+            {
+                [titleBtn addTarget:self action:@selector(tapTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+            }
             [self addSubview:titleBtn];
             
             assagnBtnRect = (index == 1)? titleBtn.frame : assagnBtnRect;
         }
         
-        //下标线
-        CGRect indexLabelFrame = assagnBtnRect;
-        indexLabelFrame.origin.y += (assagnBtnRect.size.height + 2);
-        indexLabelFrame.size.height = 2;
-        
-        _indexLabel = [[UILabel alloc]initWithFrame:indexLabelFrame];
-        _indexLabel.backgroundColor =[UIColor whiteColor];
-        [self addSubview:_indexLabel];
-        
+        if([titles count] > 1)
+        {
+            //下标线
+            CGRect indexLabelFrame = assagnBtnRect;
+            indexLabelFrame.origin.y += (assagnBtnRect.size.height + kpadding/2);
+            indexLabelFrame.origin.x += kpadding/2;
+            indexLabelFrame.size.width = assagnBtnRect.size.width - kpadding;
+            indexLabelFrame.size.height = kpadding/5;
+            
+            _indexLabel = [[UILabel alloc]initWithFrame:indexLabelFrame];
+            _indexLabel.backgroundColor =[UIColor whiteColor];
+            [self addSubview:_indexLabel];
+        }
         return self;
     }
     return self;
@@ -73,7 +81,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         
         CGRect rect = _indexLabel.frame;
-        rect.origin.x = sender.frame.origin.x;
+        rect.origin.x = sender.frame.origin.x + kpadding/2;
         _indexLabel.frame = rect;
     }];
     
@@ -89,7 +97,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         
         CGRect rect = _indexLabel.frame;
-        rect.origin.x = tmpBtn.frame.origin.x;
+        rect.origin.x = tmpBtn.frame.origin.x + kpadding/2;
         _indexLabel.frame = rect;
     }];
 }

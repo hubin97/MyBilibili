@@ -128,7 +128,9 @@
     DrawViewBorderRadius(loginBtn, 5, 1, [UIColor clearColor]);
     
     [signInBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [signInBtn setBackgroundColor:[UIColor colorWithDisplayP3Red:257/255.0 green:117/255.0 blue:156/255.0 alpha:1.0]];
+//    [signInBtn setBackgroundColor:[UIColor colorWithDisplayP3Red:257/255.0 green:117/255.0 blue:156/255.0 alpha:1.0]];
+    [signInBtn setBackgroundColor:[UIColor colorWithRed:257/255.0 green:117/255.0 blue:156/255.0 alpha:1.0]];
+
     [signInBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];

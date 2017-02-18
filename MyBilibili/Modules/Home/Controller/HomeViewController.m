@@ -9,8 +9,12 @@
 #import "HomeViewController.h"
 #import "TitleView.h"
 
-@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+#define kSectionHeaderH (40 * k5SWScale)
 
+@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+{
+    TitleView *_titleView;
+}
 @end
 
 @implementation HomeViewController
@@ -27,6 +31,15 @@
     [self initCollection];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [_titleView updataIndexLabelUIWithNum:1];
+    //刷新推荐页
+}
+
+
 #pragma mark - Setup
 - (void)initNavi
 {
@@ -40,55 +53,15 @@
         make.height.mas_equalTo(@(52 *k5SWScale));
     }];
     
-    TitleView *titleView = [[TitleView alloc]initWithFrame:CGRectMake(kScreenW * 2/9, 20 *k5SWScale, kScreenW * 5/9, 32 * k5SWScale) andTitles:@[@"直播",@"推荐",@"番剧"]];
-    [naviBar addSubview:titleView];
-    titleView.backgroundColor = [UIColor clearColor];
+    _titleView = [[TitleView alloc]initWithFrame:CGRectMake(kScreenW * 2/9, 20 *k5SWScale, kScreenW * 5/9, 32 * k5SWScale) andTitles:@[@"直播",@"推荐",@"番剧"]];
+    [naviBar addSubview:_titleView];
+    _titleView.backgroundColor = [UIColor clearColor];
     
-    titleView.titleBtnBlock = ^(NSInteger index, NSString *title){
+    _titleView.titleBtnBlock = ^(NSInteger index, NSString *title){
     
-        NSLog(@"Vc-- index:%ld, title:%@", (long)index,title);
+        NSLog(@"HomeVc-- index:%ld, title:%@", (long)index,title);
 
     };
-    
-
-#if 0
-    //测试
-    NSArray *titles = @[@"直播",@"推荐",@"番剧"];
-    
-    for (int i = 0; i < [titles count]; i ++)
-    {
-        UIButton *titleBtn = [[UIButton alloc] init];
-        [naviBar addSubview:titleBtn];
-        UILabel *titleFlag = [[UILabel alloc]init];
-        [naviBar addSubview:titleFlag];
-        
-        [titleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(@(20 *k5SWScale));
-            make.left.equalTo(naviBar).offset(kScreenW * 2/9  * (i + 1));
-            make.width.mas_equalTo(@(kScreenW *1/9));
-        }];
-        
-        [titleFlag mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(naviBar).offset(kScreenW * 2/9 * (i + 1));
-            make.top.equalTo(titleBtn.mas_bottom).offset(2);
-            make.bottom.equalTo(naviBar.mas_bottom).offset(-1);
-            make.width.equalTo(titleBtn.mas_width);
-            make.height.mas_equalTo(@2);
-        }];
-        
-        [titleBtn setTitle:titles[i] forState:UIControlStateNormal];
-        titleBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        
-        [titleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-       
-        //默认选择第一个
-        [titleFlag setBackgroundColor:((i == 1)?[UIColor whiteColor] : [UIColor clearColor])];
-        
-        titleBtn.tag  = 100 + i;
-        titleFlag.tag = 110 + i;
-        [titleBtn addTarget:self action:@selector(changeTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
-    }
-#endif
     
 }
 
@@ -117,11 +90,11 @@
     layout.minimumInteritemSpacing = padding;
     layout.sectionInset = UIEdgeInsetsMake(0, padding, 0, padding);
     
-    [layout setHeaderReferenceSize:CGSizeMake(kScreenW, 40)]; //设置headview 的大小
+    //[layout setHeaderReferenceSize:CGSizeMake(kScreenW, 40)]; //设置headview 的大小
 
     
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
-    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.backgroundColor = cherryPowder;//[UIColor whiteColor];
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;
     
@@ -130,39 +103,28 @@
     collectionView.dataSource = self;
     collectionView.delegate = self;
     
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"HomeCell"];
-    
-    //DrawViewBorderRadius(collectionView, 1, 1, [UIColor brownColor]);
-    
+  
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets = UIEdgeInsetsMake(52 *k5SWScale, 0, 49, 0);
     }];
     
 //    collectionView.bouncesZoom = NO;
-    collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    collectionView.contentOffset = CGPointMake(0, 0);
-    
-    
+//    collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//    collectionView.contentOffset = CGPointMake(0, 0);
 
-    //[collectionView bringSubviewToFront:self.view];
-
-    //collectionView.foo
+    //注册cell
+    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"HomeCell"];
+    
+    //注册段头
+    [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeSectionHeader"];
+    
+    //DrawViewBorderRadius(collectionView, 1, 1, [UIColor brownColor]);
+    
 }
 
 
 
 #pragma mark - Action
-//- (void)changeTitleBtn:(UIButton *)sender
-//{
-//    NSLog(@"Home-title%@",sender.titleLabel.text);
-//    
-//    for (int i = 110 ; i < 113; i ++)
-//    {
-//        UILabel *titleFlag = [self.view viewWithTag:i];
-//        //NSLog(@"titleFlag:%@",titleFlag);
-//        [titleFlag setBackgroundColor:((i == (sender.tag + 10))?[UIColor whiteColor] : [UIColor clearColor])];
-//    }
-//}
 
 
 #pragma mark - coll
@@ -180,12 +142,81 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdent = @"HomeCell";
-
+    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdent forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     
     DrawViewBorderRadius(cell, 1, 1, [UIColor redColor]);
     return cell;
 }
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *sectionHeader = @"HomeSectionHeader";
+    
+    UICollectionReusableView *reusableView = nil;
+    
+    //注意此处作对比的是kind和UICollectionElementKindSectionHeader/UICollectionElementKindSectionFooter
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader])
+    {
+        //NSLog(@"Home Section");
+        reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:sectionHeader forIndexPath:indexPath];
+        
+        reusableView.backgroundColor = [UIColor whiteColor];
+        
+        CGFloat padding = kSectionHeaderH/3;
+
+        if (reusableView)
+        {
+            if (indexPath.section == 0)
+            {
+                //创建轮播
+                UIView *view = [[UIView alloc]init];
+                [reusableView addSubview:view];
+                [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                
+                    make.top.left.right.equalTo(reusableView);
+                    make.height.mas_equalTo(100 *k5SWScale);
+                }];
+                
+                DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
+            }
+            UIImageView *logImgView = [[UIImageView alloc]init];
+            [reusableView addSubview:logImgView];
+            
+            UILabel *titleLabel = [[UILabel alloc]init];
+            [reusableView addSubview:titleLabel];
+            
+            [logImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(padding);
+                make.bottom.mas_equalTo(- padding);
+                make.width.height.mas_equalTo(padding);
+            }];
+            
+            [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                
+                make.top.mas_equalTo(logImgView.mas_top);
+                make.left.mas_equalTo(logImgView.mas_right).offset(padding/2);
+                make.bottom.right.mas_equalTo(- padding);
+            }];
+            
+            DrawViewBorderRadius(logImgView, 1, 1, [UIColor greenColor]);
+
+            DrawViewBorderRadius(titleLabel, 1, 1, [UIColor blackColor]);
+        }
+    }
+    
+    
+    DrawViewBorderRadius(reusableView, 1, 1, [UIColor blueColor]);
+    
+    return reusableView;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(kScreenW, (section == 0)? (100 *k5SWScale + kSectionHeaderH):kSectionHeaderH);
+}
+
+//表头 100
 
 @end

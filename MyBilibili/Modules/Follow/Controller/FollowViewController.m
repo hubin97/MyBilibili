@@ -7,9 +7,12 @@
 //
 
 #import "FollowViewController.h"
+#import "TitleView.h"
 
 @interface FollowViewController ()
-
+{
+    TitleView *_titleView;
+}
 @end
 
 @implementation FollowViewController
@@ -34,6 +37,17 @@
         make.height.mas_equalTo(@52);
     }];
     
+    _titleView = [[TitleView alloc]initWithFrame:CGRectMake(kScreenW * 2/9, 20 *k5SWScale, kScreenW * 5/9, 32 * k5SWScale) andTitles:@[@"直播",@"推荐",@"番剧"]];
+    [naviBar addSubview:_titleView];
+    _titleView.backgroundColor = [UIColor clearColor];
+    
+    _titleView.titleBtnBlock = ^(NSInteger index, NSString *title){
+        
+        NSLog(@"FollowVc-- index:%ld, title:%@", (long)index,title);
+        
+    };
+    
+#if 0
     //测试
     NSArray *titles = @[@"直播",@"推荐",@"番剧"];
     
@@ -68,6 +82,8 @@
         titleBtn.tag = 300 + i;
         [titleBtn addTarget:self action:@selector(changeTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
+#endif
+    
 }
 
 
