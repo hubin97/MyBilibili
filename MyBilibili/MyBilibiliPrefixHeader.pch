@@ -15,7 +15,8 @@
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
 #import "Masonry.h"
-
+#import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
 
 #define kScreenW  [[UIScreen mainScreen] bounds].size.width
 #define kScreenH  [[UIScreen mainScreen] bounds].size.height

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04C7ABDF1E5C453500A9CB7C /* HomeCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7ABDE1E5C453500A9CB7C /* HomeCollectionReusableView.m */; };
 		04EE3C431E5700AB00D16330 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EE3C421E5700AB00D16330 /* TitleView.m */; };
 		1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4701D961786007A8534 /* BaseTabBarController.m */; };
 		1F04D4771D96182C007A8534 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4761D96182C007A8534 /* BaseNavigationController.m */; };
@@ -87,6 +88,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04C7ABDD1E5C453500A9CB7C /* HomeCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionReusableView.h; sourceTree = "<group>"; };
+		04C7ABDE1E5C453500A9CB7C /* HomeCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionReusableView.m; sourceTree = "<group>"; };
 		04EE3C411E5700AB00D16330 /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
 		04EE3C421E5700AB00D16330 /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		1F04D46F1D961786007A8534 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 		1F04D4971D961A72007A8534 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04C7ABDD1E5C453500A9CB7C /* HomeCollectionReusableView.h */,
+				04C7ABDE1E5C453500A9CB7C /* HomeCollectionReusableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -597,7 +602,7 @@
 				TargetAttributes = {
 					1FDD120F1D8A4C80008F3E44 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = YTPNCWF278;
+						DevelopmentTeam = CHX656NT89;
 						ProvisioningStyle = Automatic;
 					};
 					1FDD12281D8A4C81008F3E44 = {
@@ -752,6 +757,7 @@
 				1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */,
 				1FFF5ACD1E50121F00FD3ADE /* UINavigationBar+CustomStyle.m in Sources */,
 				04EE3C431E5700AB00D16330 /* TitleView.m in Sources */,
+				04C7ABDF1E5C453500A9CB7C /* HomeCollectionReusableView.m in Sources */,
 				1F1EF6A31DBE3879008EBA9F /* MineModel.m in Sources */,
 				1F04D4AA1D961AAE007A8534 /* MineViewController.m in Sources */,
 				1F04D4A71D961AA0007A8534 /* FindViewController.m in Sources */,
@@ -907,7 +913,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YTPNCWF278;
+				DEVELOPMENT_TEAM = CHX656NT89;
 				GCC_PREFIX_HEADER = MyBilibili/MyBilibiliPrefixHeader.pch;
 				INFOPLIST_FILE = MyBilibili/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -926,7 +932,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YTPNCWF278;
+				DEVELOPMENT_TEAM = CHX656NT89;
 				GCC_PREFIX_HEADER = MyBilibili/MyBilibiliPrefixHeader.pch;
 				INFOPLIST_FILE = MyBilibili/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

@@ -14,6 +14,10 @@
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 {
     TitleView *_titleView;
+    
+    UICollectionView *_homeCollectionView;
+    
+    NSMutableArray *_dataArray;
 }
 @end
 
@@ -36,7 +40,13 @@
     [super viewWillAppear:animated];
     
     [_titleView updataIndexLabelUIWithNum:1];
+    
     //刷新推荐页
+    _dataArray = [[NSMutableArray alloc]init];
+    
+    [self sendRequest];
+    
+
 }
 
 
@@ -67,16 +77,6 @@
 
 - (void)initCollection
 {
-//    UIView *bgView = [[UIView alloc]init];
-//    [self.view addSubview:bgView];
-//    [bgView setBackgroundColor:cherryPowder];
-//    DrawViewBorderRadius(bgView, 1, 1, [UIColor blueColor]);
-//    
-//    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.insets = UIEdgeInsetsMake(52 *k5SWScale, 0, 49, 0);
-//    }];
-    
-    
     int col = 2; //列
     CGFloat padding = 10 * k5SWScale;
     CGFloat itemW = (kScreenW - (col + 1)*padding)/col;
@@ -93,36 +93,52 @@
     //[layout setHeaderReferenceSize:CGSizeMake(kScreenW, 40)]; //设置headview 的大小
 
     
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
-    collectionView.backgroundColor = cherryPowder;//[UIColor whiteColor];
-    collectionView.showsHorizontalScrollIndicator = NO;
-    collectionView.showsVerticalScrollIndicator = NO;
+    _homeCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+    _homeCollectionView.backgroundColor = cherryPowder;//[UIColor whiteColor];
+    _homeCollectionView.showsHorizontalScrollIndicator = NO;
+    _homeCollectionView.showsVerticalScrollIndicator = NO;
     
-    [self.view addSubview:collectionView];
+    [self.view addSubview:_homeCollectionView];
 
-    collectionView.dataSource = self;
-    collectionView.delegate = self;
+    _homeCollectionView.dataSource = self;
+    _homeCollectionView.delegate = self;
     
   
-    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_homeCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets = UIEdgeInsetsMake(52 *k5SWScale, 0, 49, 0);
     }];
     
-//    collectionView.bouncesZoom = NO;
-//    collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-//    collectionView.contentOffset = CGPointMake(0, 0);
-
     //注册cell
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"HomeCell"];
+    [_homeCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"HomeCell"];
     
     //注册段头
-    [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeSectionHeader"];
+    [_homeCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeSectionHeader"];
+    
+    [_homeCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"HomeSectionFooter"];
+
     
     //DrawViewBorderRadius(collectionView, 1, 1, [UIColor brownColor]);
     
 }
 
-
+#pragma mark - Private
+- (void)sendRequest
+{
+    NSString *urlString = @"http://app.bilibili.com/x/v2/show?access_key=f5bd4e793b82fba5aaf5b91fb549910a&actionKey=appkey&appkey=27eb53fc9058f8c3&build=3470&channel=appstore&device=phone&mobi_app=iphone&plat=1&platform=ios&sign=1c8f22ff72d7cab05a94eb8b12a4c4cc&ts=1469603875&warm=1";
+    
+    AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
+    
+    [manage GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //NSLog(@"responseObject:%@",responseObject);
+        _dataArray = [responseObject objectForKey:@"data"];
+        
+        [_homeCollectionView reloadData];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error:%@",error);
+    }];
+    
+}
 
 #pragma mark - Action
 
@@ -130,12 +146,12 @@
 #pragma mark - coll
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 5;
+    return [_dataArray count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return [[[_dataArray objectAtIndex:section] objectForKey:@"body"] count];
 }
 
 
@@ -153,7 +169,8 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *sectionHeader = @"HomeSectionHeader";
-    
+    static NSString *sectionFooter = @"HomeSectionFooter";
+
     UICollectionReusableView *reusableView = nil;
     
     //注意此处作对比的是kind和UICollectionElementKindSectionHeader/UICollectionElementKindSectionFooter
@@ -166,21 +183,30 @@
         
         CGFloat padding = kSectionHeaderH/3;
 
+        
         if (reusableView)
         {
-            if (indexPath.section == 0)
+            //判断是否有标题栏
+            BOOL isHaveBanner = [[[_dataArray objectAtIndex:indexPath.section] allKeys] containsObject:@"banner"];
+            if (isHaveBanner)
             {
-                //创建轮播
-                UIView *view = [[UIView alloc]init];
-                [reusableView addSubview:view];
-                [view mas_makeConstraints:^(MASConstraintMaker *make) {
-                
-                    make.top.left.right.equalTo(reusableView);
-                    make.height.mas_equalTo(100 *k5SWScale);
-                }];
-                
-                DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
+                //判断是否有顶部标题栏
+                BOOL isHaveTopBanner = [[[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"banner"] allKeys] containsObject:@"top"];
+                if(isHaveTopBanner)
+                {
+                    //创建轮播
+                    UIView *view = [[UIView alloc]init];
+                    [reusableView addSubview:view];
+                    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                        
+                        make.top.left.right.equalTo(reusableView);
+                        make.height.mas_equalTo(100 *k5SWScale);
+                    }];
+                    
+                    DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
+                }
             }
+           
             UIImageView *logImgView = [[UIImageView alloc]init];
             [reusableView addSubview:logImgView];
             
@@ -201,20 +227,59 @@
             }];
             
             DrawViewBorderRadius(logImgView, 1, 1, [UIColor greenColor]);
-
-            DrawViewBorderRadius(titleLabel, 1, 1, [UIColor blackColor]);
+            //DrawViewBorderRadius(titleLabel, 1, 1, [UIColor blackColor]);
+            
+            titleLabel.text = [[_dataArray objectAtIndex:indexPath.section] objectForKey:@"title"];
+            titleLabel.textAlignment = NSTextAlignmentLeft;
+            titleLabel.textColor = [UIColor blackColor];
+            titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
         }
+        DrawViewBorderRadius(reusableView, 1, 1, [UIColor blueColor]);
     }
-    
-    
-    DrawViewBorderRadius(reusableView, 1, 1, [UIColor blueColor]);
+    else if ([kind isEqualToString:UICollectionElementKindSectionFooter])
+    {
+        reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:sectionFooter forIndexPath:indexPath];
+        reusableView.backgroundColor = [UIColor whiteColor];
+        
+        DrawViewBorderRadius(reusableView, 1, 1, [UIColor greenColor]);
+    }
     
     return reusableView;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(kScreenW, (section == 0)? (100 *k5SWScale + kSectionHeaderH):kSectionHeaderH);
+    //判断是否有标题栏
+    BOOL isHaveBanner = [[[_dataArray objectAtIndex:section] allKeys] containsObject:@"banner"];
+    if (isHaveBanner)
+    {
+        //判断是否有顶部标题栏
+        BOOL isHaveTopBanner = [[[[_dataArray objectAtIndex:section] objectForKey:@"banner"] allKeys] containsObject:@"top"];
+        
+        if(isHaveTopBanner) NSLog(@"section:%ld--isHaveTopBanner",section);
+        
+        return CGSizeMake(kScreenW, (isHaveTopBanner)? (100 *k5SWScale + kSectionHeaderH):kSectionHeaderH);
+    }
+    return CGSizeMake(kScreenW, kSectionHeaderH);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    //判断是否有标题栏
+    BOOL isHaveBanner = [[[_dataArray objectAtIndex:section] allKeys] containsObject:@"banner"];
+    if (isHaveBanner)
+    {
+        BOOL isHaveBottomBanner = [[[[_dataArray objectAtIndex:section] objectForKey:@"banner"] allKeys] containsObject:@"bottom"];
+        
+        if(isHaveBottomBanner)
+        {
+            NSLog(@"section:%ld--isHaveBottomBanner",section);
+            return CGSizeMake(kScreenW, 100 *k5SWScale);
+        }
+        
+        return CGSizeZero;
+    }
+    return CGSizeZero;
 }
 
 //表头 100
