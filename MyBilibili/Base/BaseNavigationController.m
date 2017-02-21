@@ -32,7 +32,7 @@
 //        rootViewController.view.frame = CGRectMake(0, 44, kScreenW, kScreenH -44 - 49);
         
         
-        NSLog(@"flag%ld",(long)flag);
+//        NSLog(@"flag%ld",(long)flag);
         
         UIView *aView = nil;
 

@@ -79,7 +79,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-//设置强制横屏
+//设置强制竖屏
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }

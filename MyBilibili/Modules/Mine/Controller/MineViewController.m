@@ -17,7 +17,8 @@
 #define col 4  //4列
 #define sectionHeaderH 30
 
-#define controlColor [UIColor colorWithDisplayP3Red:246/255.0 green:246/255.0 blue:246/255.0 alpha:1]
+#define controlColor [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
+//[UIColor colorWithDisplayP3Red:246/255.0 green:246/255.0 blue:246/255.0 alpha:1]
 
 @interface MineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
@@ -300,7 +301,7 @@
     
     UICollectionReusableView *reusableView = nil;
     
-    NSLog(@"kind = %@", kind);
+    //NSLog(@"kind = %@", kind);
     
     if ([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
