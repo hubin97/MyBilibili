@@ -8,10 +8,11 @@
 
 #import "HomeViewController.h"
 #import "TitleView.h"
+#import "SDCycleScrollView.h"
 
 #define kSectionHeaderH (40 * k5SWScale)
 
-@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,SDCycleScrollViewDelegate>
 {
     TitleView *_titleView;
     
@@ -162,6 +163,19 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdent forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     
+    //测试数据
+    UIImageView *imageView = [[UIImageView alloc]init];
+    [cell addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsZero);
+    }];
+    
+    NSString *urlString = [[[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"body"] objectAtIndex:indexPath.row] objectForKey:@"cover"];
+    NSLog(@"urlString:%@",urlString);
+    
+    [imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:nil];
+    
+    
     DrawViewBorderRadius(cell, 1, 1, [UIColor redColor]);
     return cell;
 }
@@ -184,6 +198,7 @@
         CGFloat padding = kSectionHeaderH/3;
 
         
+#warning reusableView后续封装
         if (reusableView)
         {
             //判断是否有标题栏
@@ -204,6 +219,26 @@
                     }];
                     
                     DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
+                    
+                    //+ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imageURLStringsGroup:(NSArray *)imageURLStringsGroup;
+                    NSMutableArray *imgUrlStrings = [[NSMutableArray alloc]init];
+                    NSArray *imgInfos = [[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"banner"] objectForKey:@"top"];
+                    for (NSDictionary *imgDict in imgInfos)
+                    {
+                        [imgUrlStrings addObject:[imgDict objectForKey:@"image"]];
+                    }
+                    
+                    //NSArray *imgUrlStrings = [[[[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"banner"] objectForKey:@"top"] objectAtIndex:indexPath.row] objectForKey:@"image"];
+                    SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:imgUrlStrings];
+                    scrollView.delegate = self;
+                    [view addSubview:scrollView];
+                    
+                    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.edges.insets(UIEdgeInsetsZero);
+                    }];
+                    
+                    scrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
+                    scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
                 }
             }
            
@@ -282,6 +317,10 @@
     return CGSizeZero;
 }
 
-//表头 100
+#pragma mark - SDCycleScrollViewDelegate
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    NSLog(@"cycleScrollView:%@---index:%ld",cycleScrollView,(long)index);
+}
 
 @end
