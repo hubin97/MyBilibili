@@ -95,7 +95,7 @@
 
     
     _homeCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
-    _homeCollectionView.backgroundColor = cherryPowder;//[UIColor whiteColor];
+    _homeCollectionView.backgroundColor = [UIColor whiteColor];
     _homeCollectionView.showsHorizontalScrollIndicator = NO;
     _homeCollectionView.showsVerticalScrollIndicator = NO;
     

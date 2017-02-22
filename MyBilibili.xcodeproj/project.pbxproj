@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04C7ABDF1E5C453500A9CB7C /* HomeCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7ABDE1E5C453500A9CB7C /* HomeCollectionReusableView.m */; };
+		04C7ABE41E5D6C8900A9CB7C /* HomeSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7ABE31E5D6C8900A9CB7C /* HomeSectionModel.m */; };
+		04C7ABE71E5D6F5300A9CB7C /* HomeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7ABE61E5D6F5300A9CB7C /* HomeCellModel.m */; };
 		04EE3C431E5700AB00D16330 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EE3C421E5700AB00D16330 /* TitleView.m */; };
 		1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4701D961786007A8534 /* BaseTabBarController.m */; };
 		1F04D4771D96182C007A8534 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04D4761D96182C007A8534 /* BaseNavigationController.m */; };
@@ -98,6 +100,10 @@
 /* Begin PBXFileReference section */
 		04C7ABDD1E5C453500A9CB7C /* HomeCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionReusableView.h; sourceTree = "<group>"; };
 		04C7ABDE1E5C453500A9CB7C /* HomeCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionReusableView.m; sourceTree = "<group>"; };
+		04C7ABE21E5D6C8900A9CB7C /* HomeSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSectionModel.h; sourceTree = "<group>"; };
+		04C7ABE31E5D6C8900A9CB7C /* HomeSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSectionModel.m; sourceTree = "<group>"; };
+		04C7ABE51E5D6F5300A9CB7C /* HomeCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCellModel.h; sourceTree = "<group>"; };
+		04C7ABE61E5D6F5300A9CB7C /* HomeCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCellModel.m; sourceTree = "<group>"; };
 		04EE3C411E5700AB00D16330 /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
 		04EE3C421E5700AB00D16330 /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		1F04D46F1D961786007A8534 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
@@ -342,6 +348,10 @@
 		1F04D4961D961A72007A8534 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04C7ABE21E5D6C8900A9CB7C /* HomeSectionModel.h */,
+				04C7ABE31E5D6C8900A9CB7C /* HomeSectionModel.m */,
+				04C7ABE51E5D6F5300A9CB7C /* HomeCellModel.h */,
+				04C7ABE61E5D6F5300A9CB7C /* HomeCellModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -819,6 +829,7 @@
 			files = (
 				1F04D4771D96182C007A8534 /* BaseNavigationController.m in Sources */,
 				1FC91A861E5C91F800003176 /* TADotView.m in Sources */,
+				04C7ABE41E5D6C8900A9CB7C /* HomeSectionModel.m in Sources */,
 				1F04D4711D961786007A8534 /* BaseTabBarController.m in Sources */,
 				1FFF5ACD1E50121F00FD3ADE /* UINavigationBar+CustomStyle.m in Sources */,
 				04EE3C431E5700AB00D16330 /* TitleView.m in Sources */,
@@ -836,6 +847,7 @@
 				1F1EF6A01DBE3851008EBA9F /* MineCollectionViewCell.m in Sources */,
 				1F04D4A31D961A72007A8534 /* HomeViewController.m in Sources */,
 				1FC91A871E5C91F800003176 /* TAPageControl.m in Sources */,
+				04C7ABE71E5D6F5300A9CB7C /* HomeCellModel.m in Sources */,
 				1FC91A881E5C91F800003176 /* SDCollectionViewCell.m in Sources */,
 				1F1D2A4D1DC5A80C007983EA /* ThemeTableViewController.m in Sources */,
 				1F5B37C61DB90A29004588B1 /* StartView.m in Sources */,
