@@ -21,5 +21,17 @@
  "uri" : "bilibili://video/8731574"
  */
 
+@property (nonatomic,copy)   NSString *cover;
+@property (nonatomic,strong) NSNumber *danmuku;
+@property (nonatomic,copy)   NSString *goTo;
+@property (nonatomic,assign) BOOL     is_ad;
+@property (nonatomic,copy)   NSString *param;
+@property (nonatomic,strong) NSNumber *play;
+@property (nonatomic,copy)   NSString *title;
+@property (nonatomic,copy)   NSString *url;
+
+
+
+
 
 @end

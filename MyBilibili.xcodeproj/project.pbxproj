@@ -67,6 +67,7 @@
 		1FC91A881E5C91F800003176 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC91A7E1E5C91F800003176 /* SDCollectionViewCell.m */; };
 		1FC91A891E5C91F800003176 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC91A801E5C91F800003176 /* SDCycleScrollView.m */; };
 		1FC91A8A1E5C91F800003176 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC91A821E5C91F800003176 /* UIView+SDExtension.m */; };
+		1FC91A8D1E5DC99200003176 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC91A8C1E5DC99200003176 /* HomeCollectionViewCell.m */; };
 		1FDD12151D8A4C81008F3E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12141D8A4C81008F3E44 /* main.m */; };
 		1FDD12181D8A4C81008F3E44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD12171D8A4C81008F3E44 /* AppDelegate.m */; };
 		1FDD121E1D8A4C81008F3E44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FDD121C1D8A4C81008F3E44 /* Main.storyboard */; };
@@ -182,6 +183,8 @@
 		1FC91A801E5C91F800003176 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		1FC91A811E5C91F800003176 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		1FC91A821E5C91F800003176 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		1FC91A8B1E5DC99200003176 /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
+		1FC91A8C1E5DC99200003176 /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
 		1FDD12101D8A4C80008F3E44 /* MyBilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDD12141D8A4C81008F3E44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1FDD12161D8A4C81008F3E44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 			children = (
 				04C7ABDD1E5C453500A9CB7C /* HomeCollectionReusableView.h */,
 				04C7ABDE1E5C453500A9CB7C /* HomeCollectionReusableView.m */,
+				1FC91A8B1E5DC99200003176 /* HomeCollectionViewCell.h */,
+				1FC91A8C1E5DC99200003176 /* HomeCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 				1FC91A891E5C91F800003176 /* SDCycleScrollView.m in Sources */,
 				1F1EF6A31DBE3879008EBA9F /* MineModel.m in Sources */,
 				1F04D4AA1D961AAE007A8534 /* MineViewController.m in Sources */,
+				1FC91A8D1E5DC99200003176 /* HomeCollectionViewCell.m in Sources */,
 				1FC91A851E5C91F800003176 /* TAAnimatedDotView.m in Sources */,
 				1F04D4A71D961AA0007A8534 /* FindViewController.m in Sources */,
 				1F04D4A21D961A72007A8534 /* FollowViewController.m in Sources */,
