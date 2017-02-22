@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeSectionModel.h"
+#import "HomeBannerModel.h"
 
 @interface HomeCollectionReusableView : UICollectionReusableView
+
+- (void)layoutSectionViewWithModel:(HomeSectionModel *)model;
 
 @end

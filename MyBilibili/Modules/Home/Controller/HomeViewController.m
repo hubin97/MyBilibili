@@ -10,6 +10,10 @@
 #import "TitleView.h"
 #import "SDCycleScrollView.h"
 
+#import "HomeSectionModel.h"
+#import "HomeBannerModel.h"
+#import "HomeCellModel.h"
+
 #define kSectionHeaderH (40 * k5SWScale)
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,SDCycleScrollViewDelegate>
@@ -125,20 +129,26 @@
 #pragma mark - Private
 - (void)sendRequest
 {
-    NSString *urlString = @"http://app.bilibili.com/x/v2/show?access_key=f5bd4e793b82fba5aaf5b91fb549910a&actionKey=appkey&appkey=27eb53fc9058f8c3&build=3470&channel=appstore&device=phone&mobi_app=iphone&plat=1&platform=ios&sign=1c8f22ff72d7cab05a94eb8b12a4c4cc&ts=1469603875&warm=1";
+    NSString *homeUrlString = @"http://app.bilibili.com/x/v2/show?access_key=f5bd4e793b82fba5aaf5b91fb549910a&actionKey=appkey&appkey=27eb53fc9058f8c3&build=3470&channel=appstore&device=phone&mobi_app=iphone&plat=1&platform=ios&sign=1c8f22ff72d7cab05a94eb8b12a4c4cc&ts=1469603875&warm=1";
     
     AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
     
-    [manage GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manage GET:homeUrlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //NSLog(@"responseObject:%@",responseObject);
-        _dataArray = [responseObject objectForKey:@"data"];
+        
+        NSArray *tmpDataArr = [responseObject objectForKey:@"data"];
+        
+        for (NSDictionary *tempDict in tmpDataArr)
+        {
+            HomeSectionModel *homeSectionModel = [HomeSectionModel mj_objectWithKeyValues:tempDict];
+            [_dataArray addObject:homeSectionModel];
+        }
         
         [_homeCollectionView reloadData];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error:%@",error);
     }];
-    
 }
 
 #pragma mark - Action
@@ -152,7 +162,8 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[[_dataArray objectAtIndex:section] objectForKey:@"body"] count];
+    HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:section];
+    return [homeSectionModel.body count];
 }
 
 
@@ -170,11 +181,12 @@
         make.edges.insets(UIEdgeInsetsZero);
     }];
     
-    NSString *urlString = [[[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"body"] objectAtIndex:indexPath.row] objectForKey:@"cover"];
-    NSLog(@"urlString:%@",urlString);
+    HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:indexPath.section];
+    HomeCellModel *homeCellModel =  [HomeCellModel mj_objectWithKeyValues:[homeSectionModel.body objectAtIndex:indexPath.row]];
     
-    [imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:nil];
+    //NSLog(@"urlString:%@",homeCellModel.cover);
     
+    [imageView sd_setImageWithURL:[NSURL URLWithString:homeCellModel.cover] placeholderImage:nil];
     
     DrawViewBorderRadius(cell, 1, 1, [UIColor redColor]);
     return cell;
@@ -202,11 +214,19 @@
         if (reusableView)
         {
             //判断是否有标题栏
-            BOOL isHaveBanner = [[[_dataArray objectAtIndex:indexPath.section] allKeys] containsObject:@"banner"];
+            //BOOL isHaveBanner = [[[_dataArray objectAtIndex:indexPath.section] allKeys] containsObject:@"banner"];
+            
+            HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:indexPath.section];
+            
+            BOOL isHaveBanner = (homeSectionModel.banner)? YES : NO;
+
             if (isHaveBanner)
             {
                 //判断是否有顶部标题栏
-                BOOL isHaveTopBanner = [[[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"banner"] allKeys] containsObject:@"top"];
+                //BOOL isHaveTopBanner = [[[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"banner"] allKeys] containsObject:@"top"];
+
+                BOOL isHaveTopBanner = [[homeSectionModel.banner allKeys] containsObject:@"top"];
+
                 if(isHaveTopBanner)
                 {
                     //创建轮播
@@ -220,15 +240,17 @@
                     
                     DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
                     
-                    //+ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imageURLStringsGroup:(NSArray *)imageURLStringsGroup;
                     NSMutableArray *imgUrlStrings = [[NSMutableArray alloc]init];
-                    NSArray *imgInfos = [[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"banner"] objectForKey:@"top"];
+                    
+                    NSArray *imgInfos = [homeSectionModel.banner objectForKey:@"top"];
+                    
                     for (NSDictionary *imgDict in imgInfos)
                     {
-                        [imgUrlStrings addObject:[imgDict objectForKey:@"image"]];
+                        HomeBannerModel *homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:imgDict];
+                        //[imgUrlStrings addObject:[imgDict objectForKey:@"image"]];
+                        [imgUrlStrings addObject:homeBannerModel.image];
                     }
                     
-                    //NSArray *imgUrlStrings = [[[[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"banner"] objectForKey:@"top"] objectAtIndex:indexPath.row] objectForKey:@"image"];
                     SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:imgUrlStrings];
                     scrollView.delegate = self;
                     [view addSubview:scrollView];
@@ -264,7 +286,7 @@
             DrawViewBorderRadius(logImgView, 1, 1, [UIColor greenColor]);
             //DrawViewBorderRadius(titleLabel, 1, 1, [UIColor blackColor]);
             
-            titleLabel.text = [[_dataArray objectAtIndex:indexPath.section] objectForKey:@"title"];
+            titleLabel.text =  homeSectionModel.title;
             titleLabel.textAlignment = NSTextAlignmentLeft;
             titleLabel.textColor = [UIColor blackColor];
             titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
@@ -285,12 +307,15 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     //判断是否有标题栏
-    BOOL isHaveBanner = [[[_dataArray objectAtIndex:section] allKeys] containsObject:@"banner"];
+    HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:section];
+    
+    BOOL isHaveBanner = (homeSectionModel.banner)? YES : NO;
+
     if (isHaveBanner)
     {
         //判断是否有顶部标题栏
-        BOOL isHaveTopBanner = [[[[_dataArray objectAtIndex:section] objectForKey:@"banner"] allKeys] containsObject:@"top"];
-        
+        BOOL isHaveTopBanner = [[homeSectionModel.banner allKeys] containsObject:@"top"];
+
         if(isHaveTopBanner) NSLog(@"section:%ld--isHaveTopBanner",section);
         
         return CGSizeMake(kScreenW, (isHaveTopBanner)? (100 *k5SWScale + kSectionHeaderH):kSectionHeaderH);
@@ -301,11 +326,18 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
     //判断是否有标题栏
-    BOOL isHaveBanner = [[[_dataArray objectAtIndex:section] allKeys] containsObject:@"banner"];
+    //BOOL isHaveBanner = [[[_dataArray objectAtIndex:section] allKeys] containsObject:@"banner"];
+    
+    HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:section];
+    
+    BOOL isHaveBanner = (homeSectionModel.banner)? YES : NO;
+    
     if (isHaveBanner)
     {
-        BOOL isHaveBottomBanner = [[[[_dataArray objectAtIndex:section] objectForKey:@"banner"] allKeys] containsObject:@"bottom"];
-        
+//        BOOL isHaveBottomBanner = [[[[_dataArray objectAtIndex:section] objectForKey:@"banner"] allKeys] containsObject:@"bottom"];
+
+        BOOL isHaveBottomBanner = [[homeSectionModel.banner allKeys] containsObject:@"bottom"];
+
         if(isHaveBottomBanner)
         {
             NSLog(@"section:%ld--isHaveBottomBanner",section);
