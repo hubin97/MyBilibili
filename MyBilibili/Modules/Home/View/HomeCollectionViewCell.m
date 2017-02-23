@@ -113,8 +113,8 @@
     playCountImageView.image = playCountImage;
     danmuCountImageView.image = danmuCountImage;
     
-    playCountLabel.text = (model.play)?[model.play stringValue] : @"0";
-    dumuCountLabel.text = (model.danmuku)?[model.danmuku stringValue] : @"0";
+    playCountLabel.text = [model.play stringValue]?[model.play stringValue] : @"0";
+    dumuCountLabel.text = [model.danmaku stringValue]?[model.danmaku stringValue] : @"0";
     playCountLabel.font = _titleLabel.font;
     dumuCountLabel.font = _titleLabel.font;
     

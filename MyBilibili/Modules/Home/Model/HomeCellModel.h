@@ -22,7 +22,7 @@
  */
 
 @property (nonatomic,copy)   NSString *cover;
-@property (nonatomic,strong) NSNumber *danmuku;
+@property (nonatomic,strong) NSNumber *danmaku;
 @property (nonatomic,copy)   NSString *goTo;
 @property (nonatomic,assign) BOOL     is_ad;
 @property (nonatomic,copy)   NSString *param;
