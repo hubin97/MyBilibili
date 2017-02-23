@@ -12,6 +12,9 @@
 
 @interface HomeCollectionReusableView : UICollectionReusableView
 
-- (void)layoutSectionViewWithModel:(HomeSectionModel *)model;
+- (void)layoutSectionHeaderViewWithModel:(HomeSectionModel *)model;
+
+- (void)layoutSectionFooterViewWithModel:(HomeSectionModel *)model;
+
 
 @end

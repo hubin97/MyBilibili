@@ -14,15 +14,18 @@
 #import "HomeBannerModel.h"
 #import "HomeCellModel.h"
 
+#import "HomeCollectionReusableView.h"
+#import "HomeCollectionViewCell.h"
+
 #define kSectionHeaderH (40 * k5SWScale)
 
-@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,SDCycleScrollViewDelegate>
+@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout/*,SDCycleScrollViewDelegate*/>
 {
-    TitleView *_titleView;
+    TitleView *_titleView; //标题分区按钮
     
-    UICollectionView *_homeCollectionView;
+    UICollectionView *_homeCollectionView;  //推荐collectionView
     
-    NSMutableArray *_dataArray;
+    NSMutableArray *_dataArray;  //请求数据数组
 }
 @end
 
@@ -88,7 +91,7 @@
     CGFloat itemH = itemW *3 / 4;
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-    //4 : 3
+    //13:11  4 : 3
     layout.itemSize = CGSizeMake(itemW, itemH);
     
     layout.minimumLineSpacing = padding;
@@ -114,16 +117,13 @@
     }];
     
     //注册cell
-    [_homeCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"HomeCell"];
+    [_homeCollectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"HomeCell"];
     
     //注册段头
-    [_homeCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeSectionHeader"];
+    [_homeCollectionView registerClass:[HomeCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeSectionHeader"];
     
-    [_homeCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"HomeSectionFooter"];
+    [_homeCollectionView registerClass:[HomeCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"HomeSectionFooter"];
 
-    
-    //DrawViewBorderRadius(collectionView, 1, 1, [UIColor brownColor]);
-    
 }
 
 #pragma mark - Private
@@ -171,25 +171,14 @@
 {
     static NSString *cellIdent = @"HomeCell";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdent forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
-    
-    //测试数据
-    UIImageView *imageView = [[UIImageView alloc]init];
-    [cell addSubview:imageView];
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.insets(UIEdgeInsetsZero);
-    }];
+    HomeCollectionViewCell *homeCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdent forIndexPath:indexPath];
     
     HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:indexPath.section];
     HomeCellModel *homeCellModel =  [HomeCellModel mj_objectWithKeyValues:[homeSectionModel.body objectAtIndex:indexPath.row]];
     
-    //NSLog(@"urlString:%@",homeCellModel.cover);
-    
-    [imageView sd_setImageWithURL:[NSURL URLWithString:homeCellModel.cover] placeholderImage:nil];
-    
-    DrawViewBorderRadius(cell, 1, 1, [UIColor redColor]);
-    return cell;
+    [homeCell layoutCellWithModel:homeCellModel];
+ 
+    return homeCell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -197,153 +186,22 @@
     static NSString *sectionHeader = @"HomeSectionHeader";
     static NSString *sectionFooter = @"HomeSectionFooter";
 
-    UICollectionReusableView *reusableView = nil;
+    HomeCollectionReusableView *reusableView = nil;
     
     HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:indexPath.section];
 
-    
+    reusableView.backgroundColor = [UIColor whiteColor];
+
     //注意此处作对比的是kind和UICollectionElementKindSectionHeader/UICollectionElementKindSectionFooter
     if ([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
-        //NSLog(@"Home Section");
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:sectionHeader forIndexPath:indexPath];
-        
-        reusableView.backgroundColor = [UIColor whiteColor];
-        
-        CGFloat padding = kSectionHeaderH/3;
-
-        //消除复用
-        [reusableView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-        
-#warning reusableView后续封装
-        if (reusableView)
-        {
-            UIImageView *logImgView = [[UIImageView alloc]init];
-            [reusableView addSubview:logImgView];
-            
-            UILabel *titleLabel = [[UILabel alloc]init];
-            [reusableView addSubview:titleLabel];
-            
-            [logImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo(padding);
-                make.bottom.mas_equalTo(- padding);
-                make.width.height.mas_equalTo(padding);
-            }];
-            
-            [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                
-                make.top.mas_equalTo(logImgView.mas_top);
-                make.left.mas_equalTo(logImgView.mas_right).offset(padding/2);
-                make.bottom.right.mas_equalTo(- padding);
-            }];
-            
-            DrawViewBorderRadius(logImgView, 1, 1, [UIColor greenColor]);
-            //DrawViewBorderRadius(titleLabel, 1, 1, [UIColor blackColor]);
-            
-            titleLabel.text =  homeSectionModel.title;
-            titleLabel.textAlignment = NSTextAlignmentLeft;
-            titleLabel.textColor = [UIColor blackColor];
-            titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-            
-            
-            BOOL isHaveBanner = (homeSectionModel.banner)? YES : NO;
-
-            if (isHaveBanner)
-            {
-                //判断是否有顶部标题栏
-                //BOOL isHaveTopBanner = [[[[_dataArray objectAtIndex:indexPath.section] objectForKey:@"banner"] allKeys] containsObject:@"top"];
-
-                BOOL isHaveTopBanner = [[homeSectionModel.banner allKeys] containsObject:@"top"];
-
-                if(isHaveTopBanner)
-                {
-                    //创建轮播
-                    UIView *view = [[UIView alloc]init];
-                    [reusableView addSubview:view];
-                    [view mas_makeConstraints:^(MASConstraintMaker *make) {
-                        
-                        make.left.right.equalTo(reusableView);
-                        make.bottom.mas_equalTo(- kSectionHeaderH);
-                        make.height.mas_equalTo(100 *k5SWScale);
-                    }];
-                    
-                    DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
-                    
-                    NSMutableArray *imgUrlStrings = [[NSMutableArray alloc]init];
-                    
-                    NSArray *imgInfos = [homeSectionModel.banner objectForKey:@"top"];
-                    
-                    for (NSDictionary *imgDict in imgInfos)
-                    {
-                        HomeBannerModel *homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:imgDict];
-                        //[imgUrlStrings addObject:[imgDict objectForKey:@"image"]];
-                        [imgUrlStrings addObject:homeBannerModel.image];
-                    }
-                    
-                    SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:imgUrlStrings];
-                    scrollView.delegate = self;
-                    [view addSubview:scrollView];
-                    
-                    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-                        make.edges.insets(UIEdgeInsetsZero);
-                    }];
-                    
-                    scrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
-                    scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
-                }
-            }
-        }
-        DrawViewBorderRadius(reusableView, 1, 1, [UIColor blueColor]);
+        [reusableView layoutSectionHeaderViewWithModel:homeSectionModel];
     }
     else if ([kind isEqualToString:UICollectionElementKindSectionFooter])
     {
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:sectionFooter forIndexPath:indexPath];
-        reusableView.backgroundColor = [UIColor whiteColor];
-        
-        BOOL isHaveBanner = (homeSectionModel.banner)? YES : NO;
-        
-        if (isHaveBanner)
-        {
-            BOOL isHaveBottomBanner = [[homeSectionModel.banner allKeys] containsObject:@"bottom"];
-            
-            if(isHaveBottomBanner)
-            {
-                //创建轮播
-                UIView *view = [[UIView alloc]init];
-                [reusableView addSubview:view];
-                [view mas_makeConstraints:^(MASConstraintMaker *make) {
-                    
-                    make.top.left.bottom.right.equalTo(reusableView);
-                }];
-                
-                DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
-                
-                NSMutableArray *imgUrlStrings = [[NSMutableArray alloc]init];
-                
-                NSArray *imgInfos = [homeSectionModel.banner objectForKey:@"bottom"];
-                
-                for (NSDictionary *imgDict in imgInfos)
-                {
-                    HomeBannerModel *homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:imgDict];
-                    //[imgUrlStrings addObject:[imgDict objectForKey:@"image"]];
-                    [imgUrlStrings addObject:homeBannerModel.image];
-                }
-                
-                SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:imgUrlStrings];
-                scrollView.delegate = self;
-                [view addSubview:scrollView];
-                
-                [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.edges.insets(UIEdgeInsetsZero);
-                }];
-                
-                scrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
-                scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
-            }
-        }
-
-        
-        DrawViewBorderRadius(reusableView, 1, 1, [UIColor greenColor]);
+        [reusableView layoutSectionFooterViewWithModel:homeSectionModel];
     }
     
     return reusableView;
@@ -370,17 +228,12 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
-    //判断是否有标题栏
-    //BOOL isHaveBanner = [[[_dataArray objectAtIndex:section] allKeys] containsObject:@"banner"];
-    
     HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:section];
     
     BOOL isHaveBanner = (homeSectionModel.banner)? YES : NO;
     
     if (isHaveBanner)
     {
-//        BOOL isHaveBottomBanner = [[[[_dataArray objectAtIndex:section] objectForKey:@"banner"] allKeys] containsObject:@"bottom"];
-
         BOOL isHaveBottomBanner = [[homeSectionModel.banner allKeys] containsObject:@"bottom"];
 
         if(isHaveBottomBanner)
@@ -394,10 +247,10 @@
     return CGSizeZero;
 }
 
-#pragma mark - SDCycleScrollViewDelegate
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
-{
-    NSLog(@"cycleScrollView:%@---index:%ld",cycleScrollView,(long)index);
-}
+//#pragma mark - SDCycleScrollViewDelegate
+//- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+//{
+//    NSLog(@"cycleScrollView:%@---index:%ld",cycleScrollView,(long)index);
+//}
 
 @end
