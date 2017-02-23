@@ -199,6 +199,9 @@
 
     UICollectionReusableView *reusableView = nil;
     
+    HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:indexPath.section];
+
+    
     //注意此处作对比的是kind和UICollectionElementKindSectionHeader/UICollectionElementKindSectionFooter
     if ([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
@@ -209,14 +212,39 @@
         
         CGFloat padding = kSectionHeaderH/3;
 
+        //消除复用
+        [reusableView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         
 #warning reusableView后续封装
         if (reusableView)
         {
-            //判断是否有标题栏
-            //BOOL isHaveBanner = [[[_dataArray objectAtIndex:indexPath.section] allKeys] containsObject:@"banner"];
+            UIImageView *logImgView = [[UIImageView alloc]init];
+            [reusableView addSubview:logImgView];
             
-            HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:indexPath.section];
+            UILabel *titleLabel = [[UILabel alloc]init];
+            [reusableView addSubview:titleLabel];
+            
+            [logImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(padding);
+                make.bottom.mas_equalTo(- padding);
+                make.width.height.mas_equalTo(padding);
+            }];
+            
+            [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                
+                make.top.mas_equalTo(logImgView.mas_top);
+                make.left.mas_equalTo(logImgView.mas_right).offset(padding/2);
+                make.bottom.right.mas_equalTo(- padding);
+            }];
+            
+            DrawViewBorderRadius(logImgView, 1, 1, [UIColor greenColor]);
+            //DrawViewBorderRadius(titleLabel, 1, 1, [UIColor blackColor]);
+            
+            titleLabel.text =  homeSectionModel.title;
+            titleLabel.textAlignment = NSTextAlignmentLeft;
+            titleLabel.textColor = [UIColor blackColor];
+            titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+            
             
             BOOL isHaveBanner = (homeSectionModel.banner)? YES : NO;
 
@@ -234,7 +262,8 @@
                     [reusableView addSubview:view];
                     [view mas_makeConstraints:^(MASConstraintMaker *make) {
                         
-                        make.top.left.right.equalTo(reusableView);
+                        make.left.right.equalTo(reusableView);
+                        make.bottom.mas_equalTo(- kSectionHeaderH);
                         make.height.mas_equalTo(100 *k5SWScale);
                     }];
                     
@@ -263,33 +292,6 @@
                     scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
                 }
             }
-           
-            UIImageView *logImgView = [[UIImageView alloc]init];
-            [reusableView addSubview:logImgView];
-            
-            UILabel *titleLabel = [[UILabel alloc]init];
-            [reusableView addSubview:titleLabel];
-            
-            [logImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo(padding);
-                make.bottom.mas_equalTo(- padding);
-                make.width.height.mas_equalTo(padding);
-            }];
-            
-            [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                
-                make.top.mas_equalTo(logImgView.mas_top);
-                make.left.mas_equalTo(logImgView.mas_right).offset(padding/2);
-                make.bottom.right.mas_equalTo(- padding);
-            }];
-            
-            DrawViewBorderRadius(logImgView, 1, 1, [UIColor greenColor]);
-            //DrawViewBorderRadius(titleLabel, 1, 1, [UIColor blackColor]);
-            
-            titleLabel.text =  homeSectionModel.title;
-            titleLabel.textAlignment = NSTextAlignmentLeft;
-            titleLabel.textColor = [UIColor blackColor];
-            titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
         }
         DrawViewBorderRadius(reusableView, 1, 1, [UIColor blueColor]);
     }
@@ -297,6 +299,49 @@
     {
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:sectionFooter forIndexPath:indexPath];
         reusableView.backgroundColor = [UIColor whiteColor];
+        
+        BOOL isHaveBanner = (homeSectionModel.banner)? YES : NO;
+        
+        if (isHaveBanner)
+        {
+            BOOL isHaveBottomBanner = [[homeSectionModel.banner allKeys] containsObject:@"bottom"];
+            
+            if(isHaveBottomBanner)
+            {
+                //创建轮播
+                UIView *view = [[UIView alloc]init];
+                [reusableView addSubview:view];
+                [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                    
+                    make.top.left.bottom.right.equalTo(reusableView);
+                }];
+                
+                DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
+                
+                NSMutableArray *imgUrlStrings = [[NSMutableArray alloc]init];
+                
+                NSArray *imgInfos = [homeSectionModel.banner objectForKey:@"bottom"];
+                
+                for (NSDictionary *imgDict in imgInfos)
+                {
+                    HomeBannerModel *homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:imgDict];
+                    //[imgUrlStrings addObject:[imgDict objectForKey:@"image"]];
+                    [imgUrlStrings addObject:homeBannerModel.image];
+                }
+                
+                SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:imgUrlStrings];
+                scrollView.delegate = self;
+                [view addSubview:scrollView];
+                
+                [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.edges.insets(UIEdgeInsetsZero);
+                }];
+                
+                scrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
+                scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+            }
+        }
+
         
         DrawViewBorderRadius(reusableView, 1, 1, [UIColor greenColor]);
     }
