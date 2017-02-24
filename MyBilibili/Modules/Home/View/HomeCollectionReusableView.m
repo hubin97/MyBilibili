@@ -15,6 +15,7 @@ static float kSectionHeaderH = 40.0f;//(40 * k5SWScale);
 {
     BOOL isHaveTopBanner;
     BOOL isHaveBottomBanner;
+    NSMutableArray *_bannerDatas;
 }
 @end
 
@@ -52,13 +53,32 @@ static float kSectionHeaderH = 40.0f;//(40 * k5SWScale);
             make.bottom.right.mas_equalTo(- padding);
         }];
         
-        DrawViewBorderRadius(logImgView, 1, 1, [UIColor greenColor]);
+        //DrawViewBorderRadius(logImgView, 1, 1, [UIColor greenColor]);
         //DrawViewBorderRadius(titleLabel, 1, 1, [UIColor blackColor]);
+        
+        if ([model.type isEqualToString:@"recommend"]) {
+            logImgView.image = [UIImage imageNamed:@"hd_home_recommend"];
+        }
+        else if ([model.type isEqualToString:@"live"]) {
+            logImgView.image = [UIImage imageNamed:@"hd_home_subregion_live"];
+        }
+        else if ([model.type isEqualToString:@"bangumi"]) {
+            logImgView.image = [UIImage imageNamed:@"hd_home_subregion_live"];
+        }
+        else if ([model.type isEqualToString:@"region"]) {
+            logImgView.image = [UIImage imageNamed: [NSString stringWithFormat:@"home_region_icon_%@", model.param]];
+        }
+        else if ([model.type isEqualToString:@"activity"]) {
+            logImgView.image = [UIImage imageNamed:@"hd_home_subregion_live"];
+        }
+        else {
+            logImgView.image = [UIImage imageNamed:@"hd_home_recommend"];
+        }
         
         titleLabel.text =  model.title;
         titleLabel.textAlignment = NSTextAlignmentLeft;
         titleLabel.textColor = [UIColor blackColor];
-        titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
         
         
         if(isHaveTopBanner)
@@ -75,17 +95,19 @@ static float kSectionHeaderH = 40.0f;//(40 * k5SWScale);
             
             //DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
             
-            NSMutableArray *imgUrlStrings = [[NSMutableArray alloc]init];
-            
+            _bannerDatas = [[NSMutableArray alloc]init];
+            NSMutableArray *bannerImages = [[NSMutableArray alloc]init];
+
             NSArray *imgInfos = [model.banner objectForKey:@"top"];
             
             for (NSDictionary *imgDict in imgInfos)
             {
                 HomeBannerModel *homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:imgDict];
-                [imgUrlStrings addObject:homeBannerModel.image];
+                [_bannerDatas addObject:homeBannerModel];
+                [bannerImages addObject:homeBannerModel.image];
             }
             
-            SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:imgUrlStrings];
+            SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:bannerImages];
             scrollView.delegate = self;
             [view addSubview:scrollView];
             
@@ -127,17 +149,18 @@ static float kSectionHeaderH = 40.0f;//(40 * k5SWScale);
         
         DrawViewBorderRadius(view, 1, 1, [UIColor brownColor]);
         
-        NSMutableArray *imgUrlStrings = [[NSMutableArray alloc]init];
-        
+        _bannerDatas = [[NSMutableArray alloc]init];
+        NSMutableArray *bannerImages = [[NSMutableArray alloc]init];
         NSArray *imgInfos = [model.banner objectForKey:@"bottom"];
         
         for (NSDictionary *imgDict in imgInfos)
         {
             HomeBannerModel *homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:imgDict];
-            [imgUrlStrings addObject:homeBannerModel.image];
+            [_bannerDatas addObject:homeBannerModel];
+            [bannerImages addObject:homeBannerModel.image];
         }
         
-        SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:imgUrlStrings];
+        SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:bannerImages];
         scrollView.delegate = self;
         [view addSubview:scrollView];
         
@@ -179,6 +202,9 @@ static float kSectionHeaderH = 40.0f;//(40 * k5SWScale);
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"cycleScrollView:%@---index:%ld",cycleScrollView,(long)index);
+    HomeBannerModel *homeBannerModel = [_bannerDatas objectAtIndex:index];
+    
+    self.pushBannerUrlBlock(homeBannerModel);
 }
 
 @end
