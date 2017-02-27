@@ -17,4 +17,7 @@
 - (void)layoutSectionFooterViewWithModel:(HomeSectionModel *)model;
 
 
+@property (nonatomic, copy) void (^pushBannerUrlBlock)(HomeBannerModel *bannerMode);
+
+
 @end

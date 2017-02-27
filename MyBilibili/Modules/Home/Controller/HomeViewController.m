@@ -17,6 +17,9 @@
 #import "HomeCollectionReusableView.h"
 #import "HomeCollectionViewCell.h"
 
+#import "WebViewController.h"
+
+
 #define kSectionHeaderH (40 * k5SWScale)
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout/*,SDCycleScrollViewDelegate*/>
@@ -61,12 +64,15 @@
 #pragma mark - Setup
 - (void)initNavi
 {
+    //WS(ws);
+    
     UIView *naviBar = [[UIView alloc] init];
     [self.view addSubview:naviBar];
     
     naviBar.backgroundColor = cherryPowder;
 
     [naviBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        //make.top.left.right.equalTo(ws);
         make.width.mas_equalTo(kScreenW);
         make.height.mas_equalTo(@(52 *k5SWScale));
     }];
@@ -212,6 +218,16 @@
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:sectionFooter forIndexPath:indexPath];
         [reusableView layoutSectionFooterViewWithModel:homeSectionModel];
     }
+    
+    reusableView.pushBannerUrlBlock = ^(HomeBannerModel *bannerMode){
+    
+        NSLog(@"need to push url:%@",bannerMode.uri);
+        WebViewController *wkVc = [[WebViewController alloc]init];
+        wkVc.homeBannerModel = bannerMode;
+        wkVc.hidesBottomBarWhenPushed = YES;
+        wkVc.titles = @[bannerMode.title];
+        [self.navigationController pushViewController:wkVc animated:YES];
+    };
     
     return reusableView;
 }
