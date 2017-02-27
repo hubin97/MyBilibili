@@ -19,6 +19,8 @@
 
 #import "WebViewController.h"
 
+//#import <IJKMediaFramework/IJKMediaFramework.h>
+#import "MediaViewController.h"
 
 #define kSectionHeaderH (40 * k5SWScale)
 
@@ -193,6 +195,10 @@
     HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:indexPath.section];
     HomeCellModel *homeCellModel =  [HomeCellModel mj_objectWithKeyValues:[homeSectionModel.body objectAtIndex:indexPath.row]];
     NSLog(@"indexPath:%@--homeCellModel.url:%@",indexPath,homeCellModel.uri);
+
+    MediaViewController *mediaVc = [[MediaViewController alloc]init];
+    mediaVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:mediaVc animated:YES];
 }
 
 

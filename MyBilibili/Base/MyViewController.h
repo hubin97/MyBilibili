@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSArray *titles;
 
+
+- (void)backBtnClicked;
+
 @end
