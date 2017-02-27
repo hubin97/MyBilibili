@@ -181,6 +181,15 @@
     return homeCell;
 }
 
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeSectionModel *homeSectionModel = [_dataArray objectAtIndex:indexPath.section];
+    HomeCellModel *homeCellModel =  [HomeCellModel mj_objectWithKeyValues:[homeSectionModel.body objectAtIndex:indexPath.row]];
+    NSLog(@"indexPath:%@--homeCellModel.url:%@",indexPath,homeCellModel.uri);
+}
+
+
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *sectionHeader = @"HomeSectionHeader";

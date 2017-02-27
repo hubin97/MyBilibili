@@ -28,7 +28,7 @@
 @property (nonatomic,copy)   NSString *param;
 @property (nonatomic,strong) NSNumber *play;
 @property (nonatomic,copy)   NSString *title;
-@property (nonatomic,copy)   NSString *url;
+@property (nonatomic,copy)   NSString *uri;
 
 
 
