@@ -175,12 +175,6 @@ static float kSectionHeaderH = 40.0f;//(40 * k5SWScale);
     //DrawViewBorderRadius(self, 1, 1, [UIColor greenColor]);
 }
 
-////布局Banner
-//- (void)layoutTopOrBottomBannerWithModel:(HomeSectionModel *)model
-//{
-//
-//}
-
 
 //获取是否有包含标题轮播栏(顶部还是底部)
 - (void)analyzeIsHaveBannerWithModel:(HomeSectionModel *)model
