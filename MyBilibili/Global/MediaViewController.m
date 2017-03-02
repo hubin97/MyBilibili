@@ -42,19 +42,19 @@
         make.top.left.right.equalTo(ws.view);
         make.height.mas_equalTo(playViewH);
     }];
-    
+
     _playView.backgroundColor = [UIColor blackColor];
+
+    UIView *playSubView = [[UIView alloc]init];
+    [_playView addSubview:playSubView];
     
-    UIImageView *playImageView = [[UIImageView alloc]init];
-    [_playView addSubview:playImageView];
-    
-    [playImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [playSubView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(_playView.mas_top).offset(playPadding);
         make.bottom.equalTo(_playView.mas_bottom).offset(- playPadding);
         make.left.right.equalTo(ws.view);
     }];
-    playImageView.image = [UIImage imageNamed:@"1.jpg"];
+    //playImageView.image = [UIImage imageNamed:@"1.jpg"];
     
     //220 630  25
     
@@ -63,13 +63,12 @@
     _player = [[IJKFFMoviePlayerController alloc]initWithContentURL:url withOptions:nil];
     
     UIView *playerView = [_player view];
+    playerView.frame = playSubView.frame;
+    playerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    playerView.frame = playImageView.bounds;
-    
-//    [_playView addSubview:playerView];
-    
-    [playImageView insertSubview:playerView atIndex:1];
-    
+    [playSubView insertSubview:playerView atIndex:1];
+    [_player setScalingMode:IJKMPMovieScalingModeAspectFill];
+    //[self installMovieNotificationObservers];
 }
 
 
