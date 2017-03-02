@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyViewController.h"
 
-@interface MediaViewController : MyViewController
+@interface MediaViewController : UIViewController
 
 @end
