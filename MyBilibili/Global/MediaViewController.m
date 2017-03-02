@@ -10,8 +10,11 @@
 #import <IJKMediaFramework/IJKMediaFramework.h>
 
 @interface MediaViewController ()
-
+{
+    BOOL isClicked;
+}
 @property (atomic, retain) id <IJKMediaPlayback> player;
+@property (nonatomic, strong) UIView *playView ;
 
 @end
 
@@ -21,17 +24,54 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSURL *url = [NSURL URLWithString:@"http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8"];
+ 
+    [self setup];
+}
 
+- (void)setup
+{
+    WS(ws);
+    
+    CGFloat playViewH = [UIScreen mainScreen].bounds.size.height * 0.35;
+    CGFloat playPadding = playViewH * 0.12;
+    
+    _playView = [[UIView alloc]init];
+    [self.view addSubview:_playView];
+    
+    [_playView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(ws.view);
+        make.height.mas_equalTo(playViewH);
+    }];
+    
+    _playView.backgroundColor = [UIColor blackColor];
+    
+    UIImageView *playImageView = [[UIImageView alloc]init];
+    [_playView addSubview:playImageView];
+    
+    [playImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(_playView.mas_top).offset(playPadding);
+        make.bottom.equalTo(_playView.mas_bottom).offset(- playPadding);
+        make.left.right.equalTo(ws.view);
+    }];
+    playImageView.image = [UIImage imageNamed:@"1.jpg"];
+    
+    //220 630  25
+    
+    NSURL *url = [NSURL URLWithString:@"http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8"];
+    
     _player = [[IJKFFMoviePlayerController alloc]initWithContentURL:url withOptions:nil];
     
     UIView *playerView = [_player view];
     
-    playerView.frame = self.view.bounds;
+    playerView.frame = playImageView.bounds;
     
-//    [self.view addSubview:playerView];
-    [self.view insertSubview:playerView atIndex:1];
+//    [_playView addSubview:playerView];
+    
+    [playImageView insertSubview:playerView atIndex:1];
+    
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -43,17 +83,75 @@
     }
     
 }
+
+
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    if (_player.isPlaying)
+//    if (_player.isPlaying)
+//    {
+//        [_player pause];
+//    }
+//    else
+//    {
+//        [_player play];
+//    }
+    
+    
+    isClicked = YES;
+    
+    //WS(ws);
+    
+    BOOL isPortrait = [[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationPortrait;
+    CGFloat timeInterval = [[UIApplication sharedApplication]statusBarOrientationAnimationDuration];
+    
+    if(isPortrait)
     {
-        [_player pause];
+        CGFloat h = (self.view.frame.size.width);
+        
+        [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
+        
+        [UIView animateWithDuration:timeInterval animations:^{
+            
+            [_playView mas_updateConstraints:^(MASConstraintMaker *make) {
+                
+                make.height.mas_equalTo(h);
+            }];
+            [_playView layoutIfNeeded];
+        }];
     }
     else
     {
-        [_player play];
+        [self interfaceOrientation:UIInterfaceOrientationPortrait];
+        
+        CGFloat h = (self.view.frame.size.height * 0.35);
+        
+        [UIView animateWithDuration:timeInterval animations:^{
+            
+            [_playView mas_updateConstraints:^(MASConstraintMaker *make) {
+                
+                make.height.mas_equalTo(h);
+            }];
+            [_playView layoutIfNeeded];
+        }];
+    }
+    
+    isClicked = !isClicked;
+}
+
+- (void)interfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector             = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val                  = orientation;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
     }
 }
+
 
 - (void)backBtnClicked
 {
@@ -67,14 +165,37 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
+//    [self.view layoutIfNeeded];
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+//设置状态栏
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
 }
-*/
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)shouldAutorotate
+{
+    //return YES;
+    return (isClicked)? YES : NO;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
 
 @end

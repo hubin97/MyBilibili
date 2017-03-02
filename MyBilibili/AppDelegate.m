@@ -20,14 +20,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //!!!!:此处code位置影响动画的展示
+//    [self.window makeKeyAndVisible];
     
-    BaseTabBarController *baseTabBc = [[BaseTabBarController alloc]init];
-    self.window.rootViewController = baseTabBc;
+    //此处code位置影响项目横竖屏切换的状态栏的展示
+//#warning 具体是什么原因呢??? 去掉storyboard的加载
+    //拿掉General -> Main interface (Main)
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+    self.window.rootViewController = [[BaseTabBarController alloc]init];
     
     [self.window makeKeyAndVisible];
 
     [StartView lanuchStart];
+
     
     return YES;
 }
