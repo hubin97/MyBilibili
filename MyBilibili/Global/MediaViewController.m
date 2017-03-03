@@ -378,6 +378,9 @@
     BOOL isPortrait = [[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationPortrait;
     //CGFloat timeInterval = [[UIApplication sharedApplication]statusBarOrientationAnimationDuration];
 
+    //重调- (BOOL)prefersStatusBarHidden方法
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     // 竖屏时点击
     if (isPortrait)
     {
@@ -406,10 +409,7 @@
             _bottomImageView.hidden = YES;
             _sendDanmuView.hidden = YES;
         }
-        //重调- (BOOL)prefersStatusBarHidden方法
-        [self setNeedsStatusBarAppearanceUpdate];
     }
-    
 }
 
 
@@ -531,13 +531,13 @@
 //设置状态栏
 - (BOOL)prefersStatusBarHidden
 {
-    BOOL landscape = [[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationLandscapeLeft || [[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationLandscapeRight;
-    if (_topImageView.hidden && landscape)
-    {
-        return YES;
-    }
+//    BOOL landscape = [[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationLandscapeLeft || [[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationLandscapeRight;
+//    if (_topImageView.hidden && landscape)
+//    {
+//        return YES;
+//    }
 
-    return NO;
+    return (_topImageView.hidden)? YES: NO;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
