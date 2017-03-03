@@ -289,7 +289,7 @@
     }];
     _sendDanmuView.backgroundColor = [UIColor blackColor];
     
-    DrawViewBorderRadius(_sendDanmuView, 1, 1, [UIColor whiteColor]);
+    //DrawViewBorderRadius(_sendDanmuView, 1, 1, [UIColor whiteColor]);
 
     //头像
     UIImageView *headIconView = [[UIImageView alloc]init];
@@ -377,9 +377,6 @@
     NSLog(@"playSubViewTap-----");
     BOOL isPortrait = [[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationPortrait;
     //CGFloat timeInterval = [[UIApplication sharedApplication]statusBarOrientationAnimationDuration];
-
-    //重调- (BOOL)prefersStatusBarHidden方法
-    [self setNeedsStatusBarAppearanceUpdate];
     
     // 竖屏时点击
     if (isPortrait)
@@ -410,6 +407,9 @@
             _sendDanmuView.hidden = YES;
         }
     }
+    
+    //重调- (BOOL)prefersStatusBarHidden方法
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 
