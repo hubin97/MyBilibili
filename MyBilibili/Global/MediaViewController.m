@@ -33,7 +33,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
- 
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     [self setupPortraitPlayView];
 }
 
@@ -404,9 +405,11 @@
             _topImageView.hidden = YES;
             _bottomImageView.hidden = YES;
             _sendDanmuView.hidden = YES;
-    
         }
+        //重调- (BOOL)prefersStatusBarHidden方法
+        [self setNeedsStatusBarAppearanceUpdate];
     }
+    
 }
 
 
@@ -442,35 +445,30 @@
     [UIView animateWithDuration:timeInterval animations:^{
         
         [_playView mas_updateConstraints:^(MASConstraintMaker *make) {
-            
             make.height.mas_equalTo(h);
         }];
-        //[_playView layoutIfNeeded];
         
         [_playSubView mas_updateConstraints:^(MASConstraintMaker *make) {
             //make.height.mas_equalTo(h);
             make.top.left.bottom.right.equalTo(_playView);
         }];
-        //[_playSubView layoutIfNeeded];
     
-       
         [_sendDanmuView mas_updateConstraints:^(MASConstraintMaker *make) {
             //make.height.mas_equalTo(h);
             make.left.bottom.right.equalTo(_playView);
             make.height.mas_equalTo(sendDanmuViewH);
         }];
-        [_sendDanmuView layoutIfNeeded];
         
         [_bottomImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             //make.height.mas_equalTo(h);
             make.left.bottom.right.equalTo(_playView);
             make.height.mas_equalTo(sendDanmuViewH + 20 + 10 *k5SWScale);
         }];
-        //[_bottomImageView layoutIfNeeded];
         [self.view layoutIfNeeded];
+        
     } completion:^(BOOL finished) {
         
-        //横屏时默认点击一下
+        //横屏时默认点击一下做隐藏菜单栏
         [self playSubViewTap];
     }];
     
@@ -505,22 +503,22 @@
                 
                 make.height.mas_equalTo(h);
             }];
-            [_playView layoutIfNeeded];
+            //[_playView layoutIfNeeded];
             
             [_playSubView mas_updateConstraints:^(MASConstraintMaker *make) {
                 
                 make.top.left.right.equalTo(_playView);
                 make.bottom.equalTo(_playView.mas_bottom).offset(- sendDanmuViewH);
             }];
-            [_playSubView layoutIfNeeded];
+            //[_playSubView layoutIfNeeded];
             
             [_bottomImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.right.equalTo(_playView);
                 make.bottom.equalTo(_playView).offset(- sendDanmuViewH);
                 make.height.mas_equalTo(20 + 10 *k5SWScale);
             }];
-            [_bottomImageView layoutIfNeeded];
-            
+            //[_bottomImageView layoutIfNeeded];
+            [self.view layoutIfNeeded];
         }];
 
         isClicked = !isClicked;
@@ -533,6 +531,12 @@
 //设置状态栏
 - (BOOL)prefersStatusBarHidden
 {
+    BOOL landscape = [[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationLandscapeLeft || [[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationLandscapeRight;
+    if (_topImageView.hidden && landscape)
+    {
+        return YES;
+    }
+
     return NO;
 }
 
