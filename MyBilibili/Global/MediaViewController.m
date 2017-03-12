@@ -25,15 +25,23 @@
 @property (nonatomic, strong) UIView *playSubView;          //播放器展示视图
 @property (nonatomic, strong) UIButton *bigPlayBtn;         //大播放按钮
 
+@property (nonatomic, strong) UIView *topView;              //顶部标题视图
 @property (nonatomic, strong) UIView *bottomView;           //播放控制视图
 @property (nonatomic, strong) UIButton *smallPlayBtn;       //小播放按钮
 @property (nonatomic, strong) UILabel *currentTimeLabel;    //当前播放时长
 @property (nonatomic, strong) UILabel *totalTimeLabel;      //总共播放时长
 @property (nonatomic, strong) UIProgressView *progressView; //播放进度条
 
+
+@property (nonatomic, strong) UIButton *moreBtn;            //顶部更多键
+@property (nonatomic, strong) UIView *landscapeTopShowView; //顶部横屏才显示的视图(充电/ 投硬币/ 分享/ 设置)
+
 @property (nonatomic, strong) UIButton *fullScreenBtn;      //全屏按钮
 @property (nonatomic, strong) UIImageView *headIconView;    //头像视图
 @property (nonatomic, strong) UITextField *danmuTextField;  //弹幕输入框
+
+@property (nonatomic, strong) UILabel *titleLabel;          //当前房间标题
+
 @end
 
 @implementation MediaViewController
@@ -136,10 +144,10 @@
 #endif
     
     //添加标题视图
-    UIView *topView = [[UIView alloc]init];
-    [_topImageView addSubview:topView];
+    _topView = [[UIView alloc]init];
+    [_topImageView addSubview:_topView];
     
-    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topImageView.mas_top).offset(20);
         make.left.right.equalTo(_topImageView);
         make.height.mas_equalTo(20 + 10 *k5SWScale);
@@ -151,41 +159,58 @@
     CGFloat titleLabelX = self.view.frame.size.width * 0.22;
     //CGFloat titleLabelW = topView.frame.size.width * (1 - 2 * 0.22);
     
-    UILabel *titleLabel = [[UILabel alloc]init];
-    [topView addSubview:titleLabel];
-    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(topView);
-        make.left.equalTo(topView.mas_left).offset(titleLabelX);
-        make.right.equalTo(topView.mas_right).offset(-titleLabelX);
+    _titleLabel = [[UILabel alloc]init];
+    [_topView addSubview:_titleLabel];
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.equalTo(_topView);
+        make.left.equalTo(_topView.mas_left).offset(titleLabelX);
+        make.right.equalTo(_topView.mas_right).offset(-titleLabelX);
     }];
     
-    titleLabel.text = @"正在播放的是<大秦帝国>电视剧,up主欢迎大家打赏鲜花.";
-    titleLabel.font = [UIFont systemFontOfSize:12.0];
-    titleLabel.textColor = [UIColor whiteColor];
+    _titleLabel.text = @"正在播放的是<大秦帝国>电视剧,up主欢迎大家打赏鲜花.";
+    _titleLabel.font = [UIFont systemFontOfSize:12.0];
+    _titleLabel.textColor = [UIColor whiteColor];
     
+    //DrawViewBorderRadius(_titleLabel, 1, 1, [UIColor whiteColor]);
+
     //返回键  70 / 320
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [topView addSubview:backBtn];
+    [_topView addSubview:backBtn];
     [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(topView);
-        make.left.equalTo(topView.mas_left).offset(15 *k5SWScale);
+        make.top.bottom.equalTo(_topView);
+        make.left.equalTo(_topView.mas_left).offset(15 *k5SWScale);
         make.width.equalTo(backBtn.mas_height);
     }];
-    
+    //DrawViewBorderRadius(backBtn, 1, 1, [UIColor whiteColor]);
+
     
     //更多键
-    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [topView addSubview:moreBtn];
-    [moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(topView);
-        make.right.equalTo(topView.mas_right).offset(- 15 *k5SWScale);
-        make.width.equalTo(moreBtn.mas_height);
+    _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_topView addSubview:_moreBtn];
+    [_moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.equalTo(_topView);
+        make.right.equalTo(_topView.mas_right).offset(- 15 *k5SWScale);
+        make.width.equalTo(_moreBtn.mas_height);
     }];
     
     [backBtn setImage:[UIImage imageNamed:@"common_backShadow"] forState:UIControlStateNormal];
-    [moreBtn setImage:[UIImage imageNamed:@"icmpv_more_light"] forState:UIControlStateNormal];
+    [_moreBtn setImage:[UIImage imageNamed:@"icmpv_more_light"] forState:UIControlStateNormal];
     
     [backBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    //UIInterfaceOrientationLandscapeLeft
+    //顶部横屏小控件(只创建,横屏时才显示) // 充电/ 投硬币/ 分享/ 设置
+    _landscapeTopShowView = [[UIView alloc]init];
+    [_topView addSubview:_landscapeTopShowView];
+    _landscapeTopShowView.hidden = YES;
+  
+    
+    [_landscapeTopShowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_titleLabel.mas_right);
+        make.top.bottom.right.equalTo(_topView);
+    }];
+
+//        DrawViewBorderRadius(_landscapeTopShowView, 1, 2, [UIColor redColor]);
+    
     
     
     //播放控制视图
@@ -364,7 +389,7 @@
 }
 
 
-//====  整合横竖屏 ====
+//====  整合横竖屏切换 ====
 - (void)layoutWithInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
     [self interfaceOrientation:orientation];
@@ -377,6 +402,7 @@
 
     [UIView animateWithDuration:timeInterval animations:^{
         
+        //大视图
         [_playView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(h);
         }];
@@ -407,9 +433,29 @@
             }
         }];
         
+        //顶部小控件
+        CGFloat titleLabelX = (isPortrait)? self.view.frame.size.width * 0.22 : self.view.frame.size.width * 0.1;
+
+        [_titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(_topView);
+            make.left.equalTo(_topView.mas_left).offset(titleLabelX);
+            if(isPortrait)
+            {
+                make.right.equalTo(_topView.mas_right).offset(-titleLabelX);
+            }
+            else
+            {
+                make.width.equalTo(_topView.mas_width).dividedBy(2);
+            }
+        }];
         
+        
+        //小控件
         if (isPortrait)
         {
+            _moreBtn.hidden = NO;
+            _landscapeTopShowView.hidden = YES;
+
             _fullScreenBtn.hidden = NO;   //显示全屏按钮
             _headIconView.hidden  = NO;   //显示头像视图
             [_smallPlayBtn removeFromSuperview];
@@ -417,6 +463,10 @@
         }
         else
         {
+            _moreBtn.hidden = YES;
+            _landscapeTopShowView.hidden = NO;
+            [_landscapeTopShowView layoutIfNeeded];
+
             _fullScreenBtn.hidden = YES;  //隐藏全屏按钮
             _headIconView.hidden  = YES;   //隐藏头像视图
             [_smallPlayBtn removeFromSuperview];
@@ -462,12 +512,10 @@
             if (isPortrait)
             {
                 make.left.equalTo(_smallPlayBtn.mas_right).offset(10 *k5SWScale);
-//                make.width.mas_equalTo(_currentTimeLabel.mas_height).multipliedBy(1.2);
             }
             else
             {
                 make.left.equalTo(_bottomView.mas_left).offset(10 *k5SWScale);
-//                make.width.equalTo(_smallPlayBtn.mas_height);
             }
             make.width.mas_equalTo(_currentTimeLabel.mas_height).multipliedBy(1.2);
             make.centerY.equalTo(_bottomView.mas_centerY);
@@ -487,6 +535,32 @@
             make.centerY.equalTo(_bottomView.mas_centerY);
         }];
         
+        if (!isPortrait)
+        {
+            NSArray *landscapeTopBtns = @[@"充电",@"投硬币",@"分享",@"设置"];
+            
+            //!!!!:此处数值有问题
+//            CGFloat landscapeTopGap  = _landscapeTopShowView.frame.size.width * 0.05;
+//            CGFloat landscapeTopBtnW = _landscapeTopShowView.frame.size.width * 0.2;
+
+            //!!!!:这个怎么又可以了???
+            CGFloat landscapeTopGap  = self.view.frame.size.width * 0.4 * 0.05;
+            CGFloat landscapeTopBtnW = self.view.frame.size.width * 0.4 * 0.2;
+            
+            for (int topIndex = 0; topIndex < [landscapeTopBtns count]; topIndex ++)
+            {
+                UIButton *topBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+                [_landscapeTopShowView addSubview:topBtn];
+                
+                topBtn.frame = CGRectMake(topIndex * (landscapeTopGap + landscapeTopBtnW), 0, landscapeTopBtnW, _landscapeTopShowView.frame.size.height);
+                [topBtn setTitle:landscapeTopBtns[topIndex] forState:UIControlStateNormal];
+                topBtn.tag = 1000 + topIndex;
+                topBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+                [topBtn addTarget:self action:@selector(topBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+                
+                //DrawViewBorderRadius(topBtn, 1, 2, [UIColor blueColor]);
+            }
+        }
         
         [self.view layoutIfNeeded];
         
@@ -496,122 +570,6 @@
         if(!isPortrait)[self playSubViewTap];
     }];
 }
-
-//切换竖屏
-//- (void)setupPortraitPlayView
-//{
-//    CGFloat timeInterval = [[UIApplication sharedApplication]statusBarOrientationAnimationDuration];
-//
-//    [self interfaceOrientation:UIInterfaceOrientationPortrait];
-//    
-//    CGFloat h = (self.view.frame.size.height * 0.4);
-//    
-//    [UIView animateWithDuration:timeInterval animations:^{
-//        
-//        [_playView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            
-//            make.height.mas_equalTo(h);
-//        }];
-//        
-//        [_playSubView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            
-//            make.top.left.right.equalTo(_playView);
-//            make.bottom.equalTo(_playView.mas_bottom).offset(- sendDanmuViewH);
-//        }];
-//        
-//        [_bottomImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.left.right.equalTo(_playView);
-//            make.bottom.equalTo(_playView).offset(- sendDanmuViewH);
-//            make.height.mas_equalTo(20 + 10 *k5SWScale);
-//        }];
-//        
-//        _fullScreenBtn.hidden = NO;   //显示全屏按钮
-//        _headIconView.hidden  = NO;   //显示头像视图
-//
-//        [_smallPlayBtn removeFromSuperview];
-//        [_bottomView addSubview:_smallPlayBtn];
-//        
-//        
-//        [self.view layoutIfNeeded];
-//    }];
-//}
-
-//切换横屏
-//- (void)setupLandscapePlayView
-//{
-//    CGFloat timeInterval = [[UIApplication sharedApplication]statusBarOrientationAnimationDuration];
-//    
-//    CGFloat h = (self.view.frame.size.width);
-//    
-//    [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
-//    
-//    [UIView animateWithDuration:timeInterval animations:^{
-//        
-//        [_playView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.height.mas_equalTo(h);
-//        }];
-//        
-//        [_playSubView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            //make.height.mas_equalTo(h);
-//            make.top.left.bottom.right.equalTo(_playView);
-//        }];
-//        
-//        [_sendDanmuView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            //make.height.mas_equalTo(h);
-//            make.left.right.bottom.equalTo(_playView);
-//            make.height.mas_equalTo(sendDanmuViewH);
-//        }];
-//        
-//        [_bottomImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            //make.height.mas_equalTo(h);
-//            make.left.bottom.right.equalTo(_playView);
-//            make.height.mas_equalTo(sendDanmuViewH + 20 + 10 *k5SWScale);
-//        }];
-//        
-//        //小控件约束
-//        _fullScreenBtn.hidden = YES;  //隐藏全屏按钮
-//        _headIconView.hidden = YES;   //隐藏头像视图
-//        
-//        //_currentTimeLabel.frame = _smallPlayBtn.frame; //调换位置
-//        //_smallPlayBtn.frame = _headIconView.frame;
-//        [_currentTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.top.bottom.equalTo(_bottomView);
-//            make.left.equalTo(_bottomView.mas_left).offset(10 *k5SWScale);
-//            make.width.equalTo(_smallPlayBtn.mas_height);
-//        }];
-//        
-//        [_smallPlayBtn removeFromSuperview];
-//        [_sendDanmuView addSubview:_smallPlayBtn];
-//        
-//        [_smallPlayBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(_sendDanmuView).offset(10 *k5SWScale);
-//            make.top.equalTo(_sendDanmuView).offset(10);
-//            make.centerY.equalTo(_sendDanmuView.mas_centerY);
-//            make.width.equalTo(_smallPlayBtn.mas_height);
-//        }];
-//        
-//        [_totalTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.right.equalTo(_bottomView.mas_right).offset(- 10 *k5SWScale);
-//        }];
-//        
-//        [_danmuTextField mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(_sendDanmuView).offset(10);
-//            make.left.equalTo(_smallPlayBtn.mas_right).offset(10 *k5SWScale);
-//            //make.right.equalTo(_sendDanmuView).offset(- 10*k5SWScale);
-//            make.centerY.equalTo(_sendDanmuView.mas_centerY);;
-//            make.width.equalTo(_playView.mas_width).dividedBy(2);
-//        }];
-//
-//        //[self setNeedsUpdateConstraints];
-//
-//        [self.view layoutIfNeeded];
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        //横屏时默认点击一下做隐藏菜单栏
-//        [self playSubViewTap];
-//    }];
-//}
 
 
 #pragma mark - Private
@@ -733,6 +691,16 @@
     }
 }
 
+
+/**
+ 横屏顶部菜单按钮被点击
+
+ @param sender 按钮以tag区分
+ */
+- (void)topBtnClicked:(UIButton *)sender
+{
+    NSLog(@"topBtnClicked:%ld--%@",(long)sender.tag,sender.titleLabel.text);
+}
 
 
 #pragma mark - Settings
