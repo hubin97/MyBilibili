@@ -796,7 +796,7 @@
 				TargetAttributes = {
 					1FDD120F1D8A4C80008F3E44 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = CHX656NT89;
+						DevelopmentTeam = YTPNCWF278;
 						ProvisioningStyle = Automatic;
 					};
 					1FDD12281D8A4C81008F3E44 = {
@@ -1123,7 +1123,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = CHX656NT89;
+				DEVELOPMENT_TEAM = YTPNCWF278;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iPhone_ijkplayerlib/Debug",
@@ -1133,7 +1133,7 @@
 				INFOPLIST_FILE = MyBilibili/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Mine.MyBilibili;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HHB.MyBilibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1148,7 +1148,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = CHX656NT89;
+				DEVELOPMENT_TEAM = YTPNCWF278;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iPhone_ijkplayerlib/Debug",
@@ -1158,7 +1158,7 @@
 				INFOPLIST_FILE = MyBilibili/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Mine.MyBilibili;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HHB.MyBilibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
