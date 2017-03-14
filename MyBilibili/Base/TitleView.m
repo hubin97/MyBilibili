@@ -37,7 +37,7 @@
         for (NSInteger index = 0; index < [titles count]; index ++)
         {
             UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            titleBtn.frame = CGRectMake(kpadding* (index + 1) + btnWidth * index, kpadding *3/5, btnWidth, frame.size.height/2 *k5SWScale);
+            titleBtn.frame = CGRectMake(kpadding* (index + 1) + btnWidth * index, kpadding *3/5, btnWidth, frame.size.height/2 /**k5SWScale*/);
 //            titleBtn.layer.borderWidth = 1.0;
 //            titleBtn.layer.borderColor = [[UIColor brownColor] CGColor];
             titleBtn.tag = index;

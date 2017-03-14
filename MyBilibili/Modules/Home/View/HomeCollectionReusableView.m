@@ -9,7 +9,8 @@
 #import "HomeCollectionReusableView.h"
 #import "SDCycleScrollView.h"
 
-static float kSectionHeaderH = 40.0f;//(40 * k5SWScale);
+//static float kSectionHeaderH = 40.0f;//(40 * k5SWScale);
+#define kSectionHeaderH (40 * k5SWScale)
 
 @interface HomeCollectionReusableView()<SDCycleScrollViewDelegate>
 {

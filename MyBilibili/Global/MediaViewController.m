@@ -31,6 +31,7 @@
 @property (nonatomic, strong) UILabel *currentTimeLabel;    //当前播放时长
 @property (nonatomic, strong) UILabel *totalTimeLabel;      //总共播放时长
 @property (nonatomic, strong) UIProgressView *progressView; //播放进度条
+@property (nonatomic, strong) UISlider *playSlider;             //进度条滑杆
 
 
 @property (nonatomic, strong) UIButton *moreBtn;            //顶部更多键
@@ -310,9 +311,19 @@
     }];
     
     _progressView.progressTintColor = cherryPowder;
-    _progressView.trackTintColor = [UIColor blackColor];
+    _progressView.trackTintColor = [UIColor lightGrayColor];
     _progressView.progress = 0.3;
+    //_progressView.progressImage = [UIImage imageNamed:@"movie_player_purchase_pink_corner_bg"];
     
+    _playSlider = [[UISlider alloc]init];
+    [_progressView addSubview:_playSlider];
+    [_playSlider mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.bottom.right.equalTo(_progressView);
+    }];
+    
+    [_playSlider setThumbImage:[UIImage imageNamed:@"icmpv_thumb_light"] forState:UIControlStateNormal];
+    _playSlider.value = _progressView.progress;
+    _playSlider.continuous = YES;
     
     //======发送弹幕视图=========
     _sendDanmuView = [[UIView alloc]init];
