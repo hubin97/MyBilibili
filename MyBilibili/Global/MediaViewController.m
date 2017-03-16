@@ -9,6 +9,8 @@
 #import "MediaViewController.h"
 #import <IJKMediaFramework/IJKMediaFramework.h>
 
+#import "StyleButton.h"
+
 @interface MediaViewController ()
 {
     BOOL isClicked;  //能否换个思路?
@@ -19,29 +21,30 @@
 @property (atomic, retain) id <IJKMediaPlayback> player;
 @property (nonatomic, strong) UIView *playView ;
 
-@property (nonatomic, strong) UIImageView *topImageView;    //播放上菜单栏 (背景渐变黑色)
-@property (nonatomic, strong) UIImageView *bottomImageView; //播放下菜单栏 (同上)
-@property (nonatomic, strong) UIView *sendDanmuView;        //弹幕视图
-@property (nonatomic, strong) UIView *playSubView;          //播放器展示视图
-@property (nonatomic, strong) UIButton *bigPlayBtn;         //大播放按钮
+@property (nonatomic, strong) UIImageView *topImageView;        //播放上菜单栏 (背景渐变黑色)
+@property (nonatomic, strong) UIImageView *bottomImageView;     //播放下菜单栏 (同上)
+@property (nonatomic, strong) UIView *sendDanmuView;            //弹幕视图
+@property (nonatomic, strong) UIView *playSubView;              //播放器展示视图
+@property (nonatomic, strong) UIButton *bigPlayBtn;             //大播放按钮
 
-@property (nonatomic, strong) UIView *topView;              //顶部标题视图
-@property (nonatomic, strong) UIView *bottomView;           //播放控制视图
-@property (nonatomic, strong) UIButton *smallPlayBtn;       //小播放按钮
-@property (nonatomic, strong) UILabel *currentTimeLabel;    //当前播放时长
-@property (nonatomic, strong) UILabel *totalTimeLabel;      //总共播放时长
-@property (nonatomic, strong) UIProgressView *progressView; //播放进度条
+@property (nonatomic, strong) UIView *topView;                  //顶部标题视图
+@property (nonatomic, strong) UIView *bottomView;               //播放控制视图
+@property (nonatomic, strong) UIButton *smallPlayBtn;           //小播放按钮
+@property (nonatomic, strong) UILabel *currentTimeLabel;        //当前播放时长
+@property (nonatomic, strong) UILabel *totalTimeLabel;          //总共播放时长
+@property (nonatomic, strong) UIProgressView *progressView;     //播放进度条
 @property (nonatomic, strong) UISlider *playSlider;             //进度条滑杆
 
 
-@property (nonatomic, strong) UIButton *moreBtn;            //顶部更多键
-@property (nonatomic, strong) UIView *landscapeTopShowView; //顶部横屏才显示的视图(充电/ 投硬币/ 分享/ 设置)
+@property (nonatomic, strong) UIButton *moreBtn;                //顶部更多键
+@property (nonatomic, strong) UIView *landscapeTopShowView;     //顶部横屏才显示的视图(充电/ 投硬币/ 分享/ 设置)
+@property (nonatomic, strong) UIView *landscapeBottomShowView;  //底部横屏才显示的视图(弹幕开/ 高清/ 锁屏)
 
-@property (nonatomic, strong) UIButton *fullScreenBtn;      //全屏按钮
-@property (nonatomic, strong) UIImageView *headIconView;    //头像视图
-@property (nonatomic, strong) UITextField *danmuTextField;  //弹幕输入框
+@property (nonatomic, strong) UIButton *fullScreenBtn;          //全屏按钮
+@property (nonatomic, strong) UIImageView *headIconView;        //头像视图
+@property (nonatomic, strong) UITextField *danmuTextField;      //弹幕输入框
 
-@property (nonatomic, strong) UILabel *titleLabel;          //当前房间标题
+@property (nonatomic, strong) UILabel *titleLabel;              //当前房间标题
 
 @end
 
@@ -210,7 +213,7 @@
         make.top.bottom.right.equalTo(_topView);
     }];
 
-//        DrawViewBorderRadius(_landscapeTopShowView, 1, 2, [UIColor redColor]);
+    //DrawViewBorderRadius(_landscapeTopShowView, 1, 2, [UIColor redColor]);
     
     
     
@@ -310,8 +313,8 @@
         make.height.mas_equalTo(2);
     }];
     
-    _progressView.progressTintColor = cherryPowder;
-    _progressView.trackTintColor = [UIColor lightGrayColor];
+    //_progressView.progressTintColor = cherryPowder;
+    //_progressView.trackTintColor = [UIColor lightGrayColor];
     _progressView.progress = 0.3;
     //_progressView.progressImage = [UIImage imageNamed:@"movie_player_purchase_pink_corner_bg"];
     
@@ -324,6 +327,10 @@
     [_playSlider setThumbImage:[UIImage imageNamed:@"icmpv_thumb_light"] forState:UIControlStateNormal];
     _playSlider.value = _progressView.progress;
     _playSlider.continuous = YES;
+  
+    [_playSlider setBackgroundColor:[UIColor lightGrayColor]];
+    [_playSlider setTintColor:cherryPowder];
+    
     
     //======发送弹幕视图=========
     _sendDanmuView = [[UIView alloc]init];
@@ -359,7 +366,6 @@
         make.left.equalTo(_headIconView.mas_right).offset(10 *k5SWScale);
         make.right.equalTo(_sendDanmuView).offset(- 10*k5SWScale);
         make.centerY.equalTo(_sendDanmuView.mas_centerY);
-//        make.width.equalTo(_sendDanmuView.mas_width - );
     }];
     DrawViewBorderRadius(_danmuTextField, headIconRadius, 1, [UIColor clearColor]);
     _danmuTextField.placeholder = @"发个弹幕呗";
@@ -368,6 +374,18 @@
     _danmuTextField.backgroundColor = [UIColor grayColor];
     _danmuTextField.textAlignment = NSTextAlignmentCenter;
     
+    
+    _landscapeBottomShowView = [[UIView alloc]init];
+    [_sendDanmuView addSubview:_landscapeBottomShowView];
+    _landscapeBottomShowView.hidden = YES;
+    
+    
+    [_landscapeBottomShowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_danmuTextField.mas_right);
+        make.top.bottom.right.equalTo(_sendDanmuView);
+    }];
+
+    //DrawViewBorderRadius(_landscapeBottomShowView, 1, 1, [UIColor redColor]);
     
     //======播放器显示视图=========
     _playSubView = [[UIView alloc]init];
@@ -381,8 +399,6 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(playSubViewTap)];
     [_playSubView addGestureRecognizer:tap];
     
-    
-    //playImageView.image = [UIImage imageNamed:@"1.jpg"];
     
     //220 630  25
     
@@ -466,6 +482,7 @@
         {
             _moreBtn.hidden = NO;
             _landscapeTopShowView.hidden = YES;
+            _landscapeBottomShowView.hidden = YES;
 
             _fullScreenBtn.hidden = NO;   //显示全屏按钮
             _headIconView.hidden  = NO;   //显示头像视图
@@ -477,6 +494,9 @@
             _moreBtn.hidden = YES;
             _landscapeTopShowView.hidden = NO;
             [_landscapeTopShowView layoutIfNeeded];
+
+            _landscapeBottomShowView.hidden = NO;
+            [_landscapeBottomShowView layoutIfNeeded];
 
             _fullScreenBtn.hidden = YES;  //隐藏全屏按钮
             _headIconView.hidden  = YES;   //隐藏头像视图
@@ -548,6 +568,7 @@
         
         if (!isPortrait)
         {
+            //布局横屏顶部视图
             NSArray *landscapeTopBtns = @[@"充电",@"投硬币",@"分享",@"设置"];
             
             //!!!!:此处数值有问题
@@ -571,6 +592,35 @@
                 
                 //DrawViewBorderRadius(topBtn, 1, 2, [UIColor blueColor]);
             }
+            
+            //布局横屏底部视图
+//            NSArray *landscapeBottomBtns = @[@{@"player_lock":@"锁屏"},@{@"player_lock":@"锁屏"},@{@"player_lock":@"锁屏"}];
+
+            NSArray *landscapeBottomBtns = @[@"icmpv_toggle_danmaku_showed_light",@"player_input_smalltype_default_icon",@"player_lock"];
+            NSArray *landscapeBottomBtns1 = @[@"弹幕",@"高清",@"锁屏"];
+
+            CGFloat landscapeBottomPadding  = self.view.frame.size.width * 0.3 / 7;
+
+            for (int bottomIndex = 0; bottomIndex < [landscapeBottomBtns count]; bottomIndex ++)
+            {
+                StyleButton *bottomBtn = [StyleButton buttonWithType:UIButtonTypeCustom];
+                [_landscapeBottomShowView addSubview:bottomBtn];
+                
+                bottomBtn.frame = CGRectMake(2 * landscapeBottomPadding + bottomIndex * 2 *landscapeBottomPadding, _danmuTextField.frame.origin.y, landscapeBottomPadding, _danmuTextField.frame.size.height + 5);
+                [bottomBtn setTitle:landscapeBottomBtns1[bottomIndex] forState:UIControlStateNormal];
+                [bottomBtn setImage:[UIImage imageNamed:landscapeBottomBtns[bottomIndex]] forState:UIControlStateNormal];
+
+                bottomBtn.tag = 2000 + bottomIndex;
+                bottomBtn.titleLabel.font = [UIFont systemFontOfSize:10.0];
+                [bottomBtn addTarget:self action:@selector(bottomBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [bottomBtn setMyStyle:UIButtonTopBottomStyle];
+                [bottomBtn setRatio:0.6];
+                bottomBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+                //bottomBtn.contentMode = UIViewContentModeScaleAspectFit;
+                bottomBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                //DrawViewBorderRadius(bottomBtn, 1, 1, [UIColor redColor]);
+            }
+                
         }
         
         [self.view layoutIfNeeded];
@@ -711,6 +761,12 @@
 - (void)topBtnClicked:(UIButton *)sender
 {
     NSLog(@"topBtnClicked:%ld--%@",(long)sender.tag,sender.titleLabel.text);
+}
+
+
+- (void)bottomBtnClicked:(UIButton *)sender
+{
+    NSLog(@"bottomBtnClicked:%ld--%@",(long)sender.tag,sender.titleLabel.text);
 }
 
 

@@ -78,6 +78,7 @@
 		1F2032521D9609C900BB666C /* IMG_1657.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322D1D9609C900BB666C /* IMG_1657.PNG */; };
 		1F2032531D9609C900BB666C /* IMG_1658.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1F20322E1D9609C900BB666C /* IMG_1658.PNG */; };
 		1F5B37C61DB90A29004588B1 /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA86E21D978E89006F83C3 /* StartView.m */; };
+		1F6D826F1E7AD0F0004299D8 /* StyleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D826E1E7AD0F0004299D8 /* StyleButton.m */; };
 		1FC91A831E5C91F800003176 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC91A731E5C91F800003176 /* NSData+SDDataCache.m */; };
 		1FC91A841E5C91F800003176 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC91A761E5C91F800003176 /* TAAbstractDotView.m */; };
 		1FC91A851E5C91F800003176 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC91A781E5C91F800003176 /* TAAnimatedDotView.m */; };
@@ -209,6 +210,8 @@
 		1F37DF251DBB13CA0056DEAC /* UINavigationBar+CustomStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CustomStyle.h"; sourceTree = "<group>"; };
 		1F37DF261DBB13CA0056DEAC /* UINavigationBar+CustomStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CustomStyle.m"; sourceTree = "<group>"; };
 		1F5B37C31DB9022A004588B1 /* MyBilibiliPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBilibiliPrefixHeader.pch; sourceTree = "<group>"; };
+		1F6D826D1E7AD0F0004299D8 /* StyleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleButton.h; sourceTree = "<group>"; };
+		1F6D826E1E7AD0F0004299D8 /* StyleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleButton.m; sourceTree = "<group>"; };
 		1FC91A721E5C91F800003176 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		1FC91A731E5C91F800003176 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		1FC91A751E5C91F800003176 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				1FFA86E21D978E89006F83C3 /* StartView.m */,
 				04EE3C411E5700AB00D16330 /* TitleView.h */,
 				04EE3C421E5700AB00D16330 /* TitleView.m */,
+				1F6D826D1E7AD0F0004299D8 /* StyleButton.h */,
+				1F6D826E1E7AD0F0004299D8 /* StyleButton.m */,
 				1F04D4751D96182C007A8534 /* BaseNavigationController.h */,
 				1F04D4761D96182C007A8534 /* BaseNavigationController.m */,
 				1F04D46F1D961786007A8534 /* BaseTabBarController.h */,
@@ -974,6 +979,7 @@
 				1FC91A871E5C91F800003176 /* TAPageControl.m in Sources */,
 				1FC91A901E5DE42E00003176 /* HomeBannerModel.m in Sources */,
 				04C7ABE71E5D6F5300A9CB7C /* HomeCellModel.m in Sources */,
+				1F6D826F1E7AD0F0004299D8 /* StyleButton.m in Sources */,
 				1FC91A881E5C91F800003176 /* SDCollectionViewCell.m in Sources */,
 				1F1D2A4D1DC5A80C007983EA /* ThemeTableViewController.m in Sources */,
 				1F5B37C61DB90A29004588B1 /* StartView.m in Sources */,
