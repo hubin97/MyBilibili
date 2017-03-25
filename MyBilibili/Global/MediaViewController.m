@@ -29,6 +29,7 @@
 
 @property (nonatomic, strong) UIView *topView;                  //顶部标题视图
 @property (nonatomic, strong) UIView *bottomView;               //播放控制视图
+@property (nonatomic, strong) UIButton *backBtn;                //返回按钮
 @property (nonatomic, strong) UIButton *smallPlayBtn;           //小播放按钮
 @property (nonatomic, strong) UILabel *currentTimeLabel;        //当前播放时长
 @property (nonatomic, strong) UILabel *totalTimeLabel;          //总共播放时长
@@ -65,6 +66,9 @@
     [super viewWillAppear:animated];
     
     [_player prepareToPlay];
+    
+    _smallPlayBtn.selected = YES;
+    _bigPlayBtn.selected = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,7 +158,7 @@
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topImageView.mas_top).offset(20);
         make.left.right.equalTo(_topImageView);
-        make.height.mas_equalTo(20 + 10 *k5SWScale);
+        make.height.mas_equalTo(20 + 15 *k5SWScale);
     }];
     
     //    DrawViewBorderRadius(topView, 1, 1, [UIColor whiteColor]);
@@ -172,18 +176,18 @@
     }];
     
     _titleLabel.text = @"正在播放的是<大秦帝国>电视剧,up主欢迎大家打赏鲜花.";
-    _titleLabel.font = [UIFont systemFontOfSize:12.0];
+    _titleLabel.font = [UIFont systemFontOfSize:14.0];
     _titleLabel.textColor = [UIColor whiteColor];
     
     //DrawViewBorderRadius(_titleLabel, 1, 1, [UIColor whiteColor]);
 
     //返回键  70 / 320
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_topView addSubview:backBtn];
-    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_topView addSubview:_backBtn];
+    [_backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(_topView);
         make.left.equalTo(_topView.mas_left).offset(15 *k5SWScale);
-        make.width.equalTo(backBtn.mas_height);
+        make.width.equalTo(_backBtn.mas_height);
     }];
     //DrawViewBorderRadius(backBtn, 1, 1, [UIColor whiteColor]);
 
@@ -197,10 +201,10 @@
         make.width.equalTo(_moreBtn.mas_height);
     }];
     
-    [backBtn setImage:[UIImage imageNamed:@"common_backShadow"] forState:UIControlStateNormal];
+    [_backBtn setImage:[UIImage imageNamed:@"common_backShadow"] forState:UIControlStateNormal];
     [_moreBtn setImage:[UIImage imageNamed:@"icmpv_more_light"] forState:UIControlStateNormal];
     
-    [backBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [_backBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     //UIInterfaceOrientationLandscapeLeft
     //顶部横屏小控件(只创建,横屏时才显示) // 充电/ 投硬币/ 分享/ 设置
     _landscapeTopShowView = [[UIView alloc]init];
@@ -231,33 +235,41 @@
     //DrawViewBorderRadius(bottomView, 1, 1, [UIColor whiteColor]);
     
     //大播放按钮
-    UIImage *bigPlayImg = [UIImage imageNamed:@"player_play_c"];
+    UIImage *bigPlayImg  = [UIImage imageNamed:@"player_play_c"];
+    UIImage *bigPauseImg = [UIImage imageNamed:@"player_pause_c"];
+    
     CGFloat bigPlayBtnW = bigPlayImg.size.width;
     CGFloat bigPlayBtnH = bigPlayImg.size.height;
     
     _bigPlayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:_bigPlayBtn];
     [_bigPlayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(ws.view.mas_right).offset(- 20 *k5SWScale);
-        make.bottom.equalTo(_bottomView.mas_top).offset(- 20 * k5SWScale);
+        make.right.equalTo(ws.view.mas_right).offset(- 15 *k5SWScale);
+        make.bottom.equalTo(_bottomView.mas_top).offset(- 10 * k5SWScale);
         make.width.mas_equalTo(bigPlayBtnW);
         make.height.mas_equalTo(bigPlayBtnH);
     }];
     
-    [_bigPlayBtn setImage:bigPlayImg forState:UIControlStateNormal];
+    [_bigPlayBtn setBackgroundImage:bigPlayImg forState:UIControlStateNormal];
+    [_bigPlayBtn setBackgroundImage:bigPauseImg forState:UIControlStateSelected];
+
     [_bigPlayBtn addTarget:self action:@selector(playOrPause) forControlEvents:UIControlEventTouchUpInside];
     
     //小播放按钮
     _smallPlayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_bottomView addSubview:_smallPlayBtn];
     [_smallPlayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(_bottomView);
-        make.left.equalTo(_bottomView.mas_left).offset(10 *k5SWScale);
+        make.top.equalTo(_bottomView.mas_top).offset(7 *k5SWScale);
+        make.centerY.equalTo(_bottomView.mas_centerY);
+        make.left.equalTo(_bottomView.mas_left).offset(15 *k5SWScale);
         make.width.equalTo(_smallPlayBtn.mas_height);
     }];
     
-    [_smallPlayBtn setImage:[UIImage imageNamed:@"player_play_bottom_window"] forState:UIControlStateNormal];
+    [_smallPlayBtn setBackgroundImage:[UIImage imageNamed:@"player_play_bottom_window"] forState:UIControlStateNormal];
+    [_smallPlayBtn setBackgroundImage:[UIImage imageNamed:@"player_pause_bottom_window"] forState:UIControlStateSelected];
+    
     [_smallPlayBtn addTarget:self action:@selector(playOrPause) forControlEvents:UIControlEventTouchUpInside];
+    //DrawViewBorderRadius(_smallPlayBtn, 1, 1, [UIColor whiteColor]);
     
     //全屏按钮
     //UIImage *fullScreenBtnImg = [UIImage imageNamed:@"player_fullScreen_iphone"];
@@ -266,7 +278,7 @@
     [_bottomView addSubview:_fullScreenBtn];
     [_fullScreenBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(_bottomView);
-        make.right.equalTo(_bottomView.mas_right).offset(- 15 *k5SWScale);
+        make.right.equalTo(_bottomView.mas_right).offset(- 20 *k5SWScale);
         make.width.equalTo(_smallPlayBtn.mas_height);
     }];
     
@@ -293,7 +305,7 @@
     [_bottomView addSubview:_totalTimeLabel];
     [_totalTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(_bottomView);
-        make.right.equalTo(_fullScreenBtn.mas_left).offset(- 10 *k5SWScale);
+        make.right.equalTo(_fullScreenBtn.mas_left).offset(- 20 *k5SWScale);
         make.width.mas_equalTo(_currentTimeLabel.mas_height).multipliedBy(1.2);
     }];
     
@@ -488,6 +500,8 @@
             _headIconView.hidden  = NO;   //显示头像视图
             [_smallPlayBtn removeFromSuperview];
             [_bottomView addSubview:_smallPlayBtn];
+            
+            [_backBtn setImage:[UIImage imageNamed:@"common_backShadow"] forState:UIControlStateNormal];
         }
         else
         {
@@ -502,6 +516,9 @@
             _headIconView.hidden  = YES;   //隐藏头像视图
             [_smallPlayBtn removeFromSuperview];
             [_sendDanmuView addSubview:_smallPlayBtn];
+            
+            [_backBtn setImage:[UIImage imageNamed:@"icnav_back_light"] forState:UIControlStateNormal];
+
         }
 
         
@@ -515,7 +532,7 @@
             }
             else
             {
-                make.left.equalTo(_smallPlayBtn.mas_right).offset(10 *k5SWScale);
+                make.left.equalTo(_smallPlayBtn.mas_right).offset(20 *k5SWScale);
                 make.width.equalTo(_playView.mas_width).dividedBy(2);
                 DrawViewBorderRadius(_danmuTextField, headIconRadius/1.5, 1, [UIColor clearColor]);
             }
@@ -525,17 +542,32 @@
         
         //====
         //小控件约束
+        
+        UIImage *bigPlayBtnImg = (isPortrait)? [UIImage imageNamed:@"player_play_c"] : [UIImage imageNamed:@"player_start_iphone_fullscreen"];
+        CGFloat bigPlayBtnW = bigPlayBtnImg.size.width;
+        CGFloat bigPlayBtnH = bigPlayBtnImg.size.height;
+
+        [_bigPlayBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_playSubView.mas_right).offset(- 15 *k5SWScale);
+            make.bottom.equalTo(_bottomView.mas_top).offset(- 10 * k5SWScale);
+            make.width.mas_equalTo(bigPlayBtnW);
+            make.height.mas_equalTo(bigPlayBtnH);
+        }];
+    
+        
         [_smallPlayBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             if (isPortrait)
             {
-                make.top.bottom.equalTo(_bottomView);
+                make.top.equalTo(_bottomView.mas_top).offset(7 *k5SWScale);
+                make.centerY.equalTo(_bottomView.mas_centerY);
                 make.left.equalTo(_bottomView.mas_left).offset(10 *k5SWScale);
             }
             else
             {
                 make.left.equalTo(_sendDanmuView).offset(10 *k5SWScale);
-                make.top.equalTo(_sendDanmuView);//.offset(10);
+                make.top.equalTo(_sendDanmuView.mas_top).offset(7 *k5SWScale);
                 make.centerY.equalTo(_sendDanmuView.mas_centerY);
+                make.width.equalTo(_smallPlayBtn.mas_height);
             }
         }];
         
@@ -556,12 +588,12 @@
             if (isPortrait)
             {
                 make.top.bottom.equalTo(_bottomView);
-                make.right.equalTo(_fullScreenBtn.mas_left).offset(- 10 *k5SWScale);
+                make.right.equalTo(_fullScreenBtn.mas_left).offset(- 20 *k5SWScale);
                 make.width.mas_equalTo(_currentTimeLabel.mas_height).multipliedBy(1.2);
             }
             else
             {
-                make.right.equalTo(_bottomView.mas_right).offset(- 10 *k5SWScale);
+                make.right.equalTo(_bottomView.mas_right).offset(- 15 *k5SWScale);
             }
             make.centerY.equalTo(_bottomView.mas_centerY);
         }];
@@ -611,16 +643,15 @@
                 [bottomBtn setImage:[UIImage imageNamed:landscapeBottomBtns[bottomIndex]] forState:UIControlStateNormal];
 
                 bottomBtn.tag = 2000 + bottomIndex;
-                bottomBtn.titleLabel.font = [UIFont systemFontOfSize:10.0];
+                bottomBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
                 [bottomBtn addTarget:self action:@selector(bottomBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [bottomBtn setMyStyle:UIButtonTopBottomStyle];
-                [bottomBtn setRatio:0.6];
+                //[bottomBtn setRatio:0.5];
                 bottomBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
                 //bottomBtn.contentMode = UIViewContentModeScaleAspectFit;
                 bottomBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
                 //DrawViewBorderRadius(bottomBtn, 1, 1, [UIColor redColor]);
             }
-                
         }
         
         [self.view layoutIfNeeded];
@@ -710,6 +741,13 @@
     {
         [_player pause];
     }
+    
+    BOOL isPortrait = [[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationPortrait;
+    [_smallPlayBtn setBackgroundImage:(_smallPlayBtn.selected) ? [UIImage imageNamed:@"player_play_bottom_window"] : [UIImage imageNamed:@"player_pause_bottom_window"] forState:UIControlStateNormal];
+    [_bigPlayBtn setBackgroundImage:((_bigPlayBtn.selected) ? ((isPortrait)? [UIImage imageNamed:@"player_play_c"] : [UIImage imageNamed:@"player_start_iphone_fullscreen"]) : ((isPortrait)? [UIImage imageNamed: @"player_pause_c"] : [UIImage imageNamed: @"player_pause_iphone_fullscreen"]))  forState:UIControlStateNormal];
+
+    _smallPlayBtn.selected = !_smallPlayBtn.selected;
+    _bigPlayBtn.selected = !_bigPlayBtn.selected;
 }
 
 
