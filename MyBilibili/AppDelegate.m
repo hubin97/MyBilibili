@@ -28,6 +28,7 @@
     //拿掉General -> Main interface (Main)
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
+
     self.window.rootViewController = [[BaseTabBarController alloc]init];
     
     [self.window makeKeyAndVisible];
